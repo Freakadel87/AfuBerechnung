@@ -1,6 +1,9 @@
 #ifndef AFUBERECHNUNG_H
 #define AFUBERECHNUNG_H
 
+/// Interne Includes
+#include "afuberechnungfrequenz.h"
+
 /// Qt-includes
 #include <QMainWindow>
 #include <QLabel>
@@ -27,24 +30,25 @@ class AfuBerechnung : public QMainWindow
     Q_OBJECT
 
 private:
-    QMenuBar *menuDatei;
-    QMenu *menuBearbeiten;
-    QMenu *menuHilfe;
-    QMenu *menuOptionen;
+    QMenu *menuDatei;
+    QAction *menuDateiNeu;
+    QAction *menuDateiOeffnen;
+    QAction *menuDateiSpeichern;
+    QAction *menuDateiBeenden;
 
-    QAction *actionNeu = new QAction(tr("Neu"), this);
-    QAction *actionOeffnen = new QAction(tr("Öffnen"), this);
-    QAction *actionSpeichern = new QAction(tr("Speichern"), this);
-    QAction *actionBeenden = new QAction(tr("Beenden"), this);
-    QAction *actionFrequenz = new QAction(tr("Frequenz berechnen"), this);
-    QAction *actionKapazitaet = new QAction(tr("Kapazität berechnen"), this);
-    QAction *actionInduktivitaet = new QAction(tr("Induktivität berechnen"), this);
-    QAction *actionInfo = new QAction(tr("Info"), this);
+    QMenu *menuBearbeiten;
+    QAction *menuBearbeitenFrequenz;
+    QAction *menuBearbeitenKapazitaet;
+    QAction *menuBearbeitenInduktivitaet;
+
+    QMenu *menuHilfe;
+    QAction *menuHilfeInfo;
 
     QLineEdit *LineEdit_f;
     QLineEdit *LineEdit_c;
     QLineEdit *LineEdit_l;
     QLabel *Label_f_Loesung;
+
 
 public:
     AfuBerechnung(QWidget *parent = 0);
@@ -73,6 +77,9 @@ private slots:
     void triggeredSpeichern();
     void triggeredBeenden();
     void triggeredInfo();
+    void triggeredFrequenzBerechnen();
+    void triggeredKapazitaetBerechnen();
+    void triggeredInduktivitaetBerechnen();
 };
 
 #endif // AFUBERECHNUNG_H

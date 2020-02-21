@@ -1,38 +1,38 @@
 #include "afuberechnung.h"
 
-AfuBerechnung::AfuBerechnung(QWidget *parent)
-    : QMainWindow(parent)
-{
-
-}
-
 AfuBerechnung::~AfuBerechnung()
 {
 
 }
 
+AfuBerechnung::AfuBerechnung(QWidget *parent)
+    : QMainWindow(parent)
+{
+    // Erstelle Menue --> Datei --> ...
+    menuDatei = menuBar()->addMenu(tr("Datei"));
+    menuDateiNeu = menuDatei->addAction("Neu", this, SLOT(triggeredNeu()));
+    menuDateiNeu->setIcon(QIcon::fromTheme("document-new"));
+    menuDateiOeffnen = menuDatei->addAction("Öffnen", this, SLOT(triggeredOeffnen()));
+    menuDateiOeffnen->setIcon(QIcon::fromTheme("document-open"));
+    menuDateiSpeichern = menuDatei->addAction("Speichern", this, SLOT(triggeredSpeichern()));
+    menuDateiSpeichern->setIcon(QIcon::fromTheme("document-save"));
+    menuDatei->addSeparator();
+    menuDateiBeenden = menuDatei->addAction("Beenden", this, SLOT(triggeredBeenden()));
+    menuDateiBeenden->setIcon(QIcon::fromTheme("application-exit"));
+
+    // Erstelle Menue --> Bearbeiten --> ...
+    menuBearbeiten = menuBar()->addMenu(tr("Bearbeiten"));
+    menuBearbeitenFrequenz = menuBearbeiten->addAction("Frequenz berechnen...", this, SLOT(triggeredFrequenzBerechnen()));
+    menuBearbeitenKapazitaet = menuBearbeiten->addAction("Kapazität berechnen...", this, SLOT(triggeredKapazitaetBerechnen()));
+    menuBearbeitenInduktivitaet = menuBearbeiten->addAction("Induktivität berechnen...", this, SLOT(triggeredInduktivitaetBerechnen()));
+
+    // erstelle Menue --> Hilfe --> ...
+    menuHilfe = menuBar()->addMenu(tr("Hilfe"));
+    menuHilfeInfo = menuHilfe->addAction("Info", this, SLOT(triggeredInfo()));
+}
+
 void AfuBerechnung::Programm()
 {
-    QMenuBar *menuDatei = new QMenuBar;
-    menuDatei->addAction(actionNeu);
-    menuDatei->addAction(actionOeffnen);
-    menuDatei->addAction(actionSpeichern);
-    menuDatei->addSeparator();
-    menuDatei->addAction(actionBeenden);
-
-    menuOptionen = new QMenu(this);
-    menuOptionen->addAction(actionFrequenz);
-    menuOptionen->addAction(actionKapazitaet);
-    menuOptionen->addAction(actionInduktivitaet);
-
-    menuHilfe = new QMenu(this);
-    menuHilfe->addAction(actionInfo);
-
-
-    connect(actionNeu, SIGNAL(triggered()), this, SLOT(triggeredNeu()));
-    connect(actionNeu, SIGNAL(triggered()), this, SLOT(triggeredOeffnen()));
-    connect(actionNeu, SIGNAL(triggered()), this, SLOT(triggeredSpeichern()));
-    connect(actionNeu, SIGNAL(triggered()), this, SLOT(triggeredBeenden()));
 
 }
 
@@ -61,12 +61,40 @@ void AfuBerechnung::triggeredOeffnen()
 
 void AfuBerechnung::triggeredSpeichern()
 {
+    QString fileName = QFileDialog::getSaveFileName(this, "Speichern unter ...");
+    QFile file(fileName);
 
+    // Datei konnte nicht gespeichert werden
+    if (!file.open(QIODevice::WriteOnly | QFile::Text))
+    {
+        QMessageBox::warning(this, "Warnung!", "Datei konnte nicht gespeichert werden!" + file.errorString());
+        return;
+    }
+
+    QString currentFile = fileName;
+    setWindowTitle(fileName);
+    QTextStream out(&file);
+    file.close();
 }
 
 void AfuBerechnung::triggeredBeenden()
 {
     close();
+}
+
+void AfuBerechnung::triggeredFrequenzBerechnen()
+{
+    ///frequenzBerechnung = new afuberechnungfrequenz(dynamic_cast<QWidget*>(this));
+}
+
+void AfuBerechnung::triggeredKapazitaetBerechnen()
+{
+
+}
+
+void AfuBerechnung::triggeredInduktivitaetBerechnen()
+{
+
 }
 
 void AfuBerechnung::triggeredInfo()

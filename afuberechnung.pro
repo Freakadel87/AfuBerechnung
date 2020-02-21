@@ -25,7 +25,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        afuberechnung.cpp
+        afuberechnung.cpp \
+    afuberechnungfrequenz.cpp
 
 HEADERS += \
-        afuberechnung.h
+        afuberechnung.h \
+    afuberechnungfrequenz.h
