@@ -85,6 +85,7 @@ void AfuBerechnung::triggeredBeenden()
 void AfuBerechnung::triggeredFrequenzBerechnen()
 {
     ///frequenzBerechnung = new afuberechnungfrequenz(dynamic_cast<QWidget*>(this));
+   // = new afuberechnungfrequenz();
 }
 
 void AfuBerechnung::triggeredKapazitaetBerechnen()
@@ -99,8 +100,8 @@ void AfuBerechnung::triggeredInduktivitaetBerechnen()
 
 void AfuBerechnung::triggeredInfo()
 {
-    QMessageBox::about(this, tr("Über Formelberechnung von Thomson"),
-                       tr("<h2>Gleichungsberechnung 1.0</h2>"
+    QMessageBox::about(this, tr("Über Formelsammlung für Amateurfunk"),
+                       tr("<h2>Formelberechnung v1.0</h2>"
                           "<p>Copyright &copy; 2020 by DF1TC."
                           "<p>Für Amateurfunkanwendungen ist dieses Programm"
                           " Freeware, eine kommerzielle Nutzung ist ausschließlich mit der"

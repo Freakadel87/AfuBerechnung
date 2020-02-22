@@ -2,7 +2,7 @@
 #define AFUBERECHNUNGFREQUENZ_H
 
 // Interne Includes
-#include "afuberechnung.h"
+//#include "afuberechnung.h"
 
 // Systeminterne Includes
 #include <math.h>
@@ -14,12 +14,15 @@
 #include <QMenuBar>
 #include <QMenu>
 #include <QAction>
+#include <QIcon>
 
 class AfuBerechnungFrequenz : public QWidget
 {
     Q_OBJECT
 
 public:
+    //Konstruktor
+    AfuBerechnungFrequenz(QWidget *parent);
 // Variablendeklaration
 double const d_Pi = 3.141592653589793238462643383279;
 

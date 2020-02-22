@@ -1,24 +1,28 @@
-//#include "afuberechnungfrequenz.h"
+#include "afuberechnungfrequenz.h"
 
+// Destruktor
 //AfuBerechnungFrequenz::~AfuBerechnungFrequenz()
 //{
 
 //}
 
-//AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent)
-//    : QMainWindow(parent)
-//{
-//    // Erstelle Menue --> Berechnung --> ...
-//    menuBerechnung = menuBar()->addMenu(tr("Berechnung"));
-//    menuBerechnungBeenden = menuBerechnung->addAction("Beenden", this, SLOT(triggeredBeenden()));
-//    menuBerechnungBeenden->setIcon(QIcon::fromTheme("application-exit"));
+AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QWidget(parent)
 
-//    // erstelle Menue --> Hilfe --> ...
+{
+    QWidget *frequenzWidget = new QWidget();
+    frequenzWidget->setGeometry(200, 100, 450, 150);
+
+    // Erstelle Menue --> Berechnung --> ...
+ //   menuBerechnung = menuBar()->addMenu(tr("Berechnung"));
+    menuBerechnungBeenden = menuBerechnung->addAction("Beenden", this, SLOT(triggeredBeenden()));
+    menuBerechnungBeenden->setIcon(QIcon::fromTheme("application-exit"));
+
+    // erstelle Menue --> Hilfe --> ...
 //    menuHilfe = menuBar()->addMenu(tr("Hilfe"));
 
-//}
+}
 
-//void AfuBerechnungFrequenz::triggeredBeenden()
-//{
-
-//}
+void AfuBerechnungFrequenz::triggeredBeenden()
+{
+    close();
+}
