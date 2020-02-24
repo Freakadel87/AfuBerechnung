@@ -3,15 +3,10 @@
 
 /// Interne Includes
 #include "afuberechnungfrequenz.h"
+#include "afuberechnungkapazitaet.h"
 
 /// Qt-includes
 #include <QMainWindow>
-#include <QLabel>
-#include <QPushButton>
-#include <QGridLayout>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QLineEdit>
 #include <QMenu>
 #include <QMenuBar>
 #include <QAction>
@@ -21,15 +16,18 @@
 #include <QFile>
 #include <QTextStream>
 #include <QFileDialog>
-
-class QAction;
-class QLabel;
+#include <QDialog>
+#include <QWidget>
 
 class AfuBerechnung : public QMainWindow
 {
     Q_OBJECT
 
 private:
+    AfuBerechnungFrequenz *BerechnungFrequenz;
+    //AfuBerechnungInduktivitaet *BerechnungInduktivitaet;
+    AfuBerechnungKapazitaet *BerechnungKapazitaet;
+
     QMenu *menuDatei;
     QAction *menuDateiNeu;
     QAction *menuDateiOeffnen;
@@ -44,29 +42,9 @@ private:
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
 
-    QLineEdit *LineEdit_f;
-    QLineEdit *LineEdit_c;
-    QLineEdit *LineEdit_l;
-    QLabel *Label_f_Loesung;
-
-
 public:
     AfuBerechnung(QWidget *parent = 0);
     ~AfuBerechnung();
-
-    bool b_FChoice = false;
-    bool b_CChoice = false;
-    bool b_LChoice = false;
-
-    double const d_Pi = 3.141592653589793238462643383279;
-    double d_Frequenz {1.0};
-    double d_Kapazitaet {1.0};
-    double d_Induktivitaet {1.0};
-    double d_CEingabe {0.0};
-    double d_FEingabe {0.0};
-    double d_LEingabe {0.0};
-
-    void Programm();
 
 protected:
     //void closeEvent(QCloseEvent *event);

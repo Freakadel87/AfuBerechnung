@@ -27,9 +27,11 @@ CONFIG += qt warn_off release debug
 SOURCES += \
         main.cpp \
         afuberechnung.cpp \
-    afuberechnungfrequenz.cpp
+    afuberechnungfrequenz.cpp \
+    afuberechnungkapazitaet.cpp
 
 HEADERS += \
         afuberechnung.h \
-    afuberechnungfrequenz.h
+    afuberechnungfrequenz.h \
+    afuberechnungkapazitaet.h
 

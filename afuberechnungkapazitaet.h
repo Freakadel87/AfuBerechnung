@@ -1,6 +1,5 @@
-#ifndef AFUBERECHNUNGFREQUENZ_H
-#define AFUBERECHNUNGFREQUENZ_H
-
+#ifndef AFUBERECHNUNGKAPAZITAET_H
+#define AFUBERECHNUNGKAPAZITAET_H
 // Interne Includes
 
 // Systeminterne Includes
@@ -17,13 +16,13 @@
 #include <QMenu>
 #include <QIcon>
 
-class AfuBerechnungFrequenz : public QWidget//(parent) QDialog
+class AfuBerechnungKapazitaet : public QWidget//(parent) QDialog
 {
     Q_OBJECT
 
 public:
     //Konstruktor
-    AfuBerechnungFrequenz(QWidget *parent);
+    AfuBerechnungKapazitaet(QWidget *parent);
 
 // Variablendeklaration
 double const d_Pi = 3.141592653589793238462643383279;
@@ -44,13 +43,13 @@ QAction *actionHilfeInfo;
 
 // Erstelle Textfelder
 QLabel *LabelEingabeL = new QLabel("Eingabe Induktivität");
-QLabel *LabelEingabeC = new QLabel("Eingabe Kapazität");
-QLabel *LabelAusgabeF = new QLabel("Ergebnis Frequenz");
+QLabel *LabelAusgabeC = new QLabel("Ergebnis Kapazität");
+QLabel *LabelEingabeF = new QLabel("Eingabe Frequenz");
 QLabel *LabelLoesung = new QLabel();
 
 // Erstelle Ein- und Ausgabefelder
 QLineEdit *EditEingabeL = new QLineEdit;
-QLineEdit *EditEingabeC = new QLineEdit;
+QLineEdit *EditEingabeF = new QLineEdit;
 
 // Erstelle Buttons
 QPushButton *ButtonBeenden = new QPushButton("Beenden");
@@ -65,4 +64,4 @@ void triggeredButtonLeerenClicked();
 void triggeredActionBeenden();
 
 };
-#endif // AFUBERECHNUNGFREQUENZ_H
+#endif // AFUBERECHNUNGKAPAZITAET_H

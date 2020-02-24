@@ -21,19 +21,14 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuDateiBeenden->setIcon(QIcon::fromTheme("application-exit"));
 
     // Erstelle Menue --> Bearbeiten --> ...
-    menuBearbeiten = menuBar()->addMenu(tr("Bearbeiten"));
-    menuBearbeitenFrequenz = menuBearbeiten->addAction("Frequenz berechnen...", this, SLOT(triggeredFrequenzBerechnen()));
-    menuBearbeitenKapazitaet = menuBearbeiten->addAction("Kapazität berechnen...", this, SLOT(triggeredKapazitaetBerechnen()));
-    menuBearbeitenInduktivitaet = menuBearbeiten->addAction("Induktivität berechnen...", this, SLOT(triggeredInduktivitaetBerechnen()));
+    menuBearbeiten = menuBar()->addMenu("Bearbeiten");
+    menuBearbeitenFrequenz = menuBearbeiten->addAction("&Frequenz berechnen...", this, SLOT(triggeredFrequenzBerechnen()));
+    menuBearbeitenKapazitaet = menuBearbeiten->addAction("&Kapazität berechnen...", this, SLOT(triggeredKapazitaetBerechnen()));
+    menuBearbeitenInduktivitaet = menuBearbeiten->addAction("&Induktivität berechnen...", this, SLOT(triggeredInduktivitaetBerechnen()));
 
     // erstelle Menue --> Hilfe --> ...
-    menuHilfe = menuBar()->addMenu(tr("Hilfe"));
+    menuHilfe = menuBar()->addMenu("Hilfe");
     menuHilfeInfo = menuHilfe->addAction("Info", this, SLOT(triggeredInfo()));
-}
-
-void AfuBerechnung::Programm()
-{
-
 }
 
 void AfuBerechnung::triggeredNeu()
@@ -84,13 +79,16 @@ void AfuBerechnung::triggeredBeenden()
 
 void AfuBerechnung::triggeredFrequenzBerechnen()
 {
-    ///frequenzBerechnung = new afuberechnungfrequenz(dynamic_cast<QWidget*>(this));
-   // = new afuberechnungfrequenz();
+   BerechnungFrequenz = new AfuBerechnungFrequenz(this);
+   BerechnungFrequenz->setWindowTitle("Berechnung der Frequenz");
+   BerechnungFrequenz->show();
 }
 
 void AfuBerechnung::triggeredKapazitaetBerechnen()
 {
-
+    BerechnungKapazitaet = new AfuBerechnungKapazitaet(this);
+    BerechnungKapazitaet->setWindowTitle("Berechnung der Kapazität");
+    BerechnungKapazitaet->show();
 }
 
 void AfuBerechnung::triggeredInduktivitaetBerechnen()

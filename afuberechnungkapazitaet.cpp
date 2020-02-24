@@ -1,12 +1,12 @@
-#include "afuberechnungfrequenz.h"
+#include "afuberechnungkapazitaet.h"
 
 // Destruktor
-//AfuBerechnungFrequenz::~AfuBerechnungFrequenz()
+//AfuBerechnungKapazitaet::~AfuBerechnungKapazitaet()
 //{
 
 //}
 
-AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QWidget(parent)
+AfuBerechnungKapazitaet::AfuBerechnungKapazitaet(QWidget *parent) : QWidget(parent)
 {
     // Erstelle Menue --> Berechnung --> ...
 //    menuDatei = new QMenuBar(this);
@@ -19,7 +19,7 @@ AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QWidget(parent)
 //    actionDateiBeenden->setIcon(QIcon::fromTheme("application-exit"));
 
     QGridLayout *GridLayout = new QGridLayout;
-    GridLayout->addWidget(LabelEingabeC, 0, 0);
+    GridLayout->addWidget(LabelEingabeF, 0, 0);
     GridLayout->addWidget(LabelEingabeL, 1, 0);
     GridLayout->addWidget(LabelLoesung, 3, 0);
     GridLayout->addWidget(ButtonBeenden, 5, 0);
@@ -30,31 +30,31 @@ AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QWidget(parent)
     QObject::connect(ButtonBeenden, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBeendenClicked()));
 }
 
-void AfuBerechnungFrequenz::triggeredButtonBeendenClicked()
+void AfuBerechnungKapazitaet::triggeredButtonBeendenClicked()
 {
     triggeredButtonLeerenClicked();
     close();
 }
 
-void AfuBerechnungFrequenz::triggeredButtonBerechnenClicked()
+void AfuBerechnungKapazitaet::triggeredButtonBerechnenClicked()
 {
-    d_PufferC = 0.0000001 * EditEingabeC->text().toDouble();
+    d_PufferF = 0.0000001 * EditEingabeF->text().toDouble();
     d_PufferL = 0.0000000000001 * EditEingabeL->text().toDouble();
 
-    // Thomsonsche Schwingungsformel
-    d_PufferF = 1 / (2 * d_Pi * sqrt(d_PufferL * d_PufferC));
-    LabelLoesung->setNum(d_PufferF);
+    // Thomsonsche Schwingungsformel  
+    d_PufferC = 1 / ((2 * d_Pi * d_PufferF) * (2 * d_Pi * d_PufferF) * d_PufferL);
+    LabelLoesung->setNum(d_PufferC);
     LabelLoesung->setFont(QFont("Arial", 11, QFont::Thin));
 }
 
-void AfuBerechnungFrequenz::triggeredButtonLeerenClicked()
+void AfuBerechnungKapazitaet::triggeredButtonLeerenClicked()
 {
     LabelLoesung->clear();
-    EditEingabeC->clear();
+    EditEingabeF->clear();
     EditEingabeL->clear();
 }
 
-void AfuBerechnungFrequenz::triggeredActionBeenden()
+void AfuBerechnungKapazitaet::triggeredActionBeenden()
 {
     close();
 }
