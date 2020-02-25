@@ -93,7 +93,9 @@ void AfuBerechnung::triggeredKapazitaetBerechnen()
 
 void AfuBerechnung::triggeredInduktivitaetBerechnen()
 {
-
+    BerechnungInduktivitaet = new AfuBerechnungInduktivitaet(this);
+    BerechnungInduktivitaet->setWindowTitle("Berechnung der Induktivität");
+    BerechnungInduktivitaet->show();
 }
 
 void AfuBerechnung::triggeredInfo()

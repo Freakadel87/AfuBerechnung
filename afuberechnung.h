@@ -4,6 +4,7 @@
 /// Interne Includes
 #include "afuberechnungfrequenz.h"
 #include "afuberechnungkapazitaet.h"
+#include "afuberechnunginduktivitaet.h"
 
 /// Qt-includes
 #include <QMainWindow>
@@ -25,7 +26,7 @@ class AfuBerechnung : public QMainWindow
 
 private:
     AfuBerechnungFrequenz *BerechnungFrequenz;
-    //AfuBerechnungInduktivitaet *BerechnungInduktivitaet;
+    AfuBerechnungInduktivitaet *BerechnungInduktivitaet;
     AfuBerechnungKapazitaet *BerechnungKapazitaet;
 
     QMenu *menuDatei;

@@ -1,4 +1,4 @@
-#include "afuberechnungfrequenz.h"
+#include "afuberechnunginduktivitaet.h"
 
 // Destruktor
 //AfuBerechnungFrequenz::~AfuBerechnungFrequenz()
@@ -6,12 +6,12 @@
 
 //}
 
-AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QDialog(parent)
+AfuBerechnungInduktivitaet::AfuBerechnungInduktivitaet(QWidget *parent) : QDialog(parent)
 {
     // Erstelle Textfelder
-    LabelEingabeL = new QLabel("Eingabe Induktivität:");
+    LabelEingabeF = new QLabel("Eingabe Frequenz:");
     LabelEingabeC = new QLabel("Eingabe Kapazität:");
-    LabelAusgabeF = new QLabel("Ergebnis Frequenz:");
+    LabelAusgabeL = new QLabel("Ergebnis Induktivität:");
     LabelLoesung = new QLabel();
 
     LabelEinheitC = new QLabel("F");
@@ -19,7 +19,7 @@ AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QDialog(parent)
     LabelEinheitL = new QLabel("H");
 
     // Erstelle Ein- und Ausgabefelder
-    EditEingabeL = new QLineEdit;
+    EditEingabeF = new QLineEdit;
     EditEingabeC = new QLineEdit;
 
     // Erstelle Buttons
@@ -31,13 +31,13 @@ AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QDialog(parent)
     GridLayout->addWidget(LabelEingabeC, 0, 0);
     GridLayout->addWidget(EditEingabeC, 0, 2);
     GridLayout->addWidget(LabelEinheitC, 0, 3);
-    GridLayout->addWidget(LabelEingabeL, 1, 0);
-    GridLayout->addWidget(EditEingabeL, 1, 2);
-    GridLayout->addWidget(LabelEinheitL, 1, 3);
+    GridLayout->addWidget(LabelEingabeF, 1, 0);
+    GridLayout->addWidget(EditEingabeF, 1, 2);
+    GridLayout->addWidget(LabelEinheitF, 1, 3);
     GridLayout->addWidget(LabelLoesung, 3, 0);
-    GridLayout->addWidget(LabelAusgabeF, 5, 0);
+    GridLayout->addWidget(LabelAusgabeL, 5, 0);
     GridLayout->addWidget(LabelLoesung, 5, 2);
-    GridLayout->addWidget(LabelEinheitF, 5, 3);
+    GridLayout->addWidget(LabelEinheitL, 5, 3);
     GridLayout->addWidget(ButtonBerechnen, 6, 0);
     GridLayout->addWidget(ButtonLeeren, 6, 1);
     GridLayout->addWidget(ButtonBeenden, 6, 2);
@@ -47,26 +47,26 @@ AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QDialog(parent)
     QObject::connect(ButtonBeenden, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBeendenClicked()));
 }
 
-void AfuBerechnungFrequenz::triggeredButtonBeendenClicked()
+void AfuBerechnungInduktivitaet::triggeredButtonBeendenClicked()
 {
     triggeredButtonLeerenClicked();
     close();
 }
 
-void AfuBerechnungFrequenz::triggeredButtonBerechnenClicked()
+void AfuBerechnungInduktivitaet::triggeredButtonBerechnenClicked()
 {
-    d_PufferC = 0.0000001 * EditEingabeC->text().toDouble();
-    d_PufferL = 0.0000000000001 * EditEingabeL->text().toDouble();
+    d_PufferF = 0.0000001 * EditEingabeF->text().toDouble();
+    d_PufferC = 0.0000000000001 * EditEingabeC->text().toDouble();
 
     // Thomsonsche Schwingungsformel
-    d_PufferF = 1 / (2 * d_Pi * sqrt(d_PufferL * d_PufferC));
-    LabelLoesung->setNum(d_PufferF);
+    d_PufferL = 1 / ((2 * d_Pi * d_PufferF) * (2 * d_Pi * d_PufferF) * d_PufferC);
+    LabelLoesung->setNum(d_PufferL);
     LabelLoesung->setFont(QFont("Arial", 11, QFont::Thin));
 }
 
-void AfuBerechnungFrequenz::triggeredButtonLeerenClicked()
+void AfuBerechnungInduktivitaet::triggeredButtonLeerenClicked()
 {
     LabelLoesung->clear();
     EditEingabeC->clear();
-    EditEingabeL->clear();
+    EditEingabeF->clear();
 }

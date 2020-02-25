@@ -1,5 +1,5 @@
-#ifndef AFUBERECHNUNGKAPAZITAET_H
-#define AFUBERECHNUNGKAPAZITAET_H
+#ifndef AFUBERECHNUNGINDUKTIVITAET_H
+#define AFUBERECHNUNGINDUKTIVITAET_H
 
 // Interne Includes
 
@@ -17,13 +17,13 @@
 #include <QPushButton>
 #include <QLineEdit>
 
-class AfuBerechnungKapazitaet : public QDialog
+class AfuBerechnungInduktivitaet : public QDialog
 {
     Q_OBJECT
 
 public:
     //Konstruktor
-    AfuBerechnungKapazitaet(QWidget *parent);
+    AfuBerechnungInduktivitaet(QWidget *parent);
 
     // Variablendeklaration
     double const d_Pi = 3.141592653589793238462643383279;
@@ -33,18 +33,18 @@ public:
 
 private:
     // Erstelle Textfelder
-    QLabel *LabelEingabeL;
     QLabel *LabelEingabeF;
-    QLabel *LabelAusgabeC;
+    QLabel *LabelEingabeC;
+    QLabel *LabelAusgabeL;
     QLabel *LabelLoesung;
 
     QLabel *LabelEinheitL;
-    QLabel *LabelEinheitF;
     QLabel *LabelEinheitC;
+    QLabel *LabelEinheitF;
 
     // Erstelle Ein- und Ausgabefelder
-    QLineEdit *EditEingabeL;
     QLineEdit *EditEingabeF;
+    QLineEdit *EditEingabeC;
 
     // Erstelle Buttons
     QPushButton *ButtonBeenden;
@@ -56,4 +56,4 @@ private slots:
     void triggeredButtonBerechnenClicked();
     void triggeredButtonLeerenClicked();
 };
-#endif // AFUBERECHNUNGKAPAZITAET_H
+#endif // AFUBERECHNUNGINDUKTIVITAET_H

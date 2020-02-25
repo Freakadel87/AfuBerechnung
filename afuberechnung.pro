@@ -28,10 +28,12 @@ SOURCES += \
         main.cpp \
         afuberechnung.cpp \
     afuberechnungfrequenz.cpp \
-    afuberechnungkapazitaet.cpp
+    afuberechnungkapazitaet.cpp \
+    afuberechnunginduktivitaet.cpp
 
 HEADERS += \
         afuberechnung.h \
     afuberechnungfrequenz.h \
-    afuberechnungkapazitaet.h
+    afuberechnungkapazitaet.h \
+    afuberechnunginduktivitaet.h
 
