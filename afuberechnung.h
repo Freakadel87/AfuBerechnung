@@ -5,6 +5,7 @@
 #include "afuberechnungfrequenz.h"
 #include "afuberechnungkapazitaet.h"
 #include "afuberechnunginduktivitaet.h"
+#include "afuberechnungverlaengerungsspule.h"
 
 /// Qt-includes
 #include <QMainWindow>
@@ -28,6 +29,7 @@ private:
     AfuBerechnungFrequenz *BerechnungFrequenz;
     AfuBerechnungInduktivitaet *BerechnungInduktivitaet;
     AfuBerechnungKapazitaet *BerechnungKapazitaet;
+    AfuBerechnungVerlaengerungsSpule *BerechnungVerlaengerungsSpule;
 
     QMenu *menuDatei;
     QAction *menuDateiNeu;
@@ -39,6 +41,7 @@ private:
     QAction *menuBearbeitenFrequenz;
     QAction *menuBearbeitenKapazitaet;
     QAction *menuBearbeitenInduktivitaet;
+    QAction *menuBearbeitenVerlaengerungsSpule;
 
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
@@ -59,6 +62,7 @@ private slots:
     void triggeredFrequenzBerechnen();
     void triggeredKapazitaetBerechnen();
     void triggeredInduktivitaetBerechnen();
+    void triggeredVerlaengerungBerechnen();
 };
 
 #endif // AFUBERECHNUNG_H

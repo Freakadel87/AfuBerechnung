@@ -25,6 +25,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBearbeitenFrequenz = menuBearbeiten->addAction("&Frequenz berechnen...", this, SLOT(triggeredFrequenzBerechnen()));
     menuBearbeitenKapazitaet = menuBearbeiten->addAction("&Kapazität berechnen...", this, SLOT(triggeredKapazitaetBerechnen()));
     menuBearbeitenInduktivitaet = menuBearbeiten->addAction("&Induktivität berechnen...", this, SLOT(triggeredInduktivitaetBerechnen()));
+    menuBearbeitenVerlaengerungsSpule = menuBearbeiten->addAction("&Verlängerungsspule berechnen...", this, SLOT(triggeredVerlaengerungBerechnen()));
 
     // erstelle Menue --> Hilfe --> ...
     menuHilfe = menuBar()->addMenu("Hilfe");
@@ -98,6 +99,13 @@ void AfuBerechnung::triggeredInduktivitaetBerechnen()
     BerechnungInduktivitaet->show();
 }
 
+void AfuBerechnung::triggeredVerlaengerungBerechnen()
+{
+    BerechnungVerlaengerungsSpule = new AfuBerechnungVerlaengerungsSpule(this);
+    BerechnungVerlaengerungsSpule->setWindowTitle("Berechnung der Spulenverlängerung");
+    BerechnungVerlaengerungsSpule->show();
+}
+
 void AfuBerechnung::triggeredInfo()
 {
     QMessageBox::about(this, tr("Über Formelsammlung für Amateurfunk"),
@@ -107,3 +115,4 @@ void AfuBerechnung::triggeredInfo()
                           " Freeware, eine kommerzielle Nutzung ist ausschließlich mit der"
                           " Zustimmung des Autors gestattet!"));
 }
+

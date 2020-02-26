@@ -29,11 +29,13 @@ SOURCES += \
         afuberechnung.cpp \
     afuberechnungfrequenz.cpp \
     afuberechnungkapazitaet.cpp \
-    afuberechnunginduktivitaet.cpp
+    afuberechnunginduktivitaet.cpp \
+    afuberechnungverlaengerungsspule.cpp
 
 HEADERS += \
         afuberechnung.h \
     afuberechnungfrequenz.h \
     afuberechnungkapazitaet.h \
-    afuberechnunginduktivitaet.h
+    afuberechnunginduktivitaet.h \
+    afuberechnungverlaengerungsspule.h
 
