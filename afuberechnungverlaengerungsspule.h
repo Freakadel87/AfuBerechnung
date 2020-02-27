@@ -47,6 +47,16 @@ private:
     QLabel *LabelLoesungSpule;
     QLabel *ErgebnisSpule;
 
+    QLabel *LabelZNull;
+    QLabel *LabelWinkelX1;
+    QLabel *LabelWinkelX2;
+    QLabel *LabelLambda;
+    QLabel *LabelLRest;
+    QLabel *LabelX1;
+    QLabel *LabelX2;
+    QLabel *LabelXL;
+
+
     QLabel *LabelEinheitHoeheDipol;
     QLabel *LabelEinheitDickeDraht;
     QLabel *LabelEinheitLaengeSeite;
@@ -54,12 +64,30 @@ private:
     QLabel *LabelEinheitFrequenz;
     QLabel *LabelEinheitSpule;
 
+    QLabel *LabelEinheitZNull;
+    QLabel *LabelEinheitWinkelX1;
+    QLabel *LabelEinheitWinkelX2;
+    QLabel *LabelEinheitLambda;
+    QLabel *LabelEinheitLRest;
+    QLabel *LabelEinheitX1;
+    QLabel *LabelEinheitX2;
+    QLabel *LabelEinheitXL;
+
     // Erstelle Ein- und Ausgabefelder
     QLineEdit *EditHoeheDipol;
     QLineEdit *EditDickeDraht;
     QLineEdit *EditLaengeSeite;
     QLineEdit *EditPosSpule;
     QLineEdit *EditFrequenz;
+
+    QLineEdit *EditZNull;
+    QLineEdit *EditWinkelX1;
+    QLineEdit *EditWinkelX2;
+    QLineEdit *EditLambda;
+    QLineEdit *EditLRest;
+    QLineEdit *EditX1;
+    QLineEdit *EditX2;
+    QLineEdit *EditXL;
 
     // Erstelle Buttons
     QPushButton *ButtonBeenden;

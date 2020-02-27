@@ -14,13 +14,17 @@ AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QDialog(parent)
     LabelAusgabeF = new QLabel("Ergebnis Frequenz:");
     LabelLoesung = new QLabel();
 
-    LabelEinheitC = new QLabel("F");
+    LabelEinheitC = new QLabel("pF");
     LabelEinheitF = new QLabel("MHz");
-    LabelEinheitL = new QLabel("H");
+    LabelEinheitL = new QLabel("µH");
 
     // Erstelle Ein- und Ausgabefelder
     EditEingabeL = new QLineEdit;
+    EditEingabeL->setInputMask("00000.00");
+    EditEingabeL->setCursorPosition(0);
     EditEingabeC = new QLineEdit;
+    EditEingabeC->setInputMask("00000.00");
+    EditEingabeC->setCursorPosition(0);
 
     // Erstelle Buttons
     ButtonBeenden = new QPushButton("Beenden");
@@ -55,12 +59,14 @@ void AfuBerechnungFrequenz::triggeredButtonBeendenClicked()
 
 void AfuBerechnungFrequenz::triggeredButtonBerechnenClicked()
 {
-    d_PufferC = 0.0000001 * EditEingabeC->text().toDouble();
-    d_PufferL = 0.0000000000001 * EditEingabeL->text().toDouble();
-
     // Thomsonsche Schwingungsformel
-    d_PufferF = 1 / (2 * d_Pi * sqrt(d_PufferL * d_PufferC));
-    LabelLoesung->setNum(d_PufferF);
+    d_PufferC = EditEingabeC->text().toFloat();
+    d_PufferL = EditEingabeL->text().toFloat();
+
+    d_PufferF = (1 / (2 * d_Pi * sqrt(d_PufferL * d_PufferC))) / 0.001;
+    d_PufferFF = (int)(d_PufferF*100+0.5)/100.0;
+
+    LabelLoesung->setNum(d_PufferFF);
     LabelLoesung->setFont(QFont("Arial", 11, QFont::Thin));
 }
 

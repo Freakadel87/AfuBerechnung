@@ -26,10 +26,11 @@ public:
     AfuBerechnungFrequenz(QWidget *parent);
 
     // Variablendeklaration
-    double const d_Pi = 3.141592653589793238462643383279;
-    double d_PufferC;
-    double d_PufferL;
-    double d_PufferF;
+    float const d_Pi = 3.141592653589793238462643383279;
+    float d_PufferC;
+    float d_PufferL;
+    float d_PufferF;
+    float d_PufferFF;
 
 private:
     // Erstelle Textfelder

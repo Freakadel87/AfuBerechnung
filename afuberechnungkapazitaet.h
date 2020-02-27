@@ -26,10 +26,11 @@ public:
     AfuBerechnungKapazitaet(QWidget *parent);
 
     // Variablendeklaration
-    double const d_Pi = 3.141592653589793238462643383279;
-    double d_PufferC;
-    double d_PufferL;
-    double d_PufferF;
+    float const f_Pi = 3.141592653589793238462643383279;
+    float f_PufferC {0.0};
+    float f_PufferCC {0.0};
+    float f_PufferL {0.0};
+    float f_PufferF {0.0};
 
 private:
     // Erstelle Textfelder

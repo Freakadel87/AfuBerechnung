@@ -17,19 +17,73 @@ AfuBerechnungVerlaengerungsSpule::AfuBerechnungVerlaengerungsSpule(QWidget *pare
     LabelFrequenz = new QLabel("Frequenz");
     LabelLoesungSpule = new QLabel("Ergebnis Spule:");
 
+    LabelZNull = new QLabel("Z null");
+    LabelWinkelX1 = new QLabel("Winkel X1");
+    LabelWinkelX2 = new QLabel("Winkel X2");
+    LabelLambda = new QLabel("Lambda/4");
+    LabelLRest = new QLabel("L Rest");
+    LabelX1 = new QLabel("X1");
+    LabelX2 = new QLabel("X2");
+    LabelXL = new QLabel("XL");
+
     // Erstelle Ein- und Ausgabefelder
     EditHoeheDipol = new QLineEdit;
+    EditHoeheDipol->setInputMask("00");
+    EditHoeheDipol->setCursorPosition(0);
     EditDickeDraht = new QLineEdit;
+    EditDickeDraht->setInputMask("00");
+    EditDickeDraht->setCursorPosition(0);
     EditLaengeSeite = new QLineEdit;
+    EditLaengeSeite->setInputMask("000");
+    EditLaengeSeite->setCursorPosition(0);
     EditPosSpule = new QLineEdit;
+    EditPosSpule->setInputMask("000");
+    EditPosSpule->setCursorPosition(0);
     EditFrequenz = new QLineEdit;
+    EditFrequenz->setInputMask("000000");
+    EditFrequenz->setCursorPosition(0);
     ErgebnisSpule = new QLabel;
+
+    EditZNull = new QLineEdit;
+    EditZNull->setInputMask("00000");
+    EditZNull->setCursorPosition(0);
+    EditWinkelX1 = new QLineEdit;
+    EditWinkelX1->setInputMask("000");
+    EditWinkelX1->setCursorPosition(0);
+    EditWinkelX2 = new QLineEdit;
+    EditWinkelX2->setInputMask("000");
+    EditWinkelX2->setCursorPosition(0);
+    EditLambda = new QLineEdit;
+    EditLambda->setInputMask("000");
+    EditLambda->setCursorPosition(0);
+    EditLRest = new QLineEdit;
+    EditLRest->setInputMask("000");
+    EditLRest->setCursorPosition(0);
+    EditX1 = new QLineEdit;
+    EditX1->setInputMask("00000");
+    EditX1->setCursorPosition(0);
+    EditX2 = new QLineEdit;
+    EditX2->setInputMask("00000");
+    EditX2->setCursorPosition(0);
+    EditXL = new QLineEdit;
+    EditXL->setInputMask("00000");
+    EditXL->setCursorPosition(0);
 
     LabelEinheitHoeheDipol = new QLabel("m");
     LabelEinheitDickeDraht = new QLabel("mm");
     LabelEinheitLaengeSeite = new QLabel("m");
     LabelEinheitPosSpule = new QLabel("m");
     LabelEinheitFrequenz = new QLabel("MHz");
+    LabelEinheitSpule = new QLabel("µH");
+
+    LabelEinheitZNull = new QLabel("Ohm");
+    LabelEinheitWinkelX1 = new QLabel("Grad");
+    LabelEinheitWinkelX2 = new QLabel("Grad");
+    LabelEinheitLambda = new QLabel("m");
+    LabelEinheitLRest = new QLabel("m");
+    LabelEinheitX1 = new QLabel("Ohm");
+    LabelEinheitX2 = new QLabel("Ohm");
+    LabelEinheitXL = new QLabel("Ohm");
 
     // Erstelle Buttons
     ButtonBeenden = new QPushButton("Beenden");
@@ -58,9 +112,36 @@ AfuBerechnungVerlaengerungsSpule::AfuBerechnungVerlaengerungsSpule(QWidget *pare
     GridLayout->addWidget(LabelEinheitFrequenz, 4, 2);
     GridLayout->addWidget(LabelEinheitSpule, 5, 2);
 
-    GridLayout->addWidget(ButtonBerechnen, 6, 0);
-    GridLayout->addWidget(ButtonLeeren, 6, 1);
-    GridLayout->addWidget(ButtonBeenden, 6, 2);
+    GridLayout->addWidget(LabelZNull, 0, 6);
+    GridLayout->addWidget(LabelWinkelX1,1, 6);
+    GridLayout->addWidget(LabelWinkelX2, 2, 6);
+    GridLayout->addWidget(LabelLambda, 3, 6);
+    GridLayout->addWidget(LabelLRest, 4, 6);
+    GridLayout->addWidget(LabelX1, 5, 6);
+    GridLayout->addWidget(LabelX2, 6, 6);
+    GridLayout->addWidget(LabelXL, 7, 6);
+
+    GridLayout->addWidget(EditZNull, 0, 7);
+    GridLayout->addWidget(EditWinkelX1, 1, 7);
+    GridLayout->addWidget(EditWinkelX2, 2, 7);
+    GridLayout->addWidget(EditLambda, 3, 7);
+    GridLayout->addWidget(EditLRest , 4, 7);
+    GridLayout->addWidget(EditX1, 5, 7);
+    GridLayout->addWidget(EditX2, 6, 7);
+    GridLayout->addWidget(EditXL, 7, 7);
+
+    GridLayout->addWidget(LabelEinheitZNull, 0, 8);
+    GridLayout->addWidget(LabelEinheitWinkelX1, 1, 8);
+    GridLayout->addWidget(LabelEinheitWinkelX2 , 2, 8);
+    GridLayout->addWidget(LabelEinheitLambda, 3, 8);
+    GridLayout->addWidget(LabelEinheitLRest, 4, 8);
+    GridLayout->addWidget(LabelEinheitX1, 5, 8);
+    GridLayout->addWidget(LabelEinheitX2, 6, 8);
+    GridLayout->addWidget(LabelEinheitXL, 7, 8);
+
+    GridLayout->addWidget(ButtonBerechnen, 9, 0, 1, 2);
+    GridLayout->addWidget(ButtonLeeren, 10, 0, 1, 2);
+    GridLayout->addWidget(ButtonBeenden, 11, 0, 1, 2);
 
     QObject::connect(ButtonBerechnen, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBerechnenClicked()));
     QObject::connect(ButtonLeeren, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonLeerenClicked()));
@@ -90,4 +171,12 @@ void AfuBerechnungVerlaengerungsSpule::triggeredButtonLeerenClicked()
     EditPosSpule->clear();
     EditFrequenz->clear();
     ErgebnisSpule->clear();
+    EditZNull->clear();
+    EditWinkelX1->clear();
+    EditWinkelX2->clear();
+    EditLambda->clear();
+    EditLRest->clear();
+    EditX1->clear();
+    EditX2->clear();
+    EditXL->clear();
 }

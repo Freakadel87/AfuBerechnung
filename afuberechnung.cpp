@@ -30,6 +30,22 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     // erstelle Menue --> Hilfe --> ...
     menuHilfe = menuBar()->addMenu("Hilfe");
     menuHilfeInfo = menuHilfe->addAction("Info", this, SLOT(triggeredInfo()));
+
+    ButtonFrequenz = new QPushButton("Frequenz");
+    ButtonInduktivitaet = new QPushButton("Induktivität");
+    ButtonKapazitaet = new QPushButton("Kapazität");
+    ButtonSpule = new QPushButton("Spule");
+
+    GridLayoutButton = new QGridLayout();
+    GridLayoutButton->addWidget(ButtonFrequenz, 0, 0, 4, 4);
+    GridLayoutButton->addWidget(ButtonInduktivitaet, 0, 1, 4, 4);
+    GridLayoutButton->addWidget(ButtonKapazitaet, 0, 2, 4, 4);
+    GridLayoutButton->addWidget(ButtonSpule, 0, 3, 4, 4);
+
+    QObject::connect(ButtonFrequenz, SIGNAL(clicked(bool)), this, SLOT(triggeredFrequenzBerechnen()));
+    QObject::connect(ButtonInduktivitaet, SIGNAL(clicked(bool)), this, SLOT(triggeredInduktivitaetBerechnen()));
+    QObject::connect(ButtonKapazitaet, SIGNAL(clicked(bool)), this, SLOT(triggeredKapazitaetBerechnen()));
+    QObject::connect(ButtonSpule, SIGNAL(clicked(bool)), this, SLOT(triggeredVerlaengerungBerechnen()));
 }
 
 void AfuBerechnung::triggeredNeu()
@@ -115,4 +131,3 @@ void AfuBerechnung::triggeredInfo()
                           " Freeware, eine kommerzielle Nutzung ist ausschließlich mit der"
                           " Zustimmung des Autors gestattet!"));
 }
-

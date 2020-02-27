@@ -14,13 +14,17 @@ AfuBerechnungInduktivitaet::AfuBerechnungInduktivitaet(QWidget *parent) : QDialo
     LabelAusgabeL = new QLabel("Ergebnis Induktivität:");
     LabelLoesung = new QLabel();
 
-    LabelEinheitC = new QLabel("F");
+    LabelEinheitC = new QLabel("pF");
     LabelEinheitF = new QLabel("MHz");
-    LabelEinheitL = new QLabel("H");
+    LabelEinheitL = new QLabel("µH");
 
     // Erstelle Ein- und Ausgabefelder
     EditEingabeF = new QLineEdit;
+    EditEingabeF->setInputMask("00000.00");
+    EditEingabeF->setCursorPosition(0);
     EditEingabeC = new QLineEdit;
+    EditEingabeC->setInputMask("00000.00");
+    EditEingabeC->setCursorPosition(0);
 
     // Erstelle Buttons
     ButtonBeenden = new QPushButton("Beenden");
@@ -55,12 +59,16 @@ void AfuBerechnungInduktivitaet::triggeredButtonBeendenClicked()
 
 void AfuBerechnungInduktivitaet::triggeredButtonBerechnenClicked()
 {
-    d_PufferF = 0.0000001 * EditEingabeF->text().toDouble();
-    d_PufferC = 0.0000000000001 * EditEingabeC->text().toDouble();
-
+    /// Noch zu erledigen:
+    /// Die Formel arbeitet nicht richtig, oder die Formel von Frank ist falsch
     // Thomsonsche Schwingungsformel
-    d_PufferL = 1 / ((2 * d_Pi * d_PufferF) * (2 * d_Pi * d_PufferF) * d_PufferC);
-    LabelLoesung->setNum(d_PufferL);
+    f_PufferF = EditEingabeF->text().toFloat();
+    f_PufferC = EditEingabeC->text().toFloat();
+
+    f_PufferL = (1 / ((2 * f_Pi * f_PufferF) * (2 * f_Pi * f_PufferF)) * f_PufferC) / 0.001;
+    f_PufferLL = (int)(f_PufferL*100+0.5)/100.0;
+
+    LabelLoesung->setNum(f_PufferLL);
     LabelLoesung->setFont(QFont("Arial", 11, QFont::Thin));
 }
 

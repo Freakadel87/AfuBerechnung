@@ -15,13 +15,17 @@ AfuBerechnungKapazitaet::AfuBerechnungKapazitaet(QWidget *parent) : QDialog(pare
     LabelAusgabeC = new QLabel("Ergebnis Kapazität:");
     LabelLoesung = new QLabel();
 
-    LabelEinheitC = new QLabel("F");
+    LabelEinheitC = new QLabel("pF");
     LabelEinheitF = new QLabel("MHz");
-    LabelEinheitL = new QLabel("H");
+    LabelEinheitL = new QLabel("µH");
 
     // Erstelle Ein- und Ausgabefelder
     EditEingabeL = new QLineEdit;
+    EditEingabeL->setInputMask("00000.00");
+    EditEingabeL->setCursorPosition(0);
     EditEingabeF = new QLineEdit;
+    EditEingabeF->setInputMask("00000.00");
+    EditEingabeF->setCursorPosition(0);
 
     // Erstelle Buttons
     ButtonBeenden = new QPushButton("Beenden");
@@ -56,12 +60,15 @@ void AfuBerechnungKapazitaet::triggeredButtonBeendenClicked()
 
 void AfuBerechnungKapazitaet::triggeredButtonBerechnenClicked()
 {
-    d_PufferF = 0.0000001 * EditEingabeF->text().toDouble();
-    d_PufferL = 0.0000000000001 * EditEingabeL->text().toDouble();
-
     // Thomsonsche Schwingungsformel
-    d_PufferC = 1 / ((2 * d_Pi * d_PufferF) * (2 * d_Pi * d_PufferF) * d_PufferL);
-    LabelLoesung->setNum(d_PufferC);
+    f_PufferF = EditEingabeF->text().toFloat();
+    f_PufferL = EditEingabeL->text().toFloat();
+
+    f_PufferC = 1 / ((2 * f_Pi * f_PufferF) * (2 * f_Pi * f_PufferF) * f_PufferL) / 0.001;
+   // f_PufferCC = (int)(f_PufferC*100+0.5)/100.0;
+    f_PufferCC = f_PufferC * 1000;
+
+    LabelLoesung->setNum(f_PufferCC);
     LabelLoesung->setFont(QFont("Arial", 11, QFont::Thin));
 }
 

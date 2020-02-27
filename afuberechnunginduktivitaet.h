@@ -26,10 +26,11 @@ public:
     AfuBerechnungInduktivitaet(QWidget *parent);
 
     // Variablendeklaration
-    double const d_Pi = 3.141592653589793238462643383279;
-    double d_PufferC;
-    double d_PufferL;
-    double d_PufferF;
+    float const f_Pi = 3.141592653589793238462643383279;
+    float f_PufferC;
+    float f_PufferL;
+    float f_PufferLL;
+    float f_PufferF;
 
 private:
     // Erstelle Textfelder

@@ -20,6 +20,8 @@
 #include <QFileDialog>
 #include <QDialog>
 #include <QWidget>
+#include <QPushButton>
+#include <QGridLayout>
 
 class AfuBerechnung : public QMainWindow
 {
@@ -46,6 +48,13 @@ private:
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
 
+    QGridLayout *GridLayoutButton;
+
+    QPushButton *ButtonFrequenz;
+    QPushButton *ButtonInduktivitaet;
+    QPushButton *ButtonKapazitaet;
+    QPushButton *ButtonSpule;
+
 public:
     AfuBerechnung(QWidget *parent = 0);
     ~AfuBerechnung();
@@ -63,6 +72,7 @@ private slots:
     void triggeredKapazitaetBerechnen();
     void triggeredInduktivitaetBerechnen();
     void triggeredVerlaengerungBerechnen();
+
 };
 
 #endif // AFUBERECHNUNG_H
