@@ -25,7 +25,10 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBearbeitenFrequenz = menuBearbeiten->addAction("&Frequenz berechnen...", this, SLOT(triggeredFrequenzBerechnen()));
     menuBearbeitenKapazitaet = menuBearbeiten->addAction("&Kapazität berechnen...", this, SLOT(triggeredKapazitaetBerechnen()));
     menuBearbeitenInduktivitaet = menuBearbeiten->addAction("&Induktivität berechnen...", this, SLOT(triggeredInduktivitaetBerechnen()));
+    menuBearbeitenDrahtlaenge = menuBearbeiten->addAction("&Drahtlänge berechnen...", this, SLOT(triggeredDrahtlaengeBerechnen()));
     menuBearbeitenVerlaengerungsSpule = menuBearbeiten->addAction("&Verlängerungsspule berechnen...", this, SLOT(triggeredVerlaengerungBerechnen()));
+    menuBearbeitenLuftspule = menuBearbeiten->addAction("&Luftspule berechnen...", this, SLOT(triggeredLuftspuleBerechnen()));
+
 
     // erstelle Menue --> Hilfe --> ...
     menuHilfe = menuBar()->addMenu("Hilfe");
@@ -120,6 +123,20 @@ void AfuBerechnung::triggeredVerlaengerungBerechnen()
     BerechnungVerlaengerungsSpule = new AfuBerechnungVerlaengerungsSpule(this);
     BerechnungVerlaengerungsSpule->setWindowTitle("Berechnung der Spulenverlängerung");
     BerechnungVerlaengerungsSpule->show();
+}
+
+void AfuBerechnung::triggeredDrahtlaengeBerechnen()
+{
+    BerechnungDrahtlaenge = new AfuBerechnungDrahtlaenge(this);
+    BerechnungDrahtlaenge->setWindowTitle("Berechnung der Drahtlänge");
+    BerechnungDrahtlaenge->show();
+}
+
+void AfuBerechnung::triggeredLuftspuleBerechnen()
+{
+    BerechnungLuftspule = new AfuBerechnungLuftspule(this);
+    BerechnungLuftspule->setWindowTitle("Berechnung der Luftspule");
+    BerechnungLuftspule->show();
 }
 
 void AfuBerechnung::triggeredInfo()

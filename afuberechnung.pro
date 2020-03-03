@@ -30,12 +30,16 @@ SOURCES += \
     afuberechnungfrequenz.cpp \
     afuberechnungkapazitaet.cpp \
     afuberechnunginduktivitaet.cpp \
-    afuberechnungverlaengerungsspule.cpp
+    afuberechnungverlaengerungsspule.cpp \
+    afuberechnungdrahtlaenge.cpp \
+    afuberechnungluftspule.cpp
 
 HEADERS += \
         afuberechnung.h \
     afuberechnungfrequenz.h \
     afuberechnungkapazitaet.h \
     afuberechnunginduktivitaet.h \
-    afuberechnungverlaengerungsspule.h
+    afuberechnungverlaengerungsspule.h \
+    afuberechnungdrahtlaenge.h \
+    afuberechnungluftspule.h
 
