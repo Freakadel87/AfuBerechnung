@@ -32,7 +32,8 @@ SOURCES += \
     afuberechnunginduktivitaet.cpp \
     afuberechnungverlaengerungsspule.cpp \
     afuberechnungdrahtlaenge.cpp \
-    afuberechnungluftspule.cpp
+    afuberechnungluftspule.cpp \
+    afuberechnungtrapantenne.cpp
 
 HEADERS += \
         afuberechnung.h \
@@ -41,5 +42,6 @@ HEADERS += \
     afuberechnunginduktivitaet.h \
     afuberechnungverlaengerungsspule.h \
     afuberechnungdrahtlaenge.h \
-    afuberechnungluftspule.h
+    afuberechnungluftspule.h \
+    afuberechnungtrapantenne.h
 

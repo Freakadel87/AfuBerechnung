@@ -25,30 +25,38 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBearbeitenFrequenz = menuBearbeiten->addAction("&Frequenz berechnen...", this, SLOT(triggeredFrequenzBerechnen()));
     menuBearbeitenKapazitaet = menuBearbeiten->addAction("&Kapazität berechnen...", this, SLOT(triggeredKapazitaetBerechnen()));
     menuBearbeitenInduktivitaet = menuBearbeiten->addAction("&Induktivität berechnen...", this, SLOT(triggeredInduktivitaetBerechnen()));
+    menuBearbeiten->addSeparator();
     menuBearbeitenDrahtlaenge = menuBearbeiten->addAction("&Drahtlänge berechnen...", this, SLOT(triggeredDrahtlaengeBerechnen()));
     menuBearbeitenVerlaengerungsSpule = menuBearbeiten->addAction("&Verlängerungsspule berechnen...", this, SLOT(triggeredVerlaengerungBerechnen()));
     menuBearbeitenLuftspule = menuBearbeiten->addAction("&Luftspule berechnen...", this, SLOT(triggeredLuftspuleBerechnen()));
-
+    menuBearbeitenTrap = menuBearbeiten->addAction("&Trapantenne berechnen...", this, SLOT(triggeredTrapBerechnen()));
 
     // erstelle Menue --> Hilfe --> ...
     menuHilfe = menuBar()->addMenu("Hilfe");
     menuHilfeInfo = menuHilfe->addAction("Info", this, SLOT(triggeredInfo()));
 
+
     ButtonFrequenz = new QPushButton("Frequenz");
     ButtonInduktivitaet = new QPushButton("Induktivität");
     ButtonKapazitaet = new QPushButton("Kapazität");
     ButtonSpule = new QPushButton("Spule");
+    ButtonLuftspule = new QPushButton("Luftspule");
+    ButtonTrap = new QPushButton("Trapantenne");
 
-    GridLayoutButton = new QGridLayout();
-    GridLayoutButton->addWidget(ButtonFrequenz, 0, 0, 4, 4);
-    GridLayoutButton->addWidget(ButtonInduktivitaet, 0, 1, 4, 4);
-    GridLayoutButton->addWidget(ButtonKapazitaet, 0, 2, 4, 4);
-    GridLayoutButton->addWidget(ButtonSpule, 0, 3, 4, 4);
+    GridLayoutButton = new QGridLayout;
+    GridLayoutButton->addWidget(ButtonFrequenz, 1, 0, 4, 4);
+    GridLayoutButton->addWidget(ButtonInduktivitaet, 1, 1, 4, 4);
+    GridLayoutButton->addWidget(ButtonKapazitaet, 1, 2, 4, 4);
+    GridLayoutButton->addWidget(ButtonSpule, 2, 0, 4, 4);
+    GridLayoutButton->addWidget(ButtonLuftspule, 2,1,4,4);
+    GridLayoutButton->addWidget(ButtonTrap, 2,2,4,4);
 
     QObject::connect(ButtonFrequenz, SIGNAL(clicked(bool)), this, SLOT(triggeredFrequenzBerechnen()));
     QObject::connect(ButtonInduktivitaet, SIGNAL(clicked(bool)), this, SLOT(triggeredInduktivitaetBerechnen()));
     QObject::connect(ButtonKapazitaet, SIGNAL(clicked(bool)), this, SLOT(triggeredKapazitaetBerechnen()));
     QObject::connect(ButtonSpule, SIGNAL(clicked(bool)), this, SLOT(triggeredVerlaengerungBerechnen()));
+    QObject::connect(ButtonLuftspule, SIGNAL(clicked(bool)), this, SLOT(triggeredLuftspuleBerechnen()));
+    QObject::connect(ButtonTrap, SIGNAL(clicked(bool)), this, SLOT(triggeredTrapBerechnen()));
 }
 
 void AfuBerechnung::triggeredNeu()
@@ -134,9 +142,16 @@ void AfuBerechnung::triggeredDrahtlaengeBerechnen()
 
 void AfuBerechnung::triggeredLuftspuleBerechnen()
 {
-    BerechnungLuftspule = new AfuBerechnungLuftspule(this);
-    BerechnungLuftspule->setWindowTitle("Berechnung der Luftspule");
-    BerechnungLuftspule->show();
+//    BerechnungLuftspule = new AfuBerechnungLuftspule(this);
+//    BerechnungLuftspule->setWindowTitle("Berechnung der Luftspule");
+//    BerechnungLuftspule->show();
+}
+
+void AfuBerechnung::triggeredTrapBerechnen()
+{
+    BerechnungTrap = new AfuBerechnungTrapantenne(this);
+    BerechnungTrap->setWindowTitle("Trapantenne berechnen");
+    BerechnungTrap->show();
 }
 
 void AfuBerechnung::triggeredInfo()

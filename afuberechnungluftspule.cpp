@@ -1,91 +1,75 @@
-#include "afuberechnungluftspule.h"
+//#include "afuberechnungluftspule.h"
 
-AfuBerechnungLuftspule::AfuBerechnungLuftspule(QWidget *parent) : QDialog(parent)
-{
-    // Erstelle Textfelder
+//AfuBerechnungLuftspule::AfuBerechnungLuftspule(QWidget *parent) : QDialog(parent)
+//{
+//    // Erstelle Textfelder
+//    EditDurchmesser = new QLineEdit;
+//    EditWindungszahl = new QLineEdit;
+//    EditDurchmesserAder = new QLineEdit;
+//    EditKap = new QLineEdit;
 
-    LabelLicht = new QLabel("Lichtgeschwindigkeit");
-    LabelFrequenz = new QLabel("Frequenz");
-    LabelErgebnisLaenge = new QLabel("Länge:");
-    LabelErgebnisLaengeOVF = new QLabel("Länge:");
-    LabelLambda = new QLabel("Lambda                      1 /");
-    LabelFaktorVer = new QLabel("Verkürzungsfaktor");
-    LabelInfo = new QLabel("Drahtlänge +5%, um Anpassungen beim Abstimmen vornehmen zu können.");
+//    LabelDurchmesser = new QLabel("Durchmesser d");
+//    EinheitDurchmesser = new QLabel("[mm]");
+//    LabelWindungszahl = new QLabel("Windungszahl");
+//    EinheitWindungen = new QLabel("[N]");
+//    LabelDurchmesserAder = new QLabel("Aderdurchmesser");
+//    EinheitDurchmesserAder = new QLabel("[mm]");
+//    LabelKap = new QLabel("C");
+//    EinheitKap = new QLabel("[pF]");
 
-    LabelEinheitLicht = new QLabel("km/s");
-    LabelEinheitFrequenz = new QLabel("MHz");
-    LabelEinheitLaenge = new QLabel("m  --> mit Verkürzungsfaktor");
-    LabelEinheitLaengeOVF = new QLabel("m  --> ohne Verkürzungsfaktor");
+//    ButtonBeenden = new QPushButton("Beenden");
+//    ButtonBerechnen = new QPushButton("Berechnen");
+//    ButtonLeeren = new QPushButton("Leeren");
 
-    EditEingabeFrequenz = new QLineEdit;
-    ///EditEingabeFrequenz->setMask("00000.00");
-    EditEingabeFrequenz->setCursorPosition(0);
-    EditEingabeLambda = new QLineEdit;
-    ///EditEingabeLambda->setMask("0");
-    EditEingabeLambda->setCursorPosition(0);
-    LabelLichtWert = new QLabel("299,972");
-    LabelFaktorVerWert = new QLabel("0,955");
-    LabelErgebnis = new QLabel;
-    LabelErgebnisOVF = new QLabel;
+//    QGridLayout *GridLayout = new QGridLayout(this);
+//    GridLayout->addWidget(LabelDurchmesser, 0, 0);
+//    GridLayout->addWidget(EditDurchmesser, 0, 1);
+//    GridLayout->addWidget(EinheitDurchmesser, 0, 2);
+//    GridLayout->addWidget(LabelWindungszahl, 1, 0);
+//    GridLayout->addWidget(EditWindungszahl, 1, 1);
+//    GridLayout->addWidget(EinheitWindungen, 1, 2);
+//    GridLayout->addWidget(LabelDurchmesserAder, 2, 0);
+//    GridLayout->addWidget(EditDurchmesserAder, 2, 1);
+//    GridLayout->addWidget(EinheitDurchmesserAder, 2, 2);
+//    GridLayout->addWidget(LabelKap, 3, 0);
+//    GridLayout->addWidget(EditKap, 3, 1);
+//    GridLayout->addWidget(EinheitKap, 3, 2);
+//    GridLayout->addWidget(ButtonBerechnen, 5, 0);
+//    GridLayout->addWidget(ButtonLeeren, 6, 0);
+//    GridLayout->addWidget(ButtonBeenden, 7, 0);
 
-    ButtonBeenden = new QPushButton("Beenden");
-    ButtonBerechnen = new QPushButton("Berechnen");
-    ButtonLeeren = new QPushButton("Leeren");
+//    QObject::connect(ButtonBerechnen, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBerechnenClicked()));
+//    QObject::connect(ButtonLeeren, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonLeerenClicked()));
+//    QObject::connect(ButtonBeenden, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBeendenClicked()));
+//}
 
-    QGridLayout *GridLayout = new QGridLayout(this);
-    GridLayout->addWidget(LabelLicht, 0, 0);
-    GridLayout->addWidget(LabelLichtWert, 0, 1);
-    GridLayout->addWidget(LabelEinheitLicht, 0, 2);
-    GridLayout->addWidget(LabelFrequenz, 1, 0);
-    GridLayout->addWidget(EditEingabeFrequenz, 1, 1);
-    GridLayout->addWidget(LabelEinheitFrequenz, 1, 2);
-    GridLayout->addWidget(LabelLambda, 2, 0);
-    GridLayout->addWidget(EditEingabeLambda, 2, 1);
-    GridLayout->addWidget(LabelFaktorVer, 3, 0);
-    GridLayout->addWidget(LabelFaktorVerWert, 3, 1);
-    GridLayout->addWidget(LabelErgebnisLaenge, 5, 0);
-    GridLayout->addWidget(LabelErgebnis, 5, 1);
-    GridLayout->addWidget(LabelEinheitLaenge, 5, 2);
-    GridLayout->addWidget(LabelErgebnisLaengeOVF, 6, 0);
-    GridLayout->addWidget(LabelErgebnisOVF, 6, 1);
-    GridLayout->addWidget(LabelEinheitLaengeOVF, 6, 2);
-    GridLayout->addWidget(ButtonBerechnen, 9, 0);
-    GridLayout->addWidget(ButtonLeeren, 10, 0);
-    GridLayout->addWidget(ButtonBeenden, 11, 0);
-    GridLayout->addWidget(LabelInfo, 13, 0, 1, 3);
+//void AfuBerechnungLuftspule::triggeredButtonBeendenClicked()
+//{
+//    triggeredButtonLeerenClicked();
+//    close();
+//}
 
-    QObject::connect(ButtonBerechnen, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBerechnenClicked()));
-    QObject::connect(ButtonLeeren, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonLeerenClicked()));
-    QObject::connect(ButtonBeenden, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBeendenClicked()));
-}
+//void AfuBerechnungLuftspule::triggeredButtonBerechnenClicked()
+//{
+////    // Thomsonsche Schwingungsformel
+////    f_PufferF = EditEingabeFrequenz->text().toFloat();
+////    f_PufferLamda = EditEingabeLambda->text().toFloat();
 
-void AfuBerechnungLuftspule::triggeredButtonBeendenClicked()
-{
-    triggeredButtonLeerenClicked();
-    close();
-}
+////    // Formel mit Verkuerzungsfaktor
+////    f_Ergebnis = f_Licht / f_PufferF / f_PufferLamda * f_FaktorVer;
+////    // Formel ohne Verkuerzungsfaktor
+////    f_ErgebnisOVF = f_Licht / f_PufferF / f_PufferLamda;
 
-void AfuBerechnungLuftspule::triggeredButtonBerechnenClicked()
-{
-    // Thomsonsche Schwingungsformel
-    f_PufferF = EditEingabeFrequenz->text().toFloat();
-    f_PufferLamda = EditEingabeLambda->text().toFloat();
+////    LabelErgebnis->setNum(f_Ergebnis);
+////    LabelErgebnis->setFont(QFont("Arial", 11, QFont::Thin));
+////    LabelErgebnisOVF->setNum(f_ErgebnisOVF);
+////    LabelErgebnisOVF->setFont(QFont("Arial", 11, QFont::Thin));
+//}
 
-    // Formel mit Verkuerzungsfaktor
-    f_Ergebnis = f_Licht / f_PufferF / f_PufferLamda * f_FaktorVer;
-    // Formel ohne Verkuerzungsfaktor
-    f_ErgebnisOVF = f_Licht / f_PufferF / f_PufferLamda;
-
-    LabelErgebnis->setNum(f_Ergebnis);
-    LabelErgebnis->setFont(QFont("Arial", 11, QFont::Thin));
-    LabelErgebnisOVF->setNum(f_ErgebnisOVF);
-    LabelErgebnisOVF->setFont(QFont("Arial", 11, QFont::Thin));
-}
-
-void AfuBerechnungLuftspule::triggeredButtonLeerenClicked()
-{
-    LabelErgebnis->clear();
-    LabelErgebnisOVF->clear();
-    EditEingabeFrequenz->clear();
-    EditEingabeLambda->clear();
-}
+//void AfuBerechnungLuftspule::triggeredButtonLeerenClicked()
+//{
+//    EditDurchmesser->clear();
+//    EditDurchmesserAder->clear();
+//    EditKap->clear();
+//    EditWindungszahl->clear();
+//}

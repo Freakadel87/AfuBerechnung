@@ -8,6 +8,7 @@
 #include "afuberechnungdrahtlaenge.h"
 #include "afuberechnungverlaengerungsspule.h"
 #include "afuberechnungluftspule.h"
+#include "afuberechnungtrapantenne.h"
 
 /// Qt-includes
 #include <QMainWindow>
@@ -35,7 +36,8 @@ private:
     AfuBerechnungKapazitaet *BerechnungKapazitaet;
     AfuBerechnungDrahtlaenge *BerechnungDrahtlaenge;
     AfuBerechnungVerlaengerungsSpule *BerechnungVerlaengerungsSpule;
-    AfuBerechnungLuftspule *BerechnungLuftspule;
+   /// AfuBerechnungLuftspule *BerechnungLuftspule;
+    AfuBerechnungTrapantenne *BerechnungTrap;
 
     QMenu *menuDatei;
     QAction *menuDateiNeu;
@@ -50,6 +52,7 @@ private:
     QAction *menuBearbeitenDrahtlaenge;
     QAction *menuBearbeitenVerlaengerungsSpule;
     QAction *menuBearbeitenLuftspule;
+    QAction *menuBearbeitenTrap;
 
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
@@ -60,6 +63,8 @@ private:
     QPushButton *ButtonInduktivitaet;
     QPushButton *ButtonKapazitaet;
     QPushButton *ButtonSpule;
+    QPushButton *ButtonLuftspule;
+    QPushButton *ButtonTrap;
 
 public:
     AfuBerechnung(QWidget *parent = 0);
@@ -80,6 +85,7 @@ private slots:
     void triggeredDrahtlaengeBerechnen();
     void triggeredVerlaengerungBerechnen();
     void triggeredLuftspuleBerechnen();
+    void triggeredTrapBerechnen();
 
 };
 
