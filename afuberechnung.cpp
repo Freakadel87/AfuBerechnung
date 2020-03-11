@@ -34,6 +34,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     // erstelle Menue --> Hilfe --> ...
     menuHilfe = menuBar()->addMenu("Hilfe");
     menuHilfeInfo = menuHilfe->addAction("Info", this, SLOT(triggeredInfo()));
+    menuHilfeFrequenzen = menuHilfe->addAction("Frequenzen", this, SLOT(triggeredAnzeigeFrequenz()));
 
 
     ButtonFrequenz = new QPushButton("Frequenz");
@@ -107,9 +108,9 @@ void AfuBerechnung::triggeredBeenden()
 
 void AfuBerechnung::triggeredFrequenzBerechnen()
 {
-   BerechnungFrequenz = new AfuBerechnungFrequenz(this);
-   BerechnungFrequenz->setWindowTitle("Berechnung der Frequenz");
-   BerechnungFrequenz->show();
+    BerechnungFrequenz = new AfuBerechnungFrequenz(this);
+    BerechnungFrequenz->setWindowTitle("Berechnung der Frequenz");
+    BerechnungFrequenz->show();
 }
 
 void AfuBerechnung::triggeredKapazitaetBerechnen()
@@ -142,9 +143,9 @@ void AfuBerechnung::triggeredDrahtlaengeBerechnen()
 
 void AfuBerechnung::triggeredLuftspuleBerechnen()
 {
-//    BerechnungLuftspule = new AfuBerechnungLuftspule(this);
-//    BerechnungLuftspule->setWindowTitle("Berechnung der Luftspule");
-//    BerechnungLuftspule->show();
+    //    BerechnungLuftspule = new AfuBerechnungLuftspule(this);
+    //    BerechnungLuftspule->setWindowTitle("Berechnung der Luftspule");
+    //    BerechnungLuftspule->show();
 }
 
 void AfuBerechnung::triggeredTrapBerechnen()
@@ -162,4 +163,11 @@ void AfuBerechnung::triggeredInfo()
                           "<p>Für Amateurfunkanwendungen ist dieses Programm"
                           " Freeware, eine kommerzielle Nutzung ist ausschließlich mit der"
                           " Zustimmung des Autors gestattet!"));
+}
+
+void AfuBerechnung::triggeredAnzeigeFrequenz()
+{
+    AnzeigeFrequenz = new AfuBerechnungAnzeigeFrequenz(this);
+    AnzeigeFrequenz->setWindowTitle("Frequenzen - digitale Betriebsarten");
+    AnzeigeFrequenz->show();
 }

@@ -33,7 +33,8 @@ SOURCES += \
     afuberechnungverlaengerungsspule.cpp \
     afuberechnungdrahtlaenge.cpp \
     afuberechnungluftspule.cpp \
-    afuberechnungtrapantenne.cpp
+    afuberechnungtrapantenne.cpp \
+    afuberechnunganzeigefrequenz.cpp
 
 HEADERS += \
         afuberechnung.h \
@@ -43,5 +44,6 @@ HEADERS += \
     afuberechnungverlaengerungsspule.h \
     afuberechnungdrahtlaenge.h \
     afuberechnungluftspule.h \
-    afuberechnungtrapantenne.h
+    afuberechnungtrapantenne.h \
+    afuberechnunganzeigefrequenz.h
 

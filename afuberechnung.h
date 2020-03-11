@@ -9,6 +9,7 @@
 #include "afuberechnungverlaengerungsspule.h"
 #include "afuberechnungluftspule.h"
 #include "afuberechnungtrapantenne.h"
+#include "afuberechnunganzeigefrequenz.h"
 
 /// Qt-includes
 #include <QMainWindow>
@@ -25,6 +26,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QGridLayout>
+#include <QTextEdit>
 
 class AfuBerechnung : public QMainWindow
 {
@@ -38,6 +40,7 @@ private:
     AfuBerechnungVerlaengerungsSpule *BerechnungVerlaengerungsSpule;
    /// AfuBerechnungLuftspule *BerechnungLuftspule;
     AfuBerechnungTrapantenne *BerechnungTrap;
+    AfuBerechnungAnzeigeFrequenz *AnzeigeFrequenz;
 
     QMenu *menuDatei;
     QAction *menuDateiNeu;
@@ -56,6 +59,7 @@ private:
 
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
+    QAction *menuHilfeFrequenzen;
 
     QGridLayout *GridLayoutButton;
 
@@ -79,6 +83,7 @@ private slots:
     void triggeredSpeichern();
     void triggeredBeenden();
     void triggeredInfo();
+    void triggeredAnzeigeFrequenz();
     void triggeredFrequenzBerechnen();
     void triggeredKapazitaetBerechnen();
     void triggeredInduktivitaetBerechnen();

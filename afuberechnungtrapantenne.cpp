@@ -70,8 +70,6 @@ AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(pa
     EditDraht->setCursorPosition(0);
 
     LabelDrahtIst = new QLabel;
-    LabelDrahtIst->setInputMask("00.00");
-    LabelDrahtIst->setCursorPosition(0);
 
     // Erstelle Buttons
     ButtonBeenden = new QPushButton("Beenden");
@@ -139,15 +137,15 @@ void AfuBerechnungTrapantenne::triggeredButtonBerechnenClicked()
 
     f_PufferRound1 = (int)(f_PufferVFIst*100+0.5)/100.0;
 
-    EditDrahtIst->setNum(f_PufferRound1);
-    EditDrahtIst->setFont(QFont("Arial", 11, QFont::Thin));
+    LabelDrahtIstErgebnis->setNum(f_PufferRound1);
+    LabelDrahtIstErgebnis->setFont(QFont("Arial", 11, QFont::Thin));
 
 }
 
 void AfuBerechnungTrapantenne::triggeredButtonLeerenClicked()
 {
     EditDraht->clear();
-    EditDrahtIst->clear();
+    LabelDrahtIstErgebnis->clear();
     EditFreqSoll->clear();
     EditLaengeIst->clear();
     EditLaengeResoIst->clear();
