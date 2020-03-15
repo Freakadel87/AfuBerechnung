@@ -26,7 +26,9 @@ AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(pa
     EditEingabeFrequenz = new QLineEdit;
     ///EditEingabeFrequenz->setMask("00000.00");
     EditEingabeFrequenz->setCursorPosition(0);
+    EditEingabeFrequenz->setToolTip("Geben Sie hier Ihre Frequenz in MHZ ein. \nBeispiel: 7.2 oder 14.35");
     EditEingabeLambda = new QLineEdit;
+    EditEingabeLambda->setToolTip("Geben Sie '2' für Lambda-Halbe oder '4' für Lambda-Viertel ein. \nAuch jede ander Zahl wird in der Berechnung akzeptiert.");
     ///EditEingabeLambda->setMask("0");
     EditEingabeLambda->setCursorPosition(0);
     LabelLichtWert = new QLabel("299,972");
@@ -36,6 +38,7 @@ AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(pa
 
     ButtonBeenden = new QPushButton("Beenden");
     ButtonBerechnen = new QPushButton("Berechnen");
+    ButtonBerechnen->setPalette(Qt::green);
     ButtonLeeren = new QPushButton("Leeren");
 
     QGridLayout *GridLayout = new QGridLayout(this);

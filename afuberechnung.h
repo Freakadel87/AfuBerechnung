@@ -13,6 +13,7 @@
 
 /// Qt-includes
 #include <QApplication>
+#include <QFont>
 #include <QMainWindow>
 #include <QMenu>
 #include <QMenuBar>
@@ -74,6 +75,7 @@ private:
     QPushButton *ButtonLuftspule;
     QPushButton *ButtonTrap;
     QPushButton *ButtonBeenden;
+    QPushButton *ButtonDrahtlaenge;
 
 public:
     AfuBerechnung(QWidget *parent = 0);

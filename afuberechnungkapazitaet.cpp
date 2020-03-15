@@ -30,6 +30,7 @@ AfuBerechnungKapazitaet::AfuBerechnungKapazitaet(QWidget *parent) : QDialog(pare
     // Erstelle Buttons
     ButtonBeenden = new QPushButton("Beenden");
     ButtonBerechnen = new QPushButton("Berechnen");
+    ButtonBerechnen->setPalette(Qt::green);
     ButtonLeeren = new QPushButton("Leeren");
 
     QGridLayout *GridLayout = new QGridLayout(this);
