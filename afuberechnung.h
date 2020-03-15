@@ -12,6 +12,7 @@
 #include "afuberechnunganzeigefrequenz.h"
 
 /// Qt-includes
+#include <QApplication>
 #include <QMainWindow>
 #include <QMenu>
 #include <QMenuBar>
@@ -42,20 +43,22 @@ private:
     AfuBerechnungTrapantenne *BerechnungTrap;
     AfuBerechnungAnzeigeFrequenz *AnzeigeFrequenz;
 
+    QWidget *myWidget = new QWidget();
+
     QMenu *menuDatei;
     QAction *menuDateiNeu;
     QAction *menuDateiOeffnen;
     QAction *menuDateiSpeichern;
     QAction *menuDateiBeenden;
 
-    QMenu *menuBearbeiten;
-    QAction *menuBearbeitenFrequenz;
-    QAction *menuBearbeitenKapazitaet;
-    QAction *menuBearbeitenInduktivitaet;
-    QAction *menuBearbeitenDrahtlaenge;
-    QAction *menuBearbeitenVerlaengerungsSpule;
-    QAction *menuBearbeitenLuftspule;
-    QAction *menuBearbeitenTrap;
+    QMenu *menuBerechnen;
+    QAction *menuBerechnenFrequenz;
+    QAction *menuBerechnenKapazitaet;
+    QAction *menuBerechnenInduktivitaet;
+    QAction *menuBerechnenDrahtlaenge;
+    QAction *menuBerechnenVerlaengerungsSpule;
+    QAction *menuBerechnenLuftspule;
+    QAction *menuBerechnenTrap;
 
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
@@ -63,12 +66,14 @@ private:
 
     QGridLayout *GridLayoutButton;
 
+    QLabel *LabelButton1;
     QPushButton *ButtonFrequenz;
     QPushButton *ButtonInduktivitaet;
     QPushButton *ButtonKapazitaet;
     QPushButton *ButtonSpule;
     QPushButton *ButtonLuftspule;
     QPushButton *ButtonTrap;
+    QPushButton *ButtonBeenden;
 
 public:
     AfuBerechnung(QWidget *parent = 0);

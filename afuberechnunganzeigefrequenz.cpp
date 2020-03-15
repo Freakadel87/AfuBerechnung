@@ -25,10 +25,6 @@ AfuBerechnungAnzeigeFrequenz::AfuBerechnungAnzeigeFrequenz(QWidget *parent) : QD
     ComboBetriebsart->addItems(s_Betriebsart);
     ComboBetriebsart->setEnabled(true);
 
-    if (s_Betriebsart[2] == "FT8")
-    {
-        EditText->setText("test");
-    }
 
     Layout->addWidget(LabelEingabe);
     Layout->addWidget(ComboBetriebsart);
@@ -37,7 +33,7 @@ AfuBerechnungAnzeigeFrequenz::AfuBerechnungAnzeigeFrequenz(QWidget *parent) : QD
     LayoutVertical->addWidget(EditText);
     LayoutVertical->addWidget(ButtonBeenden);
 
-    // Erstelle Button
+    // Erstelle Verbindung fuer Button
 
     QObject::connect(ButtonBeenden, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBeendenClicked()));
 }

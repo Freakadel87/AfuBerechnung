@@ -112,7 +112,6 @@ AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(pa
 
 void AfuBerechnungTrapantenne::triggeredButtonBeendenClicked()
 {
-    triggeredButtonLeerenClicked();
     close();
 }
 
