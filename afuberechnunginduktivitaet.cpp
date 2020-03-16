@@ -13,6 +13,7 @@ AfuBerechnungInduktivitaet::AfuBerechnungInduktivitaet(QWidget *parent) : QDialo
     LabelEingabeC = new QLabel("Eingabe Kapazität:");
     LabelAusgabeL = new QLabel("Ergebnis Induktivität:");
     LabelLoesung = new QLabel();
+    LabelLoesung->setStyleSheet("QLabel {background-color : lightgray; color : black;}");
 
     LabelEinheitC = new QLabel("pF");
     LabelEinheitF = new QLabel("MHz");

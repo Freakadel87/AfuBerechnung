@@ -43,6 +43,7 @@ AfuBerechnungVerlaengerungsSpule::AfuBerechnungVerlaengerungsSpule(QWidget *pare
     EditFrequenz->setInputMask("000000");
     EditFrequenz->setCursorPosition(0);
     ErgebnisSpule = new QLabel;
+    ErgebnisSpule->setStyleSheet("QLabel {background-color : lightgray; color : black;}");
 
     EditZNull = new QLineEdit;
     EditZNull->setInputMask("00000");

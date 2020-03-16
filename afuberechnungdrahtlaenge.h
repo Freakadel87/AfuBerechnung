@@ -27,11 +27,11 @@ public:
 
     // Variablendeklaration
     float const f_Licht = 299.792; // Lichtgeschwindigkeit auf der Erde 299,792 km/s
-    float const f_FaktorVer = 0.955; // Verkuerzungsfaktor
-    float f_PufferLamda;
-    float f_PufferF;
-    float f_Ergebnis;
-    float f_ErgebnisOVF;
+    float f_PufferLamda {0.0};
+    float f_PufferF {0.0};
+    float f_PufferVKF {0.0};
+    float f_Ergebnis {0.0};
+    float f_ErgebnisOVF {0.0};
 
 private:
     // Erstelle Textfelder
@@ -56,6 +56,7 @@ private:
     QLabel *LabelErgebnisOVF;
     QLineEdit *EditEingabeFrequenz;
     QLineEdit *EditEingabeLambda;
+    QLineEdit *EditEingabeVKF;
 
     // Erstelle Buttons
     QPushButton *ButtonBeenden;

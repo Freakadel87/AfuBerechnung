@@ -23,6 +23,7 @@ AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(pa
     LabelDrahtIst = new QLabel("VF Ist");
     LabelDiff = new QLabel("Differenz");
     LabelDiffErgebnis = new QLabel;
+    LabelDiffErgebnis->setStyleSheet("QLabel {background-color : lightgray; color : black;}");
     EinheitDiff = new QLabel("m");
 
     EditResoFreq = new QLineEdit;
@@ -50,11 +51,12 @@ AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(pa
         QString s_Halbwelle = "2";
         EditWelle->setText(s_Halbwelle);
     }
-    else
+    else if (s_ListWelle[1] == "Viertelwelle")
     {
         QString s_Viertelwelle = "4";
         EditWelle->setText(s_Viertelwelle);
     }
+
 
 
     EditLaengeResoIst = new QLineEdit;

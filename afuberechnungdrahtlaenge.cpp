@@ -24,17 +24,19 @@ AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(pa
     LabelEinheitLaengeOVF = new QLabel("m  --> ohne Verkürzungsfaktor");
 
     EditEingabeFrequenz = new QLineEdit;
-    ///EditEingabeFrequenz->setMask("00000.00");
     EditEingabeFrequenz->setCursorPosition(0);
     EditEingabeFrequenz->setToolTip("Geben Sie hier Ihre Frequenz in MHZ ein. \nBeispiel: 7.2 oder 14.35");
     EditEingabeLambda = new QLineEdit;
     EditEingabeLambda->setToolTip("Geben Sie '2' für Lambda-Halbe oder '4' für Lambda-Viertel ein. \nAuch jede ander Zahl wird in der Berechnung akzeptiert.");
-    ///EditEingabeLambda->setMask("0");
     EditEingabeLambda->setCursorPosition(0);
-    LabelLichtWert = new QLabel("299,972");
-    LabelFaktorVerWert = new QLabel("0,955");
+    LabelLichtWert = new QLabel("299,792");
+    EditEingabeVKF = new QLineEdit;
+    EditEingabeVKF->setText("0.955");
+    EditEingabeVKF->setToolTip("Sie können hier einen anderen Wert eingeben, als Standard wurde 0,955 gewählt.");
     LabelErgebnis = new QLabel;
+    LabelErgebnis->setStyleSheet("QLabel {background-color : lightgray; color : black;}");
     LabelErgebnisOVF = new QLabel;
+    LabelErgebnisOVF->setStyleSheet("QLabel {background-color : lightgray; color : black;}");
 
     ButtonBeenden = new QPushButton("Beenden");
     ButtonBerechnen = new QPushButton("Berechnen");
@@ -51,7 +53,7 @@ AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(pa
     GridLayout->addWidget(LabelLambda, 2, 0);
     GridLayout->addWidget(EditEingabeLambda, 2, 1);
     GridLayout->addWidget(LabelFaktorVer, 3, 0);
-    GridLayout->addWidget(LabelFaktorVerWert, 3, 1);
+    GridLayout->addWidget(EditEingabeVKF, 3, 1);
     GridLayout->addWidget(LabelErgebnisLaenge, 5, 0);
     GridLayout->addWidget(LabelErgebnis, 5, 1);
     GridLayout->addWidget(LabelEinheitLaenge, 5, 2);
@@ -79,9 +81,10 @@ void AfuBerechnungDrahtlaenge::triggeredButtonBerechnenClicked()
     // Thomsonsche Schwingungsformel
     f_PufferF = EditEingabeFrequenz->text().toFloat();
     f_PufferLamda = EditEingabeLambda->text().toFloat();
+    f_PufferVKF = EditEingabeVKF->text().toFloat();
 
     // Formel mit Verkuerzungsfaktor
-    f_Ergebnis = f_Licht / f_PufferF / f_PufferLamda * f_FaktorVer;
+    f_Ergebnis = f_Licht / f_PufferF / f_PufferLamda * f_PufferVKF;
     // Formel ohne Verkuerzungsfaktor
     f_ErgebnisOVF = f_Licht / f_PufferF / f_PufferLamda;
 
@@ -97,4 +100,5 @@ void AfuBerechnungDrahtlaenge::triggeredButtonLeerenClicked()
     LabelErgebnisOVF->clear();
     EditEingabeFrequenz->clear();
     EditEingabeLambda->clear();
+    EditEingabeVKF->setText("0.955");
 }
