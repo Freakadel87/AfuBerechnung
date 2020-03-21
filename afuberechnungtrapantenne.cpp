@@ -1,10 +1,5 @@
 #include "afuberechnungtrapantenne.h"
 
-// Destruktor
-//AfuBerechnungFrequenz::~AfuBerechnungFrequenz()
-//{
-
-//}
 
 AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(parent)
 {
@@ -139,15 +134,16 @@ void AfuBerechnungTrapantenne::triggeredButtonBerechnenClicked()
 
     f_PufferRound1 = (int)(f_PufferVFIst*100+0.5)/100.0;
 
-    LabelDrahtIstErgebnis->setNum(f_PufferRound1);
-    LabelDrahtIstErgebnis->setFont(QFont("Arial", 11, QFont::Thin));
+//    LabelDrahtIstErgebnis->setNum(f_PufferRound1);
+//    LabelDrahtIstErgebnis->setFont(QFont("Arial", 11, QFont::Thin));
 
 }
 
 void AfuBerechnungTrapantenne::triggeredButtonLeerenClicked()
 {
     EditDraht->clear();
-    LabelDrahtIstErgebnis->clear();
+    LabelDiffErgebnis->clear();
+    ///LabelDrahtIstErgebnis->clear();
     EditFreqSoll->clear();
     EditLaengeIst->clear();
     EditLaengeResoIst->clear();

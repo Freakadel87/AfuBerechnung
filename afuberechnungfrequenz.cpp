@@ -1,11 +1,5 @@
 #include "afuberechnungfrequenz.h"
 
-// Destruktor
-//AfuBerechnungFrequenz::~AfuBerechnungFrequenz()
-//{
-
-//}
-
 AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QDialog(parent)
 {
     // Erstelle Textfelder

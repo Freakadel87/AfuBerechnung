@@ -10,6 +10,7 @@
 #include "afuberechnungluftspule.h"
 #include "afuberechnungtrapantenne.h"
 #include "afuberechnunganzeigefrequenz.h"
+#include "afuberechnungresotrans.h"
 
 /// Qt-includes
 #include <QApplication>
@@ -43,6 +44,7 @@ private:
    /// AfuBerechnungLuftspule *BerechnungLuftspule;
     AfuBerechnungTrapantenne *BerechnungTrap;
     AfuBerechnungAnzeigeFrequenz *AnzeigeFrequenz;
+    AfuBerechnungResoTrans *BerechnungResoTrans;
 
     QWidget *myWidget = new QWidget();
 
@@ -60,6 +62,7 @@ private:
     QAction *menuBerechnenVerlaengerungsSpule;
     QAction *menuBerechnenLuftspule;
     QAction *menuBerechnenTrap;
+    QAction *menuBerechnenResoTrans;
 
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
@@ -76,6 +79,7 @@ private:
     QPushButton *ButtonTrap;
     QPushButton *ButtonBeenden;
     QPushButton *ButtonDrahtlaenge;
+    QPushButton *ButtonResoTrans;
 
 public:
     AfuBerechnung(QWidget *parent = 0);
@@ -98,7 +102,7 @@ private slots:
     void triggeredVerlaengerungBerechnen();
     void triggeredLuftspuleBerechnen();
     void triggeredTrapBerechnen();
-
+    void triggeredResoTransBerechnen();
 };
 
 #endif // AFUBERECHNUNG_H

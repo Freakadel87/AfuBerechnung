@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += qt warn_off release debug
 
 SOURCES += \
+    afuberechnungresotrans.cpp \
         main.cpp \
         afuberechnung.cpp \
     afuberechnungfrequenz.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     afuberechnungfrequenz.h \
     afuberechnungkapazitaet.h \
     afuberechnunginduktivitaet.h \
+    afuberechnungresotrans.h \
     afuberechnungverlaengerungsspule.h \
     afuberechnungdrahtlaenge.h \
     afuberechnungluftspule.h \

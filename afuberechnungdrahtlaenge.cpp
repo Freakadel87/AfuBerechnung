@@ -9,14 +9,13 @@
 AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(parent)
 {
     // Erstelle Textfelder
-
     LabelLicht = new QLabel("Lichtgeschwindigkeit");
     LabelFrequenz = new QLabel("Frequenz");
     LabelErgebnisLaenge = new QLabel("Länge:");
     LabelErgebnisLaengeOVF = new QLabel("Länge:");
     LabelLambda = new QLabel("Lambda                      1 /");
     LabelFaktorVer = new QLabel("Verkürzungsfaktor");
-    LabelInfo = new QLabel("Drahtlänge +5%, um Anpassungen beim Abstimmen vornehmen zu können.");
+    LabelInfo = new QLabel("Drahtlänge +5%, um Anpassungen beim Abstimmen vornehmen zu können. \nWichtig! Die Dezimalstelle muss mit einem Punkt '.' getrennt werden.");
 
     LabelEinheitLicht = new QLabel("km/s");
     LabelEinheitFrequenz = new QLabel("MHz");
@@ -25,10 +24,12 @@ AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(pa
 
     EditEingabeFrequenz = new QLineEdit;
     EditEingabeFrequenz->setCursorPosition(0);
+    EditEingabeFrequenz->setInputMask("00000.00");
     EditEingabeFrequenz->setToolTip("Geben Sie hier Ihre Frequenz in MHZ ein. \nBeispiel: 7.2 oder 14.35");
     EditEingabeLambda = new QLineEdit;
     EditEingabeLambda->setToolTip("Geben Sie '2' für Lambda-Halbe oder '4' für Lambda-Viertel ein. \nAuch jede ander Zahl wird in der Berechnung akzeptiert.");
     EditEingabeLambda->setCursorPosition(0);
+    EditEingabeLambda->setText("1");
     LabelLichtWert = new QLabel("299,792");
     EditEingabeVKF = new QLineEdit;
     EditEingabeVKF->setText("0.955");
@@ -99,6 +100,5 @@ void AfuBerechnungDrahtlaenge::triggeredButtonLeerenClicked()
     LabelErgebnis->clear();
     LabelErgebnisOVF->clear();
     EditEingabeFrequenz->clear();
-    EditEingabeLambda->clear();
     EditEingabeVKF->setText("0.955");
 }

@@ -17,6 +17,7 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QComboBox>
+#include <QPalette>
 
 class AfuBerechnungTrapantenne : public QDialog
 {

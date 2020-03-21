@@ -1,5 +1,5 @@
-#ifndef AFUBERECHNUNGFREQUENZ_H
-#define AFUBERECHNUNGFREQUENZ_H
+#ifndef AFUBERECHNUNGRESOTRANS_H
+#define AFUBERECHNUNGRESOTRANS_H
 
 // Interne Includes
 
@@ -16,17 +16,14 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QLineEdit>
-#include <QMenuBar>
-#include <QMenu>
-#include <QAction>
 
-class AfuBerechnungFrequenz : public QDialog
+class AfuBerechnungResoTrans : public QDialog
 {
     Q_OBJECT
 
 public:
     //Konstruktor
-    AfuBerechnungFrequenz(QWidget *parent);
+    AfuBerechnungResoTrans(QWidget *parent);
 
     // Variablendeklaration
     float const d_Pi = 3.141592653589793238462643383279;
@@ -37,18 +34,26 @@ public:
 
 private:
     // Erstelle Textfelder
-    QLabel *LabelEingabeL;
-    QLabel *LabelEingabeC;
-    QLabel *LabelAusgabeF;
+    QLabel *LabelEingabeZEingang;
+    QLabel *LabelEingabeZAusgang;
+    QLabel *LabelEingabeFrequenz;
+    QLabel *LabelAusgabeC;
+    QLabel *LabelAusgabeL;
     QLabel *LabelLoesung;
+    QLabel *LabelErgebnis;
 
-    QLabel *LabelEinheitL;
+    QLabel *LabelEinheitZEingang;
+    QLabel *LabelEinheitZAusgang;
+    QLabel *LabelEinheitFrequenz;
     QLabel *LabelEinheitC;
-    QLabel *LabelEinheitF;
+    QLabel *LabelEinheitL;
 
     // Erstelle Ein- und Ausgabefelder
-    QLineEdit *EditEingabeL;
-    QLineEdit *EditEingabeC;
+    QLineEdit *EditEingabeZEingang;
+    QLineEdit *EditEingabeZAusgang;
+    QLineEdit *EditEingabeFrequenz;
+    QLineEdit *EditAnzeigeC;
+    QLineEdit *EditAnzeigeL;
 
     // Erstelle Buttons
     QPushButton *ButtonBeenden;
@@ -60,4 +65,4 @@ private slots:
     void triggeredButtonBerechnenClicked();
     void triggeredButtonLeerenClicked();
 };
-#endif // AFUBERECHNUNGFREQUENZ_H
+#endif // AFUBERECHNUNGRESOTRANS_H
