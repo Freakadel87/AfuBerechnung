@@ -26,36 +26,47 @@ public:
     AfuBerechnungResoTrans(QWidget *parent);
 
     // Variablendeklaration
-    float const d_Pi = 3.141592653589793238462643383279;
-    float d_PufferC;
-    float d_PufferL;
-    float d_PufferF;
-    float d_PufferFF;
+    float const f_Pi = 3.141592653589793238462643383279f;
+    float f_PufferC {0.0};
+    float f_PufferL {0.0};
+    float f_PufferF {0.0};
+    float f_PufferR1 {0.0};
+    float f_PufferR2 {0.0};
+    float f_PufferQ {0.0};
+    float f_PufferQQ {0.0};
+    float f_PufferZAusgang {0.0};
+    float f_PufferZEingang {0.0};
+    float f_PufferFrequenz {0.0};
 
 private:
+    QVBoxLayout *LayoutVBox;
+
     // Erstelle Textfelder
-    QLabel *LabelEingabeZEingang;
-    QLabel *LabelEingabeZAusgang;
-    QLabel *LabelEingabeFrequenz;
+    QLabel *LabelZEingang;
+    QLabel *LabelZAusgang;
+    QLabel *LabelFrequenz;
+    QLabel *LabelC;
+    QLabel *LabelL;
+    QLabel *LabelQ;
+
+    // Erstelle Ein- und Ausgabefelder
+    QLineEdit *EditZEingang;
+    QLineEdit *EditZAusgang;
+    QLineEdit *EditFrequenz;
+    QLabel *LabelAusgabeQ;
     QLabel *LabelAusgabeC;
     QLabel *LabelAusgabeL;
-    QLabel *LabelLoesung;
-    QLabel *LabelErgebnis;
 
+    // Erstelle Text fuer Einheiten
     QLabel *LabelEinheitZEingang;
     QLabel *LabelEinheitZAusgang;
     QLabel *LabelEinheitFrequenz;
     QLabel *LabelEinheitC;
     QLabel *LabelEinheitL;
 
-    // Erstelle Ein- und Ausgabefelder
-    QLineEdit *EditEingabeZEingang;
-    QLineEdit *EditEingabeZAusgang;
-    QLineEdit *EditEingabeFrequenz;
-    QLineEdit *EditAnzeigeC;
-    QLineEdit *EditAnzeigeL;
+    QLabel *LabelTextInfo;
 
-    // Erstelle Buttons
+     // Erstelle Buttons
     QPushButton *ButtonBeenden;
     QPushButton *ButtonBerechnen;
     QPushButton *ButtonLeeren;
