@@ -5,6 +5,7 @@ AfuBerechnungAnzeigeFrequenz::AfuBerechnungAnzeigeFrequenz(QWidget *parent) : QD
     // Erstelle Textfelder
     Layout = new QHBoxLayout;
     LabelEingabe = new QLabel("Betriebsart:");
+    LabelEingabe->setFont(QFont("Arial", 10, QFont::Normal));
     ComboBetriebsart = new QComboBox;
     ComboBetriebsart->setPalette(Qt::lightGray);
     EditText = new QTextEdit;
@@ -12,11 +13,13 @@ AfuBerechnungAnzeigeFrequenz::AfuBerechnungAnzeigeFrequenz(QWidget *parent) : QD
     EditText->setReadOnly(true);
     LayoutVertical = new QVBoxLayout(this);
     ButtonBeenden = new QPushButton("Beenden");
+    ButtonBeenden->setFont(QFont("Arial", 10, QFont::Normal));
 
     /// Noch zu erledigen - Darstellung der Frequenzen als Text, je nach Wahl der ComboBox
 
     QStringList s_Betriebsart;
     s_Betriebsart << "PSK" << "RTTY" << "FT8" << "FT4";
+    ComboBetriebsart->setFont(QFont("Arial", 10, QFont::Normal));
     ComboBetriebsart->addItems(s_Betriebsart);
     ComboBetriebsart->setEnabled(true);
     ComboBetriebsart->setToolTip("Wählen Sie hier die Betriebsart aus.");

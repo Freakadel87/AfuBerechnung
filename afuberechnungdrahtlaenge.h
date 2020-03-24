@@ -47,7 +47,18 @@ private:
     QLabel *LabelEinheitLaenge;
     QLabel *LabelEinheitLaengeOVF;
 
+    QGridLayout *LayoutGrid;
+    QVBoxLayout *LayoutVBox;
     QLabel *LabelInfo;
+    QLabel *LabelFaktoren1;
+    QLabel *LabelFaktoren2;
+    QLabel *LabelFaktoren3;
+    QLabel *LabelFaktoren4;
+    QLabel *LabelFaktoren5;
+    QLabel *LabelFaktoren6;
+    QLabel *LabelFaktoren7;
+    QLabel *LabelFaktoren8;
+    QLabel *LabelFaktoren9;
 
     // Erstelle Ein- und Ausgabefelder
     QLabel *LabelLichtWert;

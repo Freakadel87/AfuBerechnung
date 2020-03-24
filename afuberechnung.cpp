@@ -34,20 +34,20 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     // Erstelle Menue --> Berechnen --> ...
     menuBerechnen = menuBar()->addMenu("Berechnen");
     menuBerechnen->setFont(QFont("Arial", 10, QFont::Normal));
-    menuBerechnenFrequenz = menuBerechnen->addAction("&Frequenz berechnen...", this, SLOT(triggeredFrequenzBerechnen()));
-    menuBerechnenKapazitaet = menuBerechnen->addAction("&Kapazität berechnen...", this, SLOT(triggeredKapazitaetBerechnen()));
-    menuBerechnenInduktivitaet = menuBerechnen->addAction("&Induktivität berechnen...", this, SLOT(triggeredInduktivitaetBerechnen()));
+    menuBerechnenFrequenz = menuBerechnen->addAction("Frequenz berechnen...", this, SLOT(triggeredFrequenzBerechnen()));
+    menuBerechnenKapazitaet = menuBerechnen->addAction("Kapazität berechnen...", this, SLOT(triggeredKapazitaetBerechnen()));
+    menuBerechnenInduktivitaet = menuBerechnen->addAction("Induktivität berechnen...", this, SLOT(triggeredInduktivitaetBerechnen()));
     menuBerechnen->addSeparator();
-    menuBerechnenDrahtlaenge = menuBerechnen->addAction("&Drahtlänge berechnen...", this, SLOT(triggeredDrahtlaengeBerechnen()));
-    menuBerechnenVerlaengerungsSpule = menuBerechnen->addAction("&Verlängerungsspule berechnen...", this, SLOT(triggeredVerlaengerungBerechnen()));
-    menuBerechnenLuftspule = menuBerechnen->addAction("&Luftspule berechnen...", this, SLOT(triggeredLuftspuleBerechnen()));
-    menuBerechnenTrap = menuBerechnen->addAction("&Trapantenne berechnen...", this, SLOT(triggeredTrapBerechnen()));
+    menuBerechnenDrahtlaenge = menuBerechnen->addAction("Drahtlänge berechnen...", this, SLOT(triggeredDrahtlaengeBerechnen()));
+    menuBerechnenVerlaengerungsSpule = menuBerechnen->addAction("Verlängerungsspule berechnen...", this, SLOT(triggeredVerlaengerungBerechnen()));
+    menuBerechnenLuftspule = menuBerechnen->addAction("Luftspule berechnen...", this, SLOT(triggeredLuftspuleBerechnen()));
+    menuBerechnenTrap = menuBerechnen->addAction("Trapantenne berechnen...", this, SLOT(triggeredTrapBerechnen()));
     menuBerechnenResoTrans = menuBerechnen->addAction("Resonanztransformator berechnen...", this, SLOT(triggeredResoTransBerechnen()));
 
     // erstelle Menue --> Hilfe --> ...
     menuHilfe = menuBar()->addMenu("Hilfe");
     menuHilfe->setFont(QFont("Arial", 10, QFont::Normal));
-    menuHilfeInfo = menuHilfe->addAction("Info", this, SLOT(triggeredInfo()));
+    menuHilfeInfo = menuHilfe->addAction("Informationen", this, SLOT(triggeredInfo()));
     menuHilfeFrequenzen = menuHilfe->addAction("Frequenzen", this, SLOT(triggeredAnzeigeFrequenz()));
 
     LabelButton1 = new QLabel("Thomsonscher Schwingungskreis:", this);
@@ -82,10 +82,6 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     ButtonResoTrans->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonResoTrans->setPalette(Qt::lightGray);
     ButtonResoTrans->setGeometry(25,295,85,85);
-    ButtonKabelrechner = new QPushButton("Kabelrechner", this);
-    ButtonKabelrechner->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonKabelrechner->setPalette(Qt::lightGray);
-    ButtonKabelrechner->setGeometry(25,395,85,85);
 
     // Verbindung der Buttons
     QObject::connect(ButtonFrequenz, SIGNAL(clicked(bool)), this, SLOT(triggeredFrequenzBerechnen()));
@@ -182,6 +178,7 @@ void AfuBerechnung::triggeredDrahtlaengeBerechnen()
 
 void AfuBerechnung::triggeredLuftspuleBerechnen()
 {
+    /// Zu erledigen
     //    BerechnungLuftspule = new AfuBerechnungLuftspule(this);
     //    BerechnungLuftspule->setWindowTitle("Berechnung der Luftspule");
     //    BerechnungLuftspule->show();
@@ -203,7 +200,7 @@ void AfuBerechnung::triggeredResoTransBerechnen()
 
 void AfuBerechnung::triggeredInfo()
 {
-    QMessageBox::about(this, tr("Über Formelsammlung für Amateurfunk"),
+    QMessageBox::about(this, tr("Copyright und Rechtliches"),
                        tr("<h2>Formelberechnung v1.0</h2>"
                           "<p>Copyright &copy; 2020 by DF1TC."
                           "<p>Für Amateurfunkanwendungen ist dieses Programm"
