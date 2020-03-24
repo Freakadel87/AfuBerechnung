@@ -71,7 +71,7 @@ void AfuBerechnungInduktivitaet::triggeredButtonBerechnenClicked()
     f_PufferLL = (int)(f_PufferL*100+0.5)/100.0;
 
     LabelLoesung->setNum(f_PufferLL);
-    LabelLoesung->setFont(QFont("Arial", 11, QFont::Thin));
+    LabelLoesung->setFont(QFont("Arial", 10, QFont::Thin));
 }
 
 void AfuBerechnungInduktivitaet::triggeredButtonLeerenClicked()

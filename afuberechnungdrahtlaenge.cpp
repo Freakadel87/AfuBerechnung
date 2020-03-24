@@ -90,9 +90,9 @@ void AfuBerechnungDrahtlaenge::triggeredButtonBerechnenClicked()
     f_ErgebnisOVF = f_Licht / f_PufferF / f_PufferLamda;
 
     LabelErgebnis->setNum(f_Ergebnis);
-    LabelErgebnis->setFont(QFont("Arial", 11, QFont::Thin));
+    LabelErgebnis->setFont(QFont("Arial", 10, QFont::Thin));
     LabelErgebnisOVF->setNum(f_ErgebnisOVF);
-    LabelErgebnisOVF->setFont(QFont("Arial", 11, QFont::Thin));
+    LabelErgebnisOVF->setFont(QFont("Arial", 10, QFont::Thin));
 }
 
 void AfuBerechnungDrahtlaenge::triggeredButtonLeerenClicked()

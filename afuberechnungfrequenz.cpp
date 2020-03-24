@@ -63,7 +63,7 @@ void AfuBerechnungFrequenz::triggeredButtonBerechnenClicked()
     d_PufferFF = (int)(d_PufferF*100+0.5)/100.0;
 
     LabelLoesung->setNum(d_PufferFF);
-    LabelLoesung->setFont(QFont("Arial", 11, QFont::Thin));
+    LabelLoesung->setFont(QFont("Arial", 10, QFont::Thin));
 }
 
 void AfuBerechnungFrequenz::triggeredButtonLeerenClicked()

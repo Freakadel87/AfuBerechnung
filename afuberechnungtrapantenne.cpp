@@ -124,7 +124,7 @@ void AfuBerechnungTrapantenne::triggeredButtonBerechnenClicked()
     f_PufferRound = (int)(f_Puffer*100+0.5)/100.0;
 
     LabelDiffErgebnis->setNum(f_PufferRound);
-    LabelDiffErgebnis->setFont(QFont("Arial", 11, QFont::Thin));
+    LabelDiffErgebnis->setFont(QFont("Arial", 10, QFont::Thin));
 
     // Berechnung VF Ist
     f_PufferLaengeIst = EditLaengeIst->text().toFloat();

@@ -162,7 +162,7 @@ void AfuBerechnungVerlaengerungsSpule::triggeredButtonBerechnenClicked()
     d_PufferSpule = (1/(2*d_Pi*d_PufferFrequenz))*(2/3);
 
     ErgebnisSpule->setNum(d_PufferSpule);
-    ErgebnisSpule->setFont(QFont("Arial", 11, QFont::Thin));
+    ErgebnisSpule->setFont(QFont("Arial", 10, QFont::Thin));
 }
 
 void AfuBerechnungVerlaengerungsSpule::triggeredButtonLeerenClicked()

@@ -85,17 +85,17 @@ void AfuBerechnungResoTrans::triggeredButtonBerechnenClicked()
     f_PufferQ = sqrt((f_PufferZAusgang / f_PufferZEingang) -1);
     f_PufferQQ = (int)(f_PufferQ*100+0.5)/100.0;
     LabelAusgabeQ->setNum(f_PufferQQ);
-    LabelAusgabeQ->setFont(QFont("Arial", 11, QFont::Thin));
+    LabelAusgabeQ->setFont(QFont("Arial", 10, QFont::Thin));
 
     // Berechnung Kapazitaet (C)
     f_PufferC = (f_PufferQQ / (f_PufferZAusgang * 2 * f_Pi * f_PufferFrequenz * 1000000) * 1000000000000);
     LabelAusgabeC->setNum(f_PufferC);
-    LabelAusgabeC->setFont(QFont("Arial", 11, QFont::Thin));
+    LabelAusgabeC->setFont(QFont("Arial", 10, QFont::Thin));
 
     // Berechnung Induktivitaet (L)
     f_PufferL = (((f_PufferQQ * f_PufferZEingang) / (2 * f_Pi * f_PufferFrequenz * 1000000)) * 1000000);
     LabelAusgabeL->setNum(f_PufferL);
-    LabelAusgabeL->setFont(QFont("Arial", 11, QFont::Thin));
+    LabelAusgabeL->setFont(QFont("Arial", 10, QFont::Thin));
 }
 
 void AfuBerechnungResoTrans::triggeredButtonLeerenClicked()

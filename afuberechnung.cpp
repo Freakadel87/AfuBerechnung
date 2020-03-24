@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     AfuBerechnung myWidget;
     myWidget.setWindowTitle("Berechnungen für Amateurfunk");
-    myWidget.setGeometry(350, 350, 600, 450); // x-Koordinate, y-Koordinate, Fensterhoehe und Fensterbreite
+    myWidget.setGeometry(350, 350, 600, 500); // x-Koordinate, y-Koordinate, Fensterhoehe und Fensterbreite
     myWidget.show();
     return a.exec();
 }
@@ -20,7 +20,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
 {
     // Erstelle Menue --> Datei --> ...
     menuDatei = menuBar()->addMenu(tr("Datei"));
-    menuDatei->setFont(QFont("Arial", 11, QFont::Normal));
+    menuDatei->setFont(QFont("Arial", 10, QFont::Normal));
     menuDateiNeu = menuDatei->addAction("Neu", this, SLOT(triggeredNeu()));
     menuDateiNeu->setIcon(QIcon::fromTheme("document-new"));
     menuDateiOeffnen = menuDatei->addAction("Öffnen", this, SLOT(triggeredOeffnen()));
@@ -33,7 +33,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
 
     // Erstelle Menue --> Berechnen --> ...
     menuBerechnen = menuBar()->addMenu("Berechnen");
-    menuBerechnen->setFont(QFont("Arial", 11, QFont::Normal));
+    menuBerechnen->setFont(QFont("Arial", 10, QFont::Normal));
     menuBerechnenFrequenz = menuBerechnen->addAction("&Frequenz berechnen...", this, SLOT(triggeredFrequenzBerechnen()));
     menuBerechnenKapazitaet = menuBerechnen->addAction("&Kapazität berechnen...", this, SLOT(triggeredKapazitaetBerechnen()));
     menuBerechnenInduktivitaet = menuBerechnen->addAction("&Induktivität berechnen...", this, SLOT(triggeredInduktivitaetBerechnen()));
@@ -46,42 +46,46 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
 
     // erstelle Menue --> Hilfe --> ...
     menuHilfe = menuBar()->addMenu("Hilfe");
-    menuHilfe->setFont(QFont("Arial", 11, QFont::Normal));
+    menuHilfe->setFont(QFont("Arial", 10, QFont::Normal));
     menuHilfeInfo = menuHilfe->addAction("Info", this, SLOT(triggeredInfo()));
     menuHilfeFrequenzen = menuHilfe->addAction("Frequenzen", this, SLOT(triggeredAnzeigeFrequenz()));
 
     LabelButton1 = new QLabel("Thomsonscher Schwingungskreis:", this);
-    LabelButton1->setFont(QFont("Arial", 11, QFont::Bold));
-    LabelButton1->setGeometry(25,35,400,25); ///x, y, Laenge, Breite
+    LabelButton1->setFont(QFont("Arial", 10, QFont::Bold));
+    LabelButton1->setGeometry(25,35,450,25); ///x, y, Laenge, Breite
     ButtonFrequenz = new QPushButton("Frequenz \n berechnen", this);
-    ButtonFrequenz->setFont(QFont("Arial", 11, QFont::Normal));
+    ButtonFrequenz->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonFrequenz->setGeometry(25,75,85,85);
     ButtonInduktivitaet = new QPushButton("Induktivität \n berechnen", this);
-    ButtonInduktivitaet->setFont(QFont("Arial", 11, QFont::Normal));
+    ButtonInduktivitaet->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonInduktivitaet->setGeometry(125,75,85,85);
     ButtonKapazitaet = new QPushButton("Kapazität \n berechnen", this);
-    ButtonKapazitaet->setFont(QFont("Arial", 11, QFont::Normal));
+    ButtonKapazitaet->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonKapazitaet->setGeometry(225,75,85,85);
     ButtonSpule = new QPushButton("Spule \n berechnen", this);
-    ButtonSpule->setFont(QFont("Arial", 11, QFont::Normal));
+    ButtonSpule->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonSpule->setGeometry(25,185,85,85);
     ButtonLuftspule = new QPushButton("Luftspule \n berechnen", this);
-    ButtonLuftspule->setFont(QFont("Arial", 11, QFont::Normal));
+    ButtonLuftspule->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonLuftspule->setGeometry(125,185,85,85);
     ButtonTrap = new QPushButton("Traps \n berechnen", this);
-    ButtonTrap->setFont(QFont("Arial", 11, QFont::Normal));
+    ButtonTrap->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonTrap->setGeometry(225,185,85,85);
     ButtonDrahtlaenge = new QPushButton("Drahtlänge \n berechnen", this);
-    ButtonDrahtlaenge->setFont(QFont("Arial", 11, QFont::Normal));
+    ButtonDrahtlaenge->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonDrahtlaenge->setGeometry(325,185,85,85);
     ButtonBeenden = new QPushButton("Beenden", this);
-    ButtonBeenden->setFont(QFont("Arial", 11, QFont::Normal));
+    ButtonBeenden->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonBeenden->setPalette(Qt::lightGray);
-    ButtonBeenden->setGeometry(425,295,85,42);
+    ButtonBeenden->setGeometry(25,395,85,42);
     ButtonResoTrans = new QPushButton("Resonanz- \n transform. \n berechnen", this);
-    ButtonResoTrans->setFont(QFont("Arial", 11, QFont::Normal));
+    ButtonResoTrans->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonResoTrans->setPalette(Qt::lightGray);
-    ButtonResoTrans->setGeometry(24,295,85,85);
+    ButtonResoTrans->setGeometry(25,295,85,85);
+    ButtonKabelrechner = new QPushButton("Kabelrechner", this);
+    ButtonKabelrechner->setFont(QFont("Arial", 10, QFont::Normal));
+    ButtonKabelrechner->setPalette(Qt::lightGray);
+    ButtonKabelrechner->setGeometry(25,395,85,85);
 
     // Verbindung der Buttons
     QObject::connect(ButtonFrequenz, SIGNAL(clicked(bool)), this, SLOT(triggeredFrequenzBerechnen()));

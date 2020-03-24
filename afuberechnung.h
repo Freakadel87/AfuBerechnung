@@ -63,6 +63,7 @@ private:
     QAction *menuBerechnenLuftspule;
     QAction *menuBerechnenTrap;
     QAction *menuBerechnenResoTrans;
+    QAction *menuBerechnenKabelrechner;
 
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
@@ -80,6 +81,7 @@ private:
     QPushButton *ButtonBeenden;
     QPushButton *ButtonDrahtlaenge;
     QPushButton *ButtonResoTrans;
+    QPushButton *ButtonKabelrechner;
 
 public:
     AfuBerechnung(QWidget *parent = 0);
@@ -103,6 +105,7 @@ private slots:
     void triggeredLuftspuleBerechnen();
     void triggeredTrapBerechnen();
     void triggeredResoTransBerechnen();
+    //void triggeredKabelrechnerBerechnung();
 };
 
 #endif // AFUBERECHNUNG_H
