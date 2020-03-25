@@ -7,7 +7,7 @@ AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QDialog(parent)
     LabelEingabeC = new QLabel("Eingabe Kapazität:");
     LabelAusgabeF = new QLabel("Ergebnis Frequenz:");
     LabelLoesung = new QLabel();
-    LabelLoesung->setStyleSheet("QLabel {background-color : lightgray; color : black;}");
+    LabelLoesung->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
 
     LabelEinheitC = new QLabel("pF");
     LabelEinheitF = new QLabel("MHz");

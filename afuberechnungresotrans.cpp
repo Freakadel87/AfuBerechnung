@@ -23,16 +23,16 @@ AfuBerechnungResoTrans::AfuBerechnungResoTrans(QWidget *parent) : QDialog(parent
 
     LabelQ = new QLabel("Güte (Q)");
     LabelAusgabeQ = new QLabel;
-    LabelAusgabeQ->setStyleSheet("QLabel {background-color : lightgray; color : black;}");
+    LabelAusgabeQ->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
 
     LabelC = new QLabel("Kapazität (C)");
     LabelAusgabeC = new QLabel;
-    LabelAusgabeC->setStyleSheet("QLabel {background-color : lightgray; color : black;}");
+    LabelAusgabeC->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
     LabelEinheitC = new QLabel("pF");
 
     LabelL = new QLabel("Induktivität (L)");
     LabelAusgabeL = new QLabel;
-    LabelAusgabeL->setStyleSheet("QLabel {background-color : lightgray; color : black;}");
+    LabelAusgabeL->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
     LabelEinheitL = new QLabel("µH");
 
     LabelTextInfo = new QLabel("Eine hohe Güte eines Systems besagt, \ndass das System schwach gedämpft ist.");

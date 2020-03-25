@@ -72,10 +72,10 @@ AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(pa
     EditEingabeVKF->setToolTip("Sie können hier einen anderen Wert eingeben, als Standard wurde 0,855 gewählt.");
     LabelErgebnis = new QLabel;
     LabelErgebnis->setFont(QFont("Arial", 10, QFont::Normal));
-    LabelErgebnis->setStyleSheet("QLabel {background-color : lightgray; color : black;}");
+    LabelErgebnis->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
     LabelErgebnisOVF = new QLabel;
     LabelErgebnisOVF->setFont(QFont("Arial", 10, QFont::Normal));
-    LabelErgebnisOVF->setStyleSheet("QLabel {background-color : lightgray; color : black;}");
+    LabelErgebnisOVF->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
     ButtonBeenden = new QPushButton("Beenden");
     ButtonBeenden->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonBerechnen = new QPushButton("Berechnen");

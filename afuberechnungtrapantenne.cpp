@@ -18,7 +18,7 @@ AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(pa
     LabelDrahtIst = new QLabel("VF Ist");
     LabelDiff = new QLabel("Differenz");
     LabelDiffErgebnis = new QLabel;
-    LabelDiffErgebnis->setStyleSheet("QLabel {background-color : lightgray; color : black;}");
+    LabelDiffErgebnis->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
     EinheitDiff = new QLabel("m");
 
     EditResoFreq = new QLineEdit;
