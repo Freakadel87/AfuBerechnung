@@ -16,6 +16,8 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QLineEdit>
+#include <QFont>
+#include <QMessageBox>
 
 class AfuBerechnungKapazitaet : public QDialog
 {

@@ -18,6 +18,7 @@
 #include <QLineEdit>
 #include <QDoubleValidator>
 #include <QColor>
+#include <QFont>
 
 class AfuBerechnungVerlaengerungsSpule : public QDialog
 {

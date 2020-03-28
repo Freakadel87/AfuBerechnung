@@ -16,6 +16,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QLineEdit>
+#include <QFont>
 
 class AfuBerechnungResoTrans : public QDialog
 {

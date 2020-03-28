@@ -4,75 +4,92 @@
 AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(parent)
 {
     LabelResoFreq = new QLabel("Resonanzfrequenz Ist");
+    LabelResoFreq->setFont(QFont("Arial", 11, QFont::Normal));
     EinheitResoFreq = new QLabel("MHz");
+    EinheitResoFreq->setFont(QFont("Arial", 11, QFont::Normal));
     LabelLaengeIst = new QLabel("Länge Ist");
+    LabelLaengeIst->setFont(QFont("Arial", 11, QFont::Normal));
     EinheitLaengeIst = new QLabel("m");
+    EinheitLaengeIst->setFont(QFont("Arial", 11, QFont::Normal));
     LabelFreqSoll = new QLabel("Frequenz Soll");
+    LabelFreqSoll->setFont(QFont("Arial", 11, QFont::Normal));
     EinheitFreqSoll = new QLabel("MHz");
+    EinheitFreqSoll->setFont(QFont("Arial", 11, QFont::Normal));
     LabelWelle = new QLabel("Halbwelle / Viertelwelle");
+    LabelWelle->setFont(QFont("Arial", 11, QFont::Normal));
     LabelDraht = new QLabel("VF Draht");
+    LabelDraht->setFont(QFont("Arial", 11, QFont::Normal));
     LabelLaengeResoIst = new QLabel("Länge Resonanz Ist");
+    LabelLaengeResoIst->setFont(QFont("Arial", 11, QFont::Normal));
     EinheitLaengeResoIst = new QLabel("m");
+    EinheitLaengeResoIst->setFont(QFont("Arial", 11, QFont::Normal));
     LabelLaengeSoll = new QLabel("Länge Soll");
+    LabelLaengeSoll->setFont(QFont("Arial", 11, QFont::Normal));
     EinheitLaengeSoll = new QLabel("m");
+    EinheitLaengeSoll->setFont(QFont("Arial", 11, QFont::Normal));
     LabelDrahtIst = new QLabel("VF Ist");
+    LabelDrahtIst->setFont(QFont("Arial", 11, QFont::Normal));
     LabelDiff = new QLabel("Differenz");
+    LabelDiff->setFont(QFont("Arial", 11, QFont::Normal));
     LabelDiffErgebnis = new QLabel;
+    LabelDiffErgebnis->setFont(QFont("Arial", 11, QFont::Normal));
     LabelDiffErgebnis->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
     EinheitDiff = new QLabel("m");
+    EinheitDiff->setFont(QFont("Arial", 11, QFont::Normal));
 
     EditResoFreq = new QLineEdit;
+    EditResoFreq->setFont(QFont("Arial", 11, QFont::Normal));
     EditResoFreq->setInputMask("000.00");
     EditResoFreq->setCursorPosition(0);
 
     EditLaengeIst = new QLineEdit;
+    EditLaengeIst->setFont(QFont("Arial", 11, QFont::Normal));
     EditLaengeIst->setInputMask("00.00");
     EditLaengeIst->setCursorPosition(0);
 
     EditFreqSoll = new QLineEdit;
+    EditFreqSoll->setFont(QFont("Arial", 11, QFont::Normal));
     EditFreqSoll->setInputMask("000.00");
     EditFreqSoll->setCursorPosition(0);
 
     EditWelle = new QLineEdit;
+    EditWelle->setFont(QFont("Arial", 11, QFont::Normal));
     EditWelle->setReadOnly(true);
 
     ComboWelle = new QComboBox;
     QStringList s_ListWelle;
     s_ListWelle << "Halbwelle" << "Viertelwelle";
     ComboWelle->addItems(s_ListWelle);
-
-    if (s_ListWelle[0] == "Halbwelle")
-    {
-        QString s_Halbwelle = "2";
-        EditWelle->setText(s_Halbwelle);
-    }
-    else if (s_ListWelle[1] == "Viertelwelle")
-    {
-        QString s_Viertelwelle = "4";
-        EditWelle->setText(s_Viertelwelle);
-    }
-
-
+    ComboWelle->setFont(QFont("Arial", 11, QFont::Normal));
 
     EditLaengeResoIst = new QLineEdit;
+    EditLaengeResoIst->setFont(QFont("Arial", 11, QFont::Normal));
     EditLaengeResoIst->setInputMask("00.00");
     EditLaengeResoIst->setCursorPosition(0);
 
     EditLaengeSoll = new QLineEdit;
+    EditLaengeSoll->setFont(QFont("Arial", 11, QFont::Normal));
     EditLaengeSoll->setInputMask("00.00");
     EditLaengeSoll->setCursorPosition(0);
 
     EditDraht = new QLineEdit;
+    EditDraht->setFont(QFont("Arial", 11, QFont::Normal));
     EditDraht->setInputMask("00.00");
     EditDraht->setCursorPosition(0);
 
     LabelDrahtIst = new QLabel;
+    LabelDrahtIst->setFont(QFont("Arial", 11, QFont::Normal));
 
     // Erstelle Buttons
     ButtonBeenden = new QPushButton("Beenden");
+    ButtonBeenden->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
+    ButtonBeenden->setFont(QFont("Arial", 11, QFont::Normal));
     ButtonBerechnen = new QPushButton("Berechnen");
-    ButtonBerechnen->setPalette(Qt::green);
+    ButtonBerechnen->setFont(QFont("Arial", 11, QFont::Normal));
+    ButtonBerechnen->setStyleSheet("QPushButton {background-color : rgb(202,255,112); color : black;}");
     ButtonLeeren = new QPushButton("Leeren");
+    ButtonLeeren->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
+    ButtonLeeren->setFont(QFont("Arial", 11, QFont::Normal));
 
     QGridLayout *GridLayout = new QGridLayout(this);
     GridLayout->addWidget(LabelResoFreq, 0, 0);
@@ -115,6 +132,20 @@ void AfuBerechnungTrapantenne::triggeredButtonBeendenClicked()
 
 void AfuBerechnungTrapantenne::triggeredButtonBerechnenClicked()
 {
+    // Auswahl der Welle
+    QString s_AuswahlWelle = ComboWelle->currentText();
+    if (s_AuswahlWelle == "Halbwelle")
+    {
+        QString s_Halbwelle = "2";
+        EditWelle->setText(s_Halbwelle);
+    }
+    else if (s_AuswahlWelle == "Viertelwelle")
+    {
+        QString s_Viertelwelle = "4";
+        EditWelle->setText(s_Viertelwelle);
+    }
+
+
     f_PufferFreqIst = EditResoFreq->text().toFloat();
     f_PufferWelle = EditWelle->text().toFloat();
 
@@ -124,7 +155,7 @@ void AfuBerechnungTrapantenne::triggeredButtonBerechnenClicked()
     f_PufferRound = (int)(f_Puffer*100+0.5)/100.0;
 
     LabelDiffErgebnis->setNum(f_PufferRound);
-    LabelDiffErgebnis->setFont(QFont("Arial", 10, QFont::Thin));
+    LabelDiffErgebnis->setFont(QFont("Arial", 11, QFont::Thin));
 
     // Berechnung VF Ist
     f_PufferLaengeIst = EditLaengeIst->text().toFloat();

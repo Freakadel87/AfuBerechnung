@@ -4,28 +4,42 @@ AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QDialog(parent)
 {
     // Erstelle Textfelder
     LabelEingabeL = new QLabel("Eingabe Induktivität:");
+    LabelEingabeL->setFont(QFont("Arial", 11, QFont::Thin));
     LabelEingabeC = new QLabel("Eingabe Kapazität:");
+    LabelEingabeC->setFont(QFont("Arial", 11, QFont::Thin));
     LabelAusgabeF = new QLabel("Ergebnis Frequenz:");
+    LabelAusgabeF->setFont(QFont("Arial", 11, QFont::Thin));
     LabelLoesung = new QLabel();
+    LabelLoesung->setFont(QFont("Arial", 11, QFont::Thin));
     LabelLoesung->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
 
     LabelEinheitC = new QLabel("pF");
+    LabelEinheitC->setFont(QFont("Arial", 11, QFont::Thin));
     LabelEinheitF = new QLabel("MHz");
+    LabelEinheitF->setFont(QFont("Arial", 11, QFont::Thin));
     LabelEinheitL = new QLabel("µH");
+    LabelEinheitL->setFont(QFont("Arial", 11, QFont::Thin));
 
     // Erstelle Ein- und Ausgabefelder
     EditEingabeL = new QLineEdit;
+    EditEingabeL->setFont(QFont("Arial", 11, QFont::Thin));
     EditEingabeL->setInputMask("00000.00");
     EditEingabeL->setCursorPosition(0);
     EditEingabeC = new QLineEdit;
+    EditEingabeC->setFont(QFont("Arial", 11, QFont::Thin));
     EditEingabeC->setInputMask("00000.00");
     EditEingabeC->setCursorPosition(0);
 
     // Erstelle Buttons
     ButtonBeenden = new QPushButton("Beenden");
+    ButtonBeenden->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
+    ButtonBeenden->setFont(QFont("Arial", 11, QFont::Thin));
     ButtonBerechnen = new QPushButton("Berechnen");
-    ButtonBerechnen->setPalette(Qt::green);
+    ButtonBerechnen->setStyleSheet("QPushButton {background-color : rgb(202,255,112); color : black;}");
+    ButtonBerechnen->setFont(QFont("Arial", 11, QFont::Thin));
     ButtonLeeren = new QPushButton("Leeren");
+    ButtonLeeren->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
+    ButtonLeeren->setFont(QFont("Arial", 11, QFont::Thin));
 
     QGridLayout *GridLayout = new QGridLayout(this);
     GridLayout->addWidget(LabelEingabeC, 0, 0);
@@ -55,6 +69,22 @@ void AfuBerechnungFrequenz::triggeredButtonBeendenClicked()
 
 void AfuBerechnungFrequenz::triggeredButtonBerechnenClicked()
 {
+    QString s_TextC = EditEingabeC->text();
+    QString s_TextL = EditEingabeL->text();
+
+    if (s_TextC == ".")
+    {
+        QMessageBox::warning(this, tr("Fehler bei der Eingabe!"),
+                             tr("Es wurde das Feld für die Kapazität nicht korrekt besetzt!\n"
+                                "Bitte prüfen Sie Ihre Eingabe noch einmal."));
+    }
+    if (s_TextL == ".")
+    {
+        QMessageBox::warning(this, tr("Fehler bei der Eingabe!"),
+                             tr("Es wurde das Feld für die Induktivität nicht korrekt besetzt!\n"
+                                "Bitte prüfen Sie Ihre Eingabe noch einmal."));
+    }
+
     // Thomsonsche Schwingungsformel
     d_PufferC = EditEingabeC->text().toFloat();
     d_PufferL = EditEingabeL->text().toFloat();
@@ -63,7 +93,7 @@ void AfuBerechnungFrequenz::triggeredButtonBerechnenClicked()
     d_PufferFF = (int)(d_PufferF*100+0.5)/100.0;
 
     LabelLoesung->setNum(d_PufferFF);
-    LabelLoesung->setFont(QFont("Arial", 10, QFont::Thin));
+    LabelLoesung->setFont(QFont("Arial", 11, QFont::Thin));
 }
 
 void AfuBerechnungFrequenz::triggeredButtonLeerenClicked()

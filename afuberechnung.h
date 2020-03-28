@@ -11,6 +11,8 @@
 #include "afuberechnungtrapantenne.h"
 #include "afuberechnunganzeigefrequenz.h"
 #include "afuberechnungresotrans.h"
+#include "afuberechnungamateurfunkbaender.h"
+#include "afuberechnungwattdbm.h"
 
 /// Qt-includes
 #include <QApplication>
@@ -44,6 +46,8 @@ private:
    /// AfuBerechnungLuftspule *BerechnungLuftspule;
     AfuBerechnungTrapantenne *BerechnungTrap;
     AfuBerechnungAnzeigeFrequenz *AnzeigeFrequenz;
+    AfuBerechnungAmateurfunkBaender *AmateurfunkBaender;
+    AfuBerechnungWattDbm *UmrechnungWattDbm;
     AfuBerechnungResoTrans *BerechnungResoTrans;
 
     QWidget *myWidget = new QWidget();
@@ -67,6 +71,8 @@ private:
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
     QAction *menuHilfeFrequenzen;
+    QAction *menuHilfeAmateurfunk;
+    QAction *menuHilfeWattDbm;
 
     QGridLayout *GridLayoutButton;
 
@@ -95,6 +101,7 @@ private slots:
     void triggeredBeenden();
     void triggeredInfo();
     void triggeredAnzeigeFrequenz();
+    void triggeredAmateurfunkBaender();
     void triggeredFrequenzBerechnen();
     void triggeredKapazitaetBerechnen();
     void triggeredInduktivitaetBerechnen();
@@ -103,6 +110,7 @@ private slots:
     void triggeredLuftspuleBerechnen();
     void triggeredTrapBerechnen();
     void triggeredResoTransBerechnen();
+    void triggeredWattDbm();
 };
 
 #endif // AFUBERECHNUNG_H

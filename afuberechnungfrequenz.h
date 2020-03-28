@@ -19,6 +19,8 @@
 #include <QMenuBar>
 #include <QMenu>
 #include <QAction>
+#include <QFont>
+#include <QMessageBox>
 
 class AfuBerechnungFrequenz : public QDialog
 {

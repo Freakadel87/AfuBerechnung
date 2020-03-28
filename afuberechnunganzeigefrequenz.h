@@ -18,6 +18,7 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QTextEdit>
+#include <QFont>
 
 class AfuBerechnungAnzeigeFrequenz : public QDialog
 {
@@ -40,5 +41,6 @@ private:
 
 private slots:
     void triggeredButtonBeendenClicked();
+    void triggeredComboBox();
 };
 #endif // AFUBERECHNUNGANZEIGEFREQUENZ_H

@@ -25,8 +25,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += qt warn_off release debug
 
 SOURCES += \
+    afuberechnungamateurfunkbaender.cpp \
     afuberechnungresotrans.cpp \
-        main.cpp \
+    afuberechnungwattdbm.cpp \
         afuberechnung.cpp \
     afuberechnungfrequenz.cpp \
     afuberechnungkapazitaet.cpp \
@@ -39,6 +40,7 @@ SOURCES += \
 
 HEADERS += \
         afuberechnung.h \
+    afuberechnungamateurfunkbaender.h \
     afuberechnungfrequenz.h \
     afuberechnungkapazitaet.h \
     afuberechnunginduktivitaet.h \
@@ -47,5 +49,6 @@ HEADERS += \
     afuberechnungdrahtlaenge.h \
     afuberechnungluftspule.h \
     afuberechnungtrapantenne.h \
-    afuberechnunganzeigefrequenz.h
+    afuberechnunganzeigefrequenz.h \
+    afuberechnungwattdbm.h
 
