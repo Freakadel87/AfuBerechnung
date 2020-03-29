@@ -3,38 +3,38 @@
 
 AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(parent)
 {
-    LabelResoFreq = new QLabel("Resonanzfrequenz Ist");
+    LabelResoFreq = new QLabel(tr("Resonanzfrequenz Ist"));
     LabelResoFreq->setFont(QFont("Arial", 11, QFont::Normal));
-    EinheitResoFreq = new QLabel("MHz");
+    EinheitResoFreq = new QLabel(tr("MHz"));
     EinheitResoFreq->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelLaengeIst = new QLabel("Länge Ist");
+    LabelLaengeIst = new QLabel(tr("Länge Ist"));
     LabelLaengeIst->setFont(QFont("Arial", 11, QFont::Normal));
-    EinheitLaengeIst = new QLabel("m");
+    EinheitLaengeIst = new QLabel(tr("m"));
     EinheitLaengeIst->setFont(QFont("Arial", 11, QFont::Normal));
     LabelFreqSoll = new QLabel("Frequenz Soll");
     LabelFreqSoll->setFont(QFont("Arial", 11, QFont::Normal));
-    EinheitFreqSoll = new QLabel("MHz");
+    EinheitFreqSoll = new QLabel(tr("MHz"));
     EinheitFreqSoll->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelWelle = new QLabel("Halbwelle / Viertelwelle");
+    LabelWelle = new QLabel(tr("Halbwelle / Viertelwelle"));
     LabelWelle->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelDraht = new QLabel("VF Draht");
+    LabelDraht = new QLabel(tr("VF Draht"));
     LabelDraht->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelLaengeResoIst = new QLabel("Länge Resonanz Ist");
+    LabelLaengeResoIst = new QLabel(tr("Länge Resonanz Ist"));
     LabelLaengeResoIst->setFont(QFont("Arial", 11, QFont::Normal));
-    EinheitLaengeResoIst = new QLabel("m");
+    EinheitLaengeResoIst = new QLabel(tr("m"));
     EinheitLaengeResoIst->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelLaengeSoll = new QLabel("Länge Soll");
+    LabelLaengeSoll = new QLabel(tr("Länge Soll"));
     LabelLaengeSoll->setFont(QFont("Arial", 11, QFont::Normal));
-    EinheitLaengeSoll = new QLabel("m");
+    EinheitLaengeSoll = new QLabel(tr("m"));
     EinheitLaengeSoll->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelDrahtIst = new QLabel("VF Ist");
+    LabelDrahtIst = new QLabel(tr("VF Ist"));
     LabelDrahtIst->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelDiff = new QLabel("Differenz");
+    LabelDiff = new QLabel(tr("Differenz"));
     LabelDiff->setFont(QFont("Arial", 11, QFont::Normal));
     LabelDiffErgebnis = new QLabel;
     LabelDiffErgebnis->setFont(QFont("Arial", 11, QFont::Normal));
     LabelDiffErgebnis->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
-    EinheitDiff = new QLabel("m");
+    EinheitDiff = new QLabel(tr("m"));
     EinheitDiff->setFont(QFont("Arial", 11, QFont::Normal));
 
     EditResoFreq = new QLineEdit;
@@ -81,13 +81,13 @@ AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(pa
     LabelDrahtIst->setFont(QFont("Arial", 11, QFont::Normal));
 
     // Erstelle Buttons
-    ButtonBeenden = new QPushButton("Beenden");
+    ButtonBeenden = new QPushButton(tr("Beenden"));
     ButtonBeenden->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonBeenden->setFont(QFont("Arial", 11, QFont::Normal));
-    ButtonBerechnen = new QPushButton("Berechnen");
+    ButtonBerechnen = new QPushButton(tr("Berechnen"));
     ButtonBerechnen->setFont(QFont("Arial", 11, QFont::Normal));
     ButtonBerechnen->setStyleSheet("QPushButton {background-color : rgb(202,255,112); color : black;}");
-    ButtonLeeren = new QPushButton("Leeren");
+    ButtonLeeren = new QPushButton(tr("Leeren"));
     ButtonLeeren->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonLeeren->setFont(QFont("Arial", 11, QFont::Normal));
 

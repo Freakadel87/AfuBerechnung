@@ -3,66 +3,66 @@
 AfuBerechnungResoTrans::AfuBerechnungResoTrans(QWidget *parent) : QDialog(parent)
 {    
     // Erstelle Textfelder
-    LabelZEingang = new QLabel("Z-Eingang R2");
+    LabelZEingang = new QLabel(tr("Z-Eingang R2"));
     LabelZEingang->setFont(QFont("Arial", 11, QFont::Thin));
     EditZEingang = new QLineEdit;
     EditZEingang->setFont(QFont("Arial", 11, QFont::Thin));
     EditZEingang->setInputMask("00000.00");
     EditZEingang->setCursorPosition(0);
-    LabelEinheitZEingang = new QLabel("Ohm");
+    LabelEinheitZEingang = new QLabel(tr("Ohm"));
     LabelEinheitZEingang->setFont(QFont("Arial", 11, QFont::Thin));
 
-    LabelZAusgang = new QLabel("Z-Ausgang R1");
+    LabelZAusgang = new QLabel(tr("Z-Ausgang R1"));
     LabelZAusgang->setFont(QFont("Arial", 11, QFont::Thin));
     EditZAusgang = new QLineEdit;
     EditZAusgang->setFont(QFont("Arial", 11, QFont::Thin));
     EditZAusgang->setInputMask("00000.00");
     EditZAusgang->setCursorPosition(0);
-    LabelEinheitZAusgang = new QLabel("Ohm");
+    LabelEinheitZAusgang = new QLabel(tr("Ohm"));
     LabelEinheitZAusgang->setFont(QFont("Arial", 11, QFont::Thin));
 
-    LabelFrequenz = new QLabel("Frequenz");
+    LabelFrequenz = new QLabel(tr("Frequenz"));
     LabelFrequenz->setFont(QFont("Arial", 11, QFont::Thin));
     EditFrequenz = new QLineEdit;
     EditFrequenz->setFont(QFont("Arial", 11, QFont::Thin));
     EditFrequenz->setInputMask("00000.00");
     EditFrequenz->setCursorPosition(0);
-    LabelEinheitFrequenz = new QLabel("MHz");
+    LabelEinheitFrequenz = new QLabel(tr("MHz"));
     LabelEinheitFrequenz->setFont(QFont("Arial", 11, QFont::Thin));
 
-    LabelQ = new QLabel("Güte (Q)");
+    LabelQ = new QLabel(tr("Güte (Q)"));
     LabelQ->setFont(QFont("Arial", 11, QFont::Thin));
     LabelAusgabeQ = new QLabel;
     LabelAusgabeQ->setFont(QFont("Arial", 11, QFont::Thin));
     LabelAusgabeQ->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
 
-    LabelC = new QLabel("Kapazität (C)");
+    LabelC = new QLabel(tr("Kapazität (C)"));
     LabelC->setFont(QFont("Arial", 11, QFont::Thin));
     LabelAusgabeC = new QLabel;
     LabelAusgabeC->setFont(QFont("Arial", 11, QFont::Thin));
     LabelAusgabeC->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
-    LabelEinheitC = new QLabel("pF");
+    LabelEinheitC = new QLabel(tr("pF"));
     LabelEinheitC->setFont(QFont("Arial", 11, QFont::Thin));
 
-    LabelL = new QLabel("Induktivität (L)");
+    LabelL = new QLabel(tr("Induktivität (L)"));
     LabelL->setFont(QFont("Arial", 11, QFont::Thin));
     LabelAusgabeL = new QLabel;
     LabelAusgabeL->setFont(QFont("Arial", 11, QFont::Thin));
-    LabelAusgabeL->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
+    LabelAusgabeL->setStyleSheet(tr("QLabel {background-color : rgb(255,222,173); color : black;}"));
     LabelEinheitL = new QLabel("µH");
     LabelEinheitL->setFont(QFont("Arial", 11, QFont::Thin));
 
-    LabelTextInfo = new QLabel("Eine hohe Güte eines Systems besagt, \ndass das System schwach gedämpft ist.");
+    LabelTextInfo = new QLabel(tr("Eine hohe Güte eines Systems besagt, \ndass das System schwach gedämpft ist."));
     LabelTextInfo->setFont(QFont("Arial", 11, QFont::Thin));
 
     // Erstelle Buttons
-    ButtonBeenden = new QPushButton("Beenden");
+    ButtonBeenden = new QPushButton(tr("Beenden"));
     ButtonBeenden->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonBeenden->setFont(QFont("Arial", 11, QFont::Thin));
-    ButtonBerechnen = new QPushButton("Berechnen");
+    ButtonBerechnen = new QPushButton(tr("Berechnen"));
     ButtonBerechnen->setStyleSheet("QPushButton {background-color : rgb(202,255,112); color : black;}");
     ButtonBerechnen->setFont(QFont("Arial", 11, QFont::Thin));
-    ButtonLeeren = new QPushButton("Leeren");
+    ButtonLeeren = new QPushButton(tr("Leeren"));
     ButtonLeeren->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonLeeren->setFont(QFont("Arial", 11, QFont::Thin));
 

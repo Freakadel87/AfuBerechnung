@@ -20,7 +20,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
 {
     // Erstelle Menue --> Datei --> ...
     menuDatei = menuBar()->addMenu(tr("Datei"));
-    menuDatei->setFont(QFont("Arial", 10, QFont::Normal));
+    menuDatei->setFont(QFont("Arial", 11, QFont::Normal));
     menuDateiNeu = menuDatei->addAction("Neu", this, SLOT(triggeredNeu()));
     menuDateiNeu->setIcon(QIcon::fromTheme("document-new"));
     menuDateiOeffnen = menuDatei->addAction("Öffnen", this, SLOT(triggeredOeffnen()));
@@ -32,8 +32,8 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuDateiBeenden->setIcon(QIcon::fromTheme("application-exit"));
 
     // Erstelle Menue --> Berechnen --> ...
-    menuBerechnen = menuBar()->addMenu("Berechnen");
-    menuBerechnen->setFont(QFont("Arial", 10, QFont::Normal));
+    menuBerechnen = menuBar()->addMenu(tr("Berechnen"));
+    menuBerechnen->setFont(QFont("Arial", 11, QFont::Normal));
     menuBerechnenFrequenz = menuBerechnen->addAction("Frequenz berechnen...", this, SLOT(triggeredFrequenzBerechnen()));
     menuBerechnenKapazitaet = menuBerechnen->addAction("Kapazität berechnen...", this, SLOT(triggeredKapazitaetBerechnen()));
     menuBerechnenInduktivitaet = menuBerechnen->addAction("Induktivität berechnen...", this, SLOT(triggeredInduktivitaetBerechnen()));
@@ -45,13 +45,13 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBerechnenResoTrans = menuBerechnen->addAction("Resonanztransformator berechnen...", this, SLOT(triggeredResoTransBerechnen()));
 
     // erstelle Menue --> Hilfe --> ...
-    menuHilfe = menuBar()->addMenu("Hilfe");
-    menuHilfe->setFont(QFont("Arial", 10, QFont::Normal));
+    menuHilfe = menuBar()->addMenu(tr("Hilfe"));
+    menuHilfe->setFont(QFont("Arial", 11, QFont::Normal));
     menuHilfeInfo = menuHilfe->addAction("Informationen", this, SLOT(triggeredInfo()));
     menuHilfe->addSeparator();
     menuHilfeFrequenzen = menuHilfe->addAction("Frequenzen", this, SLOT(triggeredAnzeigeFrequenz()));
     menuHilfeAmateurfunk = menuHilfe->addAction("Amateurfunk-Bänder", this, SLOT(triggeredAmateurfunkBaender()));
-    menuHilfeWattDbm = menuHilfe->addAction("Umrechnung Watt --> dBm", this, SLOT(triggeredWattDbm()));
+    menuHilfeWattDbm = menuHilfe->addAction("Umrechnung Watt >>> dBm", this, SLOT(triggeredWattDbm()));
 
     LabelButton1 = new QLabel("Thomsonscher Schwingungskreis:", this);
     LabelButton1->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");

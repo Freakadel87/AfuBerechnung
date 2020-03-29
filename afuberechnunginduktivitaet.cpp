@@ -9,21 +9,21 @@
 AfuBerechnungInduktivitaet::AfuBerechnungInduktivitaet(QWidget *parent) : QDialog(parent)
 {
     // Erstelle Textfelder
-    LabelEingabeF = new QLabel("Eingabe Frequenz:");
+    LabelEingabeF = new QLabel(tr("Eingabe Frequenz:"));
     LabelEingabeF->setFont(QFont("Arial", 11, QFont::Thin));
-    LabelEingabeC = new QLabel("Eingabe Kapazität:");
+    LabelEingabeC = new QLabel(tr("Eingabe Kapazität:"));
     LabelEingabeC->setFont(QFont("Arial", 11, QFont::Thin));
-    LabelAusgabeL = new QLabel("Ergebnis Induktivität:");
+    LabelAusgabeL = new QLabel(tr("Ergebnis Induktivität:"));
     LabelAusgabeL->setFont(QFont("Arial", 11, QFont::Thin));
     LabelLoesung = new QLabel();
     LabelLoesung->setFont(QFont("Arial", 11, QFont::Thin));
     LabelLoesung->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
 
-    LabelEinheitC = new QLabel("pF");
+    LabelEinheitC = new QLabel(tr("pF"));
     LabelEinheitC->setFont(QFont("Arial", 11, QFont::Thin));
-    LabelEinheitF = new QLabel("MHz");
+    LabelEinheitF = new QLabel(tr("MHz"));
     LabelEinheitF->setFont(QFont("Arial", 11, QFont::Thin));
-    LabelEinheitL = new QLabel("µH");
+    LabelEinheitL = new QLabel(tr("µH"));
     LabelEinheitL->setFont(QFont("Arial", 11, QFont::Thin));
 
     // Erstelle Ein- und Ausgabefelder
@@ -37,13 +37,13 @@ AfuBerechnungInduktivitaet::AfuBerechnungInduktivitaet(QWidget *parent) : QDialo
     EditEingabeC->setCursorPosition(0);
 
     // Erstelle Buttons
-    ButtonBeenden = new QPushButton("Beenden");
+    ButtonBeenden = new QPushButton(tr("Beenden"));
     ButtonBeenden->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonBeenden->setFont(QFont("Arial", 11, QFont::Thin));
-    ButtonBerechnen = new QPushButton("Berechnen");
+    ButtonBerechnen = new QPushButton(tr("Berechnen"));
     ButtonBerechnen->setStyleSheet("QPushButton {background-color : rgb(202,255,112); color : black;}");
     ButtonBerechnen->setFont(QFont("Arial", 11, QFont::Thin));
-    ButtonLeeren = new QPushButton("Leeren");
+    ButtonLeeren = new QPushButton(tr("Leeren"));
     ButtonLeeren->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonLeeren->setFont(QFont("Arial", 11, QFont::Thin));
 

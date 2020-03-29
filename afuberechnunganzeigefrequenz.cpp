@@ -4,7 +4,7 @@ AfuBerechnungAnzeigeFrequenz::AfuBerechnungAnzeigeFrequenz(QWidget *parent) : QD
 {
     // Erstelle Textfelder
     Layout = new QHBoxLayout;
-    LabelEingabe = new QLabel("Betriebsart:");
+    LabelEingabe = new QLabel(tr("Betriebsart:"));
     LabelEingabe->setFont(QFont("Arial", 11, QFont::Normal));
     ComboBetriebsart = new QComboBox;
     ComboBetriebsart->setStyleSheet("QComboBox {background-color : rgb(255,245,238); color : black;}");
@@ -13,7 +13,7 @@ AfuBerechnungAnzeigeFrequenz::AfuBerechnungAnzeigeFrequenz(QWidget *parent) : QD
     EditText->clear();
     EditText->setReadOnly(true);
     LayoutVertical = new QVBoxLayout(this);
-    ButtonBeenden = new QPushButton("Schließen");
+    ButtonBeenden = new QPushButton(tr("Schließen"));
     ButtonBeenden->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonBeenden->setFont(QFont("Arial", 11, QFont::Normal));
 
@@ -24,7 +24,7 @@ AfuBerechnungAnzeigeFrequenz::AfuBerechnungAnzeigeFrequenz(QWidget *parent) : QD
     ComboBetriebsart->setFont(QFont("Arial", 11, QFont::Normal));
     ComboBetriebsart->addItems(s_Betriebsart);
     ComboBetriebsart->setEnabled(true);
-    ComboBetriebsart->setToolTip("Wählen Sie hier die Betriebsart aus.");
+    ComboBetriebsart->setToolTip(tr("Wählen Sie hier die Betriebsart aus."));
 
     Layout->addWidget(LabelEingabe);
     Layout->addWidget(ComboBetriebsart);

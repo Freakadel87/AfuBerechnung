@@ -9,48 +9,48 @@
 AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(parent)
 {
     // Erstelle Textfelder
-    LabelLicht = new QLabel("Lichtgeschwindigkeit");
+    LabelLicht = new QLabel(tr("Lichtgeschwindigkeit"));
     LabelLicht->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelFrequenz = new QLabel("Frequenz");
+    LabelFrequenz = new QLabel(tr("Frequenz"));
     LabelFrequenz->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelErgebnisLaenge = new QLabel("Länge:");
+    LabelErgebnisLaenge = new QLabel(tr("Länge:"));
     LabelErgebnisLaenge->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelErgebnisLaengeOVF = new QLabel("Länge:");
+    LabelErgebnisLaengeOVF = new QLabel(tr("Länge:"));
     LabelErgebnisLaengeOVF->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelLambda = new QLabel("Lambda                      1 /");
+    LabelLambda = new QLabel(tr("Lambda                      1 /"));
     LabelLambda->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelFaktorVer = new QLabel("Verkürzungsfaktor");
+    LabelFaktorVer = new QLabel(tr("Verkürzungsfaktor"));
     LabelFaktorVer->setFont(QFont("Arial", 11, QFont::Normal));
 
-    LabelInfo = new QLabel("Drahtlänge +5%, um Anpassungen beim Abstimmen vornehmen zu können. \nWichtig! Die Dezimalstelle muss mit einem Punkt '.' getrennt werden.");
+    LabelInfo = new QLabel(tr("Drahtlänge +5%, um Anpassungen beim Abstimmen vornehmen zu können. \nWichtig! Die Dezimalstelle muss mit einem Punkt '.' getrennt werden."));
     LabelInfo->setFont(QFont("Arial", 11, QFont::Normal));
 
-    LabelFaktoren1 = new QLabel("Gebräuchliche Verkürzungsfaktoren:");
+    LabelFaktoren1 = new QLabel(tr("Gebräuchliche Verkürzungsfaktoren:"));
     LabelFaktoren1->setFont(QFont("Arial", 11, QFont::Bold));
-    LabelFaktoren2 = new QLabel("Koaxkabel normal");
+    LabelFaktoren2 = new QLabel(tr("Koaxkabel normal"));
     LabelFaktoren2->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelFaktoren3 = new QLabel("k = 0,66");
+    LabelFaktoren3 = new QLabel(tr("k = 0,66"));
     LabelFaktoren3->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelFaktoren4 = new QLabel("Koaxkabel mit Luftisolation");
+    LabelFaktoren4 = new QLabel(tr("Koaxkabel mit Luftisolation"));
     LabelFaktoren4->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelFaktoren5 = new QLabel("k = 0,85");
+    LabelFaktoren5 = new QLabel(tr("k = 0,85"));
     LabelFaktoren5->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelFaktoren6 = new QLabel("Offene 600 Ohm Speiseleitung");
+    LabelFaktoren6 = new QLabel(tr("Offene 600 Ohm Speiseleitung"));
     LabelFaktoren6->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelFaktoren7 = new QLabel("k = 0,98");
+    LabelFaktoren7 = new QLabel(tr("k = 0,98"));
     LabelFaktoren7->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelFaktoren8 = new QLabel("Flachleitung 300 Ohm");
+    LabelFaktoren8 = new QLabel(tr("Flachleitung 300 Ohm"));
     LabelFaktoren8->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelFaktoren9 = new QLabel("k = 0,82");
+    LabelFaktoren9 = new QLabel(tr("k = 0,82"));
     LabelFaktoren9->setFont(QFont("Arial", 11, QFont::Normal));
 
-    LabelEinheitLicht = new QLabel("km/s");
+    LabelEinheitLicht = new QLabel(tr("km/s"));
     LabelEinheitLicht->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitFrequenz = new QLabel("MHz");
+    LabelEinheitFrequenz = new QLabel(tr("MHz"));
     LabelEinheitFrequenz->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitLaenge = new QLabel("m  --> mit Verkürzungsfaktor");
-    LabelEinheitLaenge->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitLaengeOVF = new QLabel("m  --> ohne Verkürzungsfaktor");
+    LabelEinheitLaenge = new QLabel(tr("m  --> mit Verkürzungsfaktor"));
+    LabelEinheitLaenge->setFont(QFont("(Arial", 11, QFont::Normal));
+    LabelEinheitLaengeOVF = new QLabel(tr("m  --> ohne Verkürzungsfaktor"));
     LabelEinheitLaengeOVF->setFont(QFont("Arial", 11, QFont::Normal));
 
 
@@ -58,10 +58,10 @@ AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(pa
     EditEingabeFrequenz->setFont(QFont("Arial", 11, QFont::Normal));
     EditEingabeFrequenz->setCursorPosition(0);
     EditEingabeFrequenz->setInputMask("00000.00");
-    EditEingabeFrequenz->setToolTip("Geben Sie hier Ihre Frequenz in MHZ ein. \nBeispiel: 7.2 oder 14.35");
+    EditEingabeFrequenz->setToolTip(tr("Geben Sie hier Ihre Frequenz in MHZ ein. \nBeispiel: 7.2 oder 14.35"));
     EditEingabeLambda = new QLineEdit;
     EditEingabeLambda->setFont(QFont("Arial", 11, QFont::Normal));
-    EditEingabeLambda->setToolTip("Geben Sie '2' für Lambda-Halbe oder '4' für Lambda-Viertel ein. \nAuch jede ander Zahl wird in der Berechnung akzeptiert.");
+    EditEingabeLambda->setToolTip(tr("Geben Sie '2' für Lambda-Halbe oder '4' für Lambda-Viertel ein. \nAuch jede ander Zahl wird in der Berechnung akzeptiert."));
     EditEingabeLambda->setCursorPosition(0);
     EditEingabeLambda->setText("2");
     LabelLichtWert = new QLabel("299,792");
@@ -69,20 +69,20 @@ AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(pa
     EditEingabeVKF = new QLineEdit;
     EditEingabeVKF->setFont(QFont("Arial", 11, QFont::Normal));
     EditEingabeVKF->setText("0.855");
-    EditEingabeVKF->setToolTip("Sie können hier einen anderen Wert eingeben, als Standard wurde 0,855 gewählt.");
+    EditEingabeVKF->setToolTip(tr("Sie können hier einen anderen Wert eingeben, als Standard wurde 0,855 gewählt."));
     LabelErgebnis = new QLabel;
     LabelErgebnis->setFont(QFont("Arial", 11, QFont::Normal));
     LabelErgebnis->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
     LabelErgebnisOVF = new QLabel;
     LabelErgebnisOVF->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelErgebnisOVF->setStyleSheet("QLabel {background-color : rgb(255,222,173); color : black;}");
-    ButtonBeenden = new QPushButton("Beenden");
+    LabelErgebnisOVF->setStyleSheet(tr("QLabel {background-color : rgb(255,222,173); color : black;}"));
+    ButtonBeenden = new QPushButton(tr("Beenden"));
     ButtonBeenden->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonBeenden->setFont(QFont("Arial", 11, QFont::Normal));
-    ButtonBerechnen = new QPushButton("Berechnen");
+    ButtonBerechnen = new QPushButton(tr("Berechnen"));
     ButtonBerechnen->setStyleSheet("QPushButton {background-color : rgb(202,255,112); color : black;}");
     ButtonBerechnen->setFont(QFont("Arial", 11, QFont::Normal));
-    ButtonLeeren = new QPushButton("Leeren");
+    ButtonLeeren = new QPushButton(tr("Leeren"));
     ButtonLeeren->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonLeeren->setFont(QFont("Arial", 11, QFont::Normal));
 

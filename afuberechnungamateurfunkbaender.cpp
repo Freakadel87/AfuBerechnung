@@ -4,7 +4,7 @@ AfuBerechnungAmateurfunkBaender::AfuBerechnungAmateurfunkBaender(QWidget *parent
 {
     // Erstelle Textfelder
     Layout = new QVBoxLayout(this);
-    LabelEingabe = new QLabel("Amateurfunkfrequenzen:");
+    LabelEingabe = new QLabel(tr("Amateurfunkfrequenzen:"));
     LabelEingabe->setFont(QFont("Arial", 11, QFont::Normal));
 
     EditText = new QTextEdit;
@@ -28,7 +28,7 @@ AfuBerechnungAmateurfunkBaender::AfuBerechnungAmateurfunkBaender(QWidget *parent
                       "2m = 144,00 - 146,00 MHz\n"
                       "70 cm = 430,00 - 440,00 MHz");
 
-    ButtonSchliessen = new QPushButton("Schließen");
+    ButtonSchliessen = new QPushButton(tr("Schließen"));
     ButtonSchliessen->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonSchliessen->setFont(QFont("Arial", 11, QFont::Normal));
 

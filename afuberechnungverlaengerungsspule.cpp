@@ -10,34 +10,34 @@
 AfuBerechnungVerlaengerungsSpule::AfuBerechnungVerlaengerungsSpule(QWidget *parent) : QDialog(parent)
 {
     // Erstelle Textfelder
-    LabelHoeheDipol = new QLabel("Höhe Dipol");
+    LabelHoeheDipol = new QLabel(tr("Höhe Dipol"));
     LabelHoeheDipol->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelDickeDraht = new QLabel("Dicke Draht");
+    LabelDickeDraht = new QLabel(tr("Dicke Draht"));
     LabelDickeDraht->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelLaengeSeite = new QLabel("Länge Seite");
+    LabelLaengeSeite = new QLabel(tr("Länge Seite"));
     LabelLaengeSeite->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelPosSpule = new QLabel("Position Spule");
+    LabelPosSpule = new QLabel(tr("Position Spule"));
     LabelPosSpule->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelFrequenz = new QLabel("Frequenz");
+    LabelFrequenz = new QLabel(tr("Frequenz"));
     LabelFrequenz->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelLoesungSpule = new QLabel("Ergebnis Spule:");
+    LabelLoesungSpule = new QLabel(tr("Ergebnis Spule:"));
     LabelLoesungSpule->setFont(QFont("Arial", 11, QFont::Normal));
 
-    LabelZNull = new QLabel("Z null");
+    LabelZNull = new QLabel(tr("Z null"));
     LabelZNull->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelWinkelX1 = new QLabel("Winkel X1");
+    LabelWinkelX1 = new QLabel(tr("Winkel X1"));
     LabelWinkelX1->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelWinkelX2 = new QLabel("Winkel X2");
+    LabelWinkelX2 = new QLabel(tr("Winkel X2"));
     LabelWinkelX2->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelLambda = new QLabel("Lambda/4");
+    LabelLambda = new QLabel(tr("Lambda/4"));
     LabelLambda->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelLRest = new QLabel("L Rest");
+    LabelLRest = new QLabel(tr("L Rest"));
     LabelLRest->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelX1 = new QLabel("X1");
+    LabelX1 = new QLabel(tr("X1"));
     LabelX1->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelX2 = new QLabel("X2");
+    LabelX2 = new QLabel(tr("X2"));
     LabelX2->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelXL = new QLabel("XL");
+    LabelXL = new QLabel(tr("XL"));
     LabelXL->setFont(QFont("Arial", 11, QFont::Normal));
 
     // Erstelle Ein- und Ausgabefelder
@@ -98,44 +98,44 @@ AfuBerechnungVerlaengerungsSpule::AfuBerechnungVerlaengerungsSpule(QWidget *pare
     EditXL->setInputMask("00000");
     EditXL->setCursorPosition(0);
 
-    LabelEinheitHoeheDipol = new QLabel("m");
+    LabelEinheitHoeheDipol = new QLabel(tr("m"));
     LabelEinheitHoeheDipol->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitDickeDraht = new QLabel("mm");
+    LabelEinheitDickeDraht = new QLabel(tr("mm"));
     LabelEinheitDickeDraht->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitLaengeSeite = new QLabel("m");
+    LabelEinheitLaengeSeite = new QLabel(tr("m"));
     LabelEinheitLaengeSeite->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitPosSpule = new QLabel("m");
+    LabelEinheitPosSpule = new QLabel(tr("m"));
     LabelEinheitPosSpule->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitFrequenz = new QLabel("MHz");
+    LabelEinheitFrequenz = new QLabel(tr("MHz"));
     LabelEinheitFrequenz->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitSpule = new QLabel("µH");
+    LabelEinheitSpule = new QLabel(tr("µH"));
     LabelEinheitSpule->setFont(QFont("Arial", 11, QFont::Normal));
 
-    LabelEinheitZNull = new QLabel("Ohm");
+    LabelEinheitZNull = new QLabel(tr("Ohm"));
     LabelEinheitZNull->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitWinkelX1 = new QLabel("Grad");
+    LabelEinheitWinkelX1 = new QLabel(tr("Grad"));
     LabelEinheitWinkelX1->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitWinkelX2 = new QLabel("Grad");
+    LabelEinheitWinkelX2 = new QLabel(tr("Grad"));
     LabelEinheitWinkelX2->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitLambda = new QLabel("m");
+    LabelEinheitLambda = new QLabel(tr("m"));
     LabelEinheitLambda->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitLRest = new QLabel("m");
+    LabelEinheitLRest = new QLabel(tr("m"));
     LabelEinheitLRest->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitX1 = new QLabel("Ohm");
+    LabelEinheitX1 = new QLabel(tr("Ohm"));
     LabelEinheitX1->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitX2 = new QLabel("Ohm");
+    LabelEinheitX2 = new QLabel(tr("Ohm"));
     LabelEinheitX2->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitXL = new QLabel("Ohm");
+    LabelEinheitXL = new QLabel(tr("Ohm"));
     LabelEinheitXL->setFont(QFont("Arial", 11, QFont::Normal));
 
     // Erstelle Buttons
-    ButtonBeenden = new QPushButton("Beenden");
+    ButtonBeenden = new QPushButton(tr("Beenden"));
     ButtonBeenden->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonBeenden->setFont(QFont("Arial", 11, QFont::Normal));
-    ButtonBerechnen = new QPushButton("Berechnen");
+    ButtonBerechnen = new QPushButton(tr("Berechnen"));
     ButtonBerechnen->setStyleSheet("QPushButton {background-color : rgb(202,255,112); color : black;}");
     ButtonBerechnen->setFont(QFont("Arial", 11, QFont::Normal));
-    ButtonLeeren = new QPushButton("Leeren");
+    ButtonLeeren = new QPushButton(tr("Leeren"));
     ButtonLeeren->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonLeeren->setFont(QFont("Arial", 11, QFont::Normal));
 

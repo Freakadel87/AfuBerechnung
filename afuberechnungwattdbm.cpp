@@ -4,7 +4,7 @@ AfuBerechnungWattDbm::AfuBerechnungWattDbm(QWidget *parent) : QDialog(parent)
 {
     // Erstelle Textfelder
     Layout = new QVBoxLayout(this);
-    LabelEingabe = new QLabel("Tabelle Umrechnung Watt --> dBm:");
+    LabelEingabe = new QLabel(tr("Tabelle Umrechnung Watt >>> dBm:"));
     LabelEingabe->setFont(QFont("Arial", 11, QFont::Normal));
 
     EditText = new QTextEdit;
@@ -31,7 +31,7 @@ AfuBerechnungWattDbm::AfuBerechnungWattDbm(QWidget *parent) : QDialog(parent)
                       "57 dBm = 500 W\n"
                       "60 dBm = 1.000 W\n");
 
-    ButtonSchliessen = new QPushButton("Schließen");
+    ButtonSchliessen = new QPushButton(tr("Schließen"));
     ButtonSchliessen->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonSchliessen->setFont(QFont("Arial", 11, QFont::Normal));
 
