@@ -62,7 +62,7 @@ void AfuBerechnungAnzeigeFrequenz::triggeredComboBox()
     }
     if (s_AuswahlCombo == "RTTY")
     {
-        EditText->setText("160m = ??? MHz\n"
+        EditText->setText("160m = 1.840 MHz\n"
                           "80m = 3.590 MHz\n"
                           "40m = 7.043 MHz\n"
                           "30m = 10.143 MHz\n"
@@ -89,7 +89,7 @@ void AfuBerechnungAnzeigeFrequenz::triggeredComboBox()
     }
     if (s_AuswahlCombo == "FT8")
     {
-        EditText->setText("160m = ??? MHz\n"
+        EditText->setText("160m = 1.840 MHz\n"
                           "80m = 3.575 MHz\n"
                           "60m = ??? MHZ\n"
                           "40m = 7.0475 MHz\n"

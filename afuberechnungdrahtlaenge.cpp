@@ -1,11 +1,5 @@
 #include "afuberechnungdrahtlaenge.h"
 
-// Destruktor
-//AfuBerechnungFrequenz::~AfuBerechnungFrequenz()
-//{
-
-//}
-
 AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(parent)
 {
     // Erstelle Textfelder
@@ -48,9 +42,9 @@ AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(pa
     LabelEinheitLicht->setFont(QFont("Arial", 11, QFont::Normal));
     LabelEinheitFrequenz = new QLabel(tr("MHz"));
     LabelEinheitFrequenz->setFont(QFont("Arial", 11, QFont::Normal));
-    LabelEinheitLaenge = new QLabel(tr("m  --> mit Verkürzungsfaktor"));
+    LabelEinheitLaenge = new QLabel(tr("m  >> mit Verkürzungsfaktor"));
     LabelEinheitLaenge->setFont(QFont("(Arial", 11, QFont::Normal));
-    LabelEinheitLaengeOVF = new QLabel(tr("m  --> ohne Verkürzungsfaktor"));
+    LabelEinheitLaengeOVF = new QLabel(tr("m  >> ohne Verkürzungsfaktor"));
     LabelEinheitLaengeOVF->setFont(QFont("Arial", 11, QFont::Normal));
 
 
@@ -58,13 +52,13 @@ AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(pa
     EditEingabeFrequenz->setFont(QFont("Arial", 11, QFont::Normal));
     EditEingabeFrequenz->setCursorPosition(0);
     EditEingabeFrequenz->setInputMask("00000.00");
-    EditEingabeFrequenz->setToolTip(tr("Geben Sie hier Ihre Frequenz in MHZ ein. \nBeispiel: 7.2 oder 14.35"));
+    EditEingabeFrequenz->setToolTip(tr("Geben Sie hier Ihre Frequenz in MHz ein. \nBeispiel: 7.2 oder 14.35"));
     EditEingabeLambda = new QLineEdit;
     EditEingabeLambda->setFont(QFont("Arial", 11, QFont::Normal));
     EditEingabeLambda->setToolTip(tr("Geben Sie '2' für Lambda-Halbe oder '4' für Lambda-Viertel ein. \nAuch jede ander Zahl wird in der Berechnung akzeptiert."));
     EditEingabeLambda->setCursorPosition(0);
     EditEingabeLambda->setText("2");
-    LabelLichtWert = new QLabel("299,792");
+    LabelLichtWert = new QLabel("299.792");
     LabelLichtWert->setFont(QFont("Arial", 11, QFont::Normal));
     EditEingabeVKF = new QLineEdit;
     EditEingabeVKF->setFont(QFont("Arial", 11, QFont::Normal));

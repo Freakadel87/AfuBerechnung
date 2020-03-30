@@ -23,10 +23,21 @@ AfuBerechnungAmateurfunkBaender::AfuBerechnungAmateurfunkBaender(QWidget *parent
                       "15m = 21,00 - 21,45 MHz\n"
                       "12m = 24,89 - 24,99 MHz\n"
                       "10m = 28,00 - 29,70 MHz\n"
-                      "6m   = 50,00 - 52,00 MHz\n"
+                      "6m = 50,00 - 52,00 MHz\n"
                       "4m = 70,00 - 70,50 MHz\n"
                       "2m = 144,00 - 146,00 MHz\n"
-                      "70 cm = 430,00 - 440,00 MHz");
+                      "70cm = 430,00 - 440,00 MHz\n"
+                      "23cm = 1,24 - 1,30 GHz\n"
+                      "13cm = 2,32 - 2,45 GHz\n"
+                      "9cm = 3,40 - 3475 GHz\n"
+                      "6cm = 5,56 - 5,85 GHz\n"
+                      "3cm = 10,00 - 10,50 GHz\n"
+                      "1,2cm = 24,00 - 24,25 GHz\n"
+                      "6mm = 47,00 - 47,20 GHz\n"
+                      "4mm = 75,50 - 81,50 GHz\n"
+                      "2,5mm = 122,25 - 123,00 GHz\n"
+                      "2mm = 134,00 - 141,00 GHz\n"
+                      "1,2mm = 241,00 - 250,00 GHz");
 
     ButtonSchliessen = new QPushButton(tr("Schließen"));
     ButtonSchliessen->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
