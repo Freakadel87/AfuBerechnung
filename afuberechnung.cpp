@@ -43,6 +43,8 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBerechnenLuftspule = menuBerechnen->addAction("Luftspule berechnen...", this, SLOT(triggeredLuftspuleBerechnen()));
     menuBerechnenTrap = menuBerechnen->addAction("Trapantenne berechnen...", this, SLOT(triggeredTrapBerechnen()));
     menuBerechnenResoTrans = menuBerechnen->addAction("Resonanztransformator berechnen...", this, SLOT(triggeredResoTransBerechnen()));
+    menuBerechnen->addSeparator();
+    menuBerechnenWiderstand = menuBerechnen->addAction("Widerstand", this, SLOT(triggeredWiderstand()));
 
     // erstelle Menue --> Hilfe --> ...
     menuHilfe = menuBar()->addMenu(tr("Hilfe"));
@@ -238,4 +240,11 @@ void AfuBerechnung::triggeredWattDbm()
     UmrechnungWattDbm = new AfuBerechnungWattDbm(this);
     UmrechnungWattDbm->setWindowTitle("Umrechnung Watt in dBm");
     UmrechnungWattDbm->show();
+}
+
+void AfuBerechnung::triggeredWiderstand()
+{
+    Widerstand = new AfuBerechnungWiderstand(this);
+    Widerstand->setWindowTitle("Widerstands-Farbcodetabelle");
+    Widerstand->show();
 }

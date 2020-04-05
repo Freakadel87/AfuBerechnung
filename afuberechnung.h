@@ -13,6 +13,7 @@
 #include "afuberechnungresotrans.h"
 #include "afuberechnungamateurfunkbaender.h"
 #include "afuberechnungwattdbm.h"
+#include "afuberechnungwiderstand.h"
 
 /// Qt-includes
 #include <QApplication>
@@ -49,6 +50,7 @@ private:
     AfuBerechnungAmateurfunkBaender *AmateurfunkBaender;
     AfuBerechnungWattDbm *UmrechnungWattDbm;
     AfuBerechnungResoTrans *BerechnungResoTrans;
+    AfuBerechnungWiderstand *Widerstand;
 
     QWidget *myWidget = new QWidget();
 
@@ -67,6 +69,7 @@ private:
     QAction *menuBerechnenLuftspule;
     QAction *menuBerechnenTrap;
     QAction *menuBerechnenResoTrans;
+    QAction *menuBerechnenWiderstand;
 
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
@@ -111,6 +114,7 @@ private slots:
     void triggeredTrapBerechnen();
     void triggeredResoTransBerechnen();
     void triggeredWattDbm();
+    void triggeredWiderstand();
 };
 
 #endif // AFUBERECHNUNG_H

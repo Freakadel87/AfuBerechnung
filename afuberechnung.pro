@@ -36,7 +36,8 @@ SOURCES += \
     afuberechnungdrahtlaenge.cpp \
     afuberechnungluftspule.cpp \
     afuberechnungtrapantenne.cpp \
-    afuberechnunganzeigefrequenz.cpp
+    afuberechnunganzeigefrequenz.cpp \
+    afuberechnungwiderstand.cpp
 
 HEADERS += \
         afuberechnung.h \
@@ -50,5 +51,8 @@ HEADERS += \
     afuberechnungluftspule.h \
     afuberechnungtrapantenne.h \
     afuberechnunganzeigefrequenz.h \
-    afuberechnungwattdbm.h
+    afuberechnungwattdbm.h \
+    afuberechnungwiderstand.h
+
+FORMS +=
 
