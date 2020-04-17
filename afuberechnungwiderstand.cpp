@@ -2,6 +2,20 @@
 
 AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(parent)
 {
+    LabelSchritt_1 = new QLabel("Schritt 1: Wählen Sie bitte die Anzahl der Bänder.");
+    LabelSchritt_1->setFont(QFont("Arial", 11, QFont::Normal));
+    ComboBox_1 = new QComboBox;
+    QStringList s_ListRinge;
+    s_ListRinge<<"<leer>"<<"4 Ringe"<<"5 Ringe"<<"6 Ringe";
+    ComboBox_1->addItems(s_ListRinge);
+    ComboBox_1->setFont(QFont("Arial", 11, QFont::Normal));
+    LabelSchritt_2  = new QLabel("Schritt 2: Wählen Sie bitte den Farbcode aus");
+    LabelSchritt_2->setFont(QFont("Arial", 11, QFont::Normal));
+
+    QString s_Auswahl = ComboBox_1->currentText();
+
+    //if (s_Auswahl == "5 Ringe")
+    //   {
     ComboFirstRing = new QComboBox;
     QStringList s_ListFirst;
     s_ListFirst <<"<leer>"<<"0"<<"1"<<"2"<<"3"<<"4"<<"5"<<"6"<<"7"<<"8"<<"9";
@@ -56,7 +70,6 @@ AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(pare
     ComboThirdRing->setItemData(9, QBrush(QColor::fromRgb(105,105,105)), Qt::BackgroundRole);
     ComboThirdRing->setItemData(10, QBrush(QColor::fromRgb(255,255,255)), Qt::BackgroundRole);
 
-
     ComboMultiplier = new QComboBox;
     QStringList s_ListMultiplier;
     s_ListMultiplier <<"<leer>"<<"0.01"<<"0.1"<<"1"<<"10"<<"100"<<"1k"<<"10k"<<"100k"<<"1M"<<"10M";
@@ -79,6 +92,7 @@ AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(pare
     EditWiderstandswert->setReadOnly(true);
     EditWiderstandswert->setFont(QFont("Arial", 11, QFont::Normal));
     LabelWiderstandswert = new QLabel(tr("Widerstandswert:"));
+    //  }
 
     // Erstelle Buttons
     ButtonBeenden = new QPushButton(tr("Beenden"));
@@ -92,17 +106,20 @@ AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(pare
     ButtonLeeren->setFont(QFont("Arial", 11, QFont::Normal));
 
     QGridLayout *GridLayout = new QGridLayout(this);
-    GridLayout->addWidget(ComboFirstRing, 0, 0);
-    GridLayout->addWidget(ComboSecondRing, 0, 1);
-    GridLayout->addWidget(ComboThirdRing, 0, 2);
-    GridLayout->addWidget(ComboMultiplier, 0, 3);
-    GridLayout->addWidget(ComboTolerance, 0, 4);
-    GridLayout->addWidget(ComboTemperatur, 0, 5);
-    GridLayout->addWidget(LabelWiderstandswert, 2,2);
-    GridLayout->addWidget(EditWiderstandswert, 2,3);
-    GridLayout->addWidget(ButtonBerechnen, 4,0);
-    GridLayout->addWidget(ButtonLeeren, 5,0);
-    GridLayout->addWidget(ButtonBeenden, 6,0);
+    GridLayout->addWidget(LabelSchritt_1, 0, 0);
+    GridLayout->addWidget(ComboBox_1, 0, 1);
+    GridLayout->addWidget(LabelSchritt_2, 2, 0);
+    GridLayout->addWidget(ComboFirstRing, 3, 0);
+    GridLayout->addWidget(ComboSecondRing, 3, 1);
+    GridLayout->addWidget(ComboThirdRing, 3, 2);
+    GridLayout->addWidget(ComboMultiplier, 3, 3);
+    GridLayout->addWidget(ComboTolerance, 3, 4);
+    GridLayout->addWidget(ComboTemperatur, 3, 5);
+    GridLayout->addWidget(LabelWiderstandswert, 5,2);
+    GridLayout->addWidget(EditWiderstandswert, 5,3);
+    GridLayout->addWidget(ButtonBerechnen, 7,0);
+    GridLayout->addWidget(ButtonLeeren, 8,0);
+    GridLayout->addWidget(ButtonBeenden, 9,0);
 
     QObject::connect(ButtonBerechnen, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBerechnenClicked()));
     QObject::connect(ButtonLeeren, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonLeerenClicked()));
@@ -117,9 +134,10 @@ void AfuBerechnungWiderstand::triggeredButtonBeendenClicked()
 void AfuBerechnungWiderstand::triggeredButtonBerechnenClicked()
 {
 
+
 }
 
 void AfuBerechnungWiderstand::triggeredButtonLeerenClicked()
 {
-
+    EditWiderstandswert->clear();
 }

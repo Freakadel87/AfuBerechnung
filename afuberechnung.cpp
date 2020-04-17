@@ -20,7 +20,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
 {
     // Erstelle Menue --> Datei --> ...
     menuDatei = menuBar()->addMenu(tr("Datei"));
-    menuDatei->setFont(QFont("Arial", 11, QFont::Normal));
+    menuDatei->setFont(QFont("Arial", 10, QFont::Normal));
     menuDateiNeu = menuDatei->addAction("Neu", this, SLOT(triggeredNeu()));
     menuDateiNeu->setIcon(QIcon::fromTheme("document-new"));
     menuDateiOeffnen = menuDatei->addAction("Öffnen", this, SLOT(triggeredOeffnen()));
@@ -31,9 +31,25 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuDateiBeenden = menuDatei->addAction("Beenden", this, SLOT(triggeredBeenden()));
     menuDateiBeenden->setIcon(QIcon::fromTheme("application-exit"));
 
+    // Erstelle Menue --> Bearbeiten --> ...
+    menuBearbeiten = menuBar()->addMenu(tr("Bearbeiten"));
+    menuBearbeiten->setFont(QFont("Arial", 10, QFont::Normal));
+    menuBearbeitenRedo = menuBearbeiten->addAction("Wiederherstellen", this, SLOT(triggeredRedo()));
+    menuBearbeitenRedo->setIcon(QIcon::fromTheme("document-redo"));
+    menuBearbeitenUndo = menuBearbeiten->addAction("Rückgängig", this, SLOT(triggeredUndo()));
+    menuBearbeitenUndo->setIcon(QIcon::fromTheme("document-undo"));
+    menuBearbeiten->addSeparator();
+    menuBearbeitenCut = menuBearbeiten->addAction("Ausschneiden", this, SLOT(triggeredCut()));
+    menuBearbeitenCut->setIcon(QIcon::fromTheme("document-cut"));
+    menuBearbeiten->addSeparator();
+    menuBearbeitenCopy = menuBearbeiten->addAction("Kopieren", this, SLOT(triggeredCopy()));
+    menuBearbeitenCopy->setIcon(QIcon::fromTheme("copy.png"));
+    menuBearbeitenPaste = menuBearbeiten->addAction("Einfügen", this, SLOT(triggeredPaste()));
+    menuBearbeitenPaste->setIcon(QIcon::fromTheme("document-paste"));
+
     // Erstelle Menue --> Berechnen --> ...
     menuBerechnen = menuBar()->addMenu(tr("Berechnen"));
-    menuBerechnen->setFont(QFont("Arial", 11, QFont::Normal));
+    menuBerechnen->setFont(QFont("Arial", 10, QFont::Normal));
     menuBerechnenFrequenz = menuBerechnen->addAction("Frequenz berechnen...", this, SLOT(triggeredFrequenzBerechnen()));
     menuBerechnenKapazitaet = menuBerechnen->addAction("Kapazität berechnen...", this, SLOT(triggeredKapazitaetBerechnen()));
     menuBerechnenInduktivitaet = menuBerechnen->addAction("Induktivität berechnen...", this, SLOT(triggeredInduktivitaetBerechnen()));
@@ -46,9 +62,14 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBerechnen->addSeparator();
     menuBerechnenWiderstand = menuBerechnen->addAction("Widerstand", this, SLOT(triggeredWiderstand()));
 
+    // Erstelle Menue --> Optionen --> ...
+    menuOptionen = menuBar()->addMenu(tr("Optionen"));
+    menuOptionen->setFont(QFont("Arial", 10, QFont::Normal));
+    menuEinstellungen = menuOptionen->addAction("Einstellungen...", this, SLOT(triggeredEinstellungen()));
+
     // erstelle Menue --> Hilfe --> ...
     menuHilfe = menuBar()->addMenu(tr("Hilfe"));
-    menuHilfe->setFont(QFont("Arial", 11, QFont::Normal));
+    menuHilfe->setFont(QFont("Arial", 10, QFont::Normal));
     menuHilfeInfo = menuHilfe->addAction("Informationen", this, SLOT(triggeredInfo()));
     menuHilfe->addSeparator();
     menuHilfeFrequenzen = menuHilfe->addAction("Frequenzen", this, SLOT(triggeredAnzeigeFrequenz()));
@@ -58,7 +79,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     LabelButton1 = new QLabel("Thomsonscher Schwingungskreis:", this);
     LabelButton1->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     LabelButton1->setFont(QFont("Arial", 10, QFont::Bold));
-    LabelButton1->setGeometry(25,35,450,25); ///x, y, Laenge, Breite
+    LabelButton1->setGeometry(25,35,450,25); //x, y, Laenge, Breite
     ButtonFrequenz = new QPushButton("Frequenz \n berechnen", this);
     ButtonFrequenz->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonFrequenz->setFont(QFont("Arial", 10, QFont::Normal));
@@ -247,4 +268,37 @@ void AfuBerechnung::triggeredWiderstand()
     Widerstand = new AfuBerechnungWiderstand(this);
     Widerstand->setWindowTitle("Widerstands-Farbcodetabelle");
     Widerstand->show();
+}
+
+void AfuBerechnung::triggeredEinstellungen()
+{
+    /// Zu erledigen: Neues Fenster erstellen für Schriftart und -größe
+    WidgetEinstellungen = new AfuBerechnungEinstellungen(this);
+    WidgetEinstellungen->setWindowTitle("Einstellungen");
+    WidgetEinstellungen->show();
+}
+
+void AfuBerechnung::triggeredCut()
+{
+
+}
+
+void AfuBerechnung::triggeredCopy()
+{
+
+}
+
+void AfuBerechnung::triggeredPaste()
+{
+
+}
+
+void AfuBerechnung::triggeredRedo()
+{
+
+}
+
+void AfuBerechnung::triggeredUndo()
+{
+
 }

@@ -29,6 +29,10 @@ public:
     AfuBerechnungWiderstand(QWidget *parent);
 
 private:
+    QLabel *LabelSchritt_1;
+    QComboBox *ComboBox_1;
+    QLabel *LabelSchritt_2;
+
     QComboBox *ComboFirstRing;
     QComboBox *ComboSecondRing;
     QComboBox *ComboThirdRing;

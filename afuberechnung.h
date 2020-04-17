@@ -14,6 +14,7 @@
 #include "afuberechnungamateurfunkbaender.h"
 #include "afuberechnungwattdbm.h"
 #include "afuberechnungwiderstand.h"
+#include "afuberechnungeinstellungen.h"
 
 /// Qt-includes
 #include <QApplication>
@@ -51,6 +52,7 @@ private:
     AfuBerechnungWattDbm *UmrechnungWattDbm;
     AfuBerechnungResoTrans *BerechnungResoTrans;
     AfuBerechnungWiderstand *Widerstand;
+    AfuBerechnungEinstellungen *WidgetEinstellungen;
 
     QWidget *myWidget = new QWidget();
 
@@ -59,6 +61,13 @@ private:
     QAction *menuDateiOeffnen;
     QAction *menuDateiSpeichern;
     QAction *menuDateiBeenden;
+
+    QMenu *menuBearbeiten;
+    QAction *menuBearbeitenUndo;
+    QAction *menuBearbeitenRedo;
+    QAction *menuBearbeitenCut;
+    QAction *menuBearbeitenCopy;
+    QAction *menuBearbeitenPaste;
 
     QMenu *menuBerechnen;
     QAction *menuBerechnenFrequenz;
@@ -70,6 +79,9 @@ private:
     QAction *menuBerechnenTrap;
     QAction *menuBerechnenResoTrans;
     QAction *menuBerechnenWiderstand;
+
+    QMenu *menuOptionen;
+    QAction *menuEinstellungen;
 
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
@@ -115,6 +127,12 @@ private slots:
     void triggeredResoTransBerechnen();
     void triggeredWattDbm();
     void triggeredWiderstand();
+    void triggeredRedo();
+    void triggeredUndo();
+    void triggeredCut();
+    void triggeredCopy();
+    void triggeredPaste();
+    void triggeredEinstellungen();
 };
 
 #endif // AFUBERECHNUNG_H
