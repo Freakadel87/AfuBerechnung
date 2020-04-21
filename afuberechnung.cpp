@@ -19,16 +19,9 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     : QMainWindow(parent)
 {
     // Erstelle Menue --> Datei --> ...
-    menuDatei = menuBar()->addMenu(tr("Datei"));
-    menuDatei->setFont(QFont("Arial", 10, QFont::Normal));
-    menuDateiNeu = menuDatei->addAction("Neu", this, SLOT(triggeredNeu()));
-    menuDateiNeu->setIcon(QIcon::fromTheme("document-new"));
-    menuDateiOeffnen = menuDatei->addAction("Öffnen", this, SLOT(triggeredOeffnen()));
-    menuDateiOeffnen->setIcon(QIcon::fromTheme("document-open"));
-    menuDateiSpeichern = menuDatei->addAction("Speichern", this, SLOT(triggeredSpeichern()));
-    menuDateiSpeichern->setIcon(QIcon::fromTheme("document-save"));
-    menuDatei->addSeparator();
-    menuDateiBeenden = menuDatei->addAction("Beenden", this, SLOT(triggeredBeenden()));
+    menuProgramm = menuBar()->addMenu(tr("Programm"));
+    menuProgramm->setFont(QFont("Arial", 10, QFont::Normal));
+    menuDateiBeenden = menuProgramm->addAction("Beenden", this, SLOT(triggeredBeenden()));
     menuDateiBeenden->setIcon(QIcon::fromTheme("application-exit"));
 
     // Erstelle Menue --> Bearbeiten --> ...
@@ -72,9 +65,11 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuHilfe->setFont(QFont("Arial", 10, QFont::Normal));
     menuHilfeInfo = menuHilfe->addAction("Informationen", this, SLOT(triggeredInfo()));
     menuHilfe->addSeparator();
-    menuHilfeFrequenzen = menuHilfe->addAction("Frequenzen", this, SLOT(triggeredAnzeigeFrequenz()));
-    menuHilfeAmateurfunk = menuHilfe->addAction("Amateurfunk-Bänder", this, SLOT(triggeredAmateurfunkBaender()));
-    menuHilfeWattDbm = menuHilfe->addAction("Umrechnung Watt >>> dBm", this, SLOT(triggeredWattDbm()));
+    menuHilfeFilter = menuHilfe->addAction("Infos-Filter...", this, SLOT(triggeredFilter()));
+    menuHilfeWattDbm = menuHilfe->addAction("Umrechnung Watt >>> dBm...", this, SLOT(triggeredWattDbm()));
+    menuHilfe->addSeparator();
+    menuHilfeFrequenzen = menuHilfe->addAction("Frequenzen...", this, SLOT(triggeredAnzeigeFrequenz()));
+    menuHilfeAmateurfunk = menuHilfe->addAction("Amateurfunk-Bänder...", this, SLOT(triggeredAmateurfunkBaender()));
 
     LabelButton1 = new QLabel("Thomsonscher Schwingungskreis:", this);
     LabelButton1->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
@@ -127,47 +122,6 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     QObject::connect(ButtonDrahtlaenge, SIGNAL(clicked(bool)), this, SLOT(triggeredDrahtlaengeBerechnen()));
     QObject::connect(ButtonBeenden, SIGNAL(clicked(bool)), this, SLOT(triggeredBeenden()));
     QObject::connect(ButtonResoTrans, SIGNAL(clicked(bool)), this, SLOT(triggeredResoTransBerechnen()));
-}
-
-void AfuBerechnung::triggeredNeu()
-{
-
-}
-
-void AfuBerechnung::triggeredOeffnen()
-{
-    QString fileName = QFileDialog::getOpenFileName(this, "Öffne Datei.");
-    QFile file(fileName);
-    QString currentFile = fileName;
-
-    if (!file.open(QIODevice::ReadOnly | QFile::Text))
-    {
-        QMessageBox::warning(this, "Warnung!", "Datei konnte nicht geöffnet werden." + file.errorString());
-        return;
-    }
-
-    setWindowTitle(fileName);
-    QTextStream in(&file);
-    QString text = in.readAll();
-    file.close();
-}
-
-void AfuBerechnung::triggeredSpeichern()
-{
-    QString fileName = QFileDialog::getSaveFileName(this, "Speichern unter ...");
-    QFile file(fileName);
-
-    // Datei konnte nicht gespeichert werden
-    if (!file.open(QIODevice::WriteOnly | QFile::Text))
-    {
-        QMessageBox::warning(this, "Warnung!", "Datei konnte nicht gespeichert werden!" + file.errorString());
-        return;
-    }
-
-    QString currentFile = fileName;
-    setWindowTitle(fileName);
-    QTextStream out(&file);
-    file.close();
 }
 
 void AfuBerechnung::triggeredBeenden()
@@ -235,7 +189,7 @@ void AfuBerechnung::triggeredResoTransBerechnen()
 void AfuBerechnung::triggeredInfo()
 {
     QMessageBox::about(this, tr("Copyright und Rechtliches"),
-                       tr("<h2>Formelberechnung v1.0</h2>"
+                       tr("<h2>Amateurfunksoftware v1.0</h2>"
                           "<p>Copyright &copy; 2020 by DF1TC."
                           "<p>Für Amateurfunkanwendungen ist dieses Programm"
                           " Freeware, eine kommerzielle Nutzung ist ausschließlich mit der"
@@ -254,6 +208,13 @@ void AfuBerechnung::triggeredAmateurfunkBaender()
     AmateurfunkBaender = new AfuBerechnungAmateurfunkBaender(this);
     AmateurfunkBaender->setWindowTitle("Amateurfunk-Bänder");
     AmateurfunkBaender->show();
+}
+
+void AfuBerechnung::triggeredFilter()
+{
+    WidgetFilter = new AfuBerechnungFilter(this);
+    WidgetFilter->setWindowTitle("Infos über Filter");
+    WidgetFilter->show();
 }
 
 void AfuBerechnung::triggeredWattDbm()

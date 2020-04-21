@@ -27,6 +27,7 @@ CONFIG += qt warn_off release debug
 SOURCES += \
     afuberechnungamateurfunkbaender.cpp \
     afuberechnungeinstellungen.cpp \
+    afuberechnungfilter.cpp \
     afuberechnungresotrans.cpp \
     afuberechnungwattdbm.cpp \
         afuberechnung.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
         afuberechnung.h \
     afuberechnungamateurfunkbaender.h \
     afuberechnungeinstellungen.h \
+    afuberechnungfilter.h \
     afuberechnungfrequenz.h \
     afuberechnungkapazitaet.h \
     afuberechnunginduktivitaet.h \

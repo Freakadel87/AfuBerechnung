@@ -11,16 +11,12 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QFontDialog>
-#include <QGridLayout>
 #include <QWidget>
-#include <QLabel>
 #include <QPushButton>
-#include <QLineEdit>
-#include <QMenuBar>
-#include <QMenu>
-#include <QAction>
-#include <QFont>
-#include <QMessageBox>
+#include <QFontDialog>
+#include <QColorDialog>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 class AfuBerechnungEinstellungen : public QDialog
 {
@@ -31,28 +27,21 @@ public:
     AfuBerechnungEinstellungen(QWidget *parent);
 
 private:
-    // Erstelle Textfelder
-    QLabel *LabelEingabeL;
-    QLabel *LabelEingabeC;
-    QLabel *LabelAusgabeF;
-    QLabel *LabelLoesung;
+    QFontDialog *FontDialog;
+    QColorDialog *ColorDialog;
 
-    QLabel *LabelEinheitL;
-    QLabel *LabelEinheitC;
-    QLabel *LabelEinheitF;
-
-    // Erstelle Ein- und Ausgabefelder
-    QLineEdit *EditEingabeL;
-    QLineEdit *EditEingabeC;
-
-    // Erstelle Buttons
+    QVBoxLayout *MainLayout;
+    QHBoxLayout *OberesLayout;
+    QHBoxLayout *UnteresLayout;
+    QPushButton *ButtonSchriftart;
+    QPushButton *ButtonSchriftfarbe;
     QPushButton *ButtonBeenden;
-    QPushButton *ButtonBerechnen;
-    QPushButton *ButtonLeeren;
+    QPushButton *ButtonOk;
 
 private slots:
     void triggeredButtonBeendenClicked();
-    void triggeredButtonBerechnenClicked();
-    void triggeredButtonLeerenClicked();
+    void triggeredButtonOkClicked();
+    void triggeredButtonSchriftartClicked();
+    void triggeredButtonSchriftfarbeClicked();
 };
 #endif // AFUBERECHNUNGEINSTELLUNGEN_H

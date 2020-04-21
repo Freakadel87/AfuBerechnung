@@ -35,7 +35,7 @@ public:
     float f_ErgebnisOVF {0.0};
 
 private:
-    // Erstelle Textfelder
+     // Erstelle Textfelder
     QLabel *LabelLicht;
     QLabel *LabelFrequenz;
     QLabel *LabelErgebnisLaenge;

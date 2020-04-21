@@ -15,6 +15,7 @@
 #include "afuberechnungwattdbm.h"
 #include "afuberechnungwiderstand.h"
 #include "afuberechnungeinstellungen.h"
+#include "afuberechnungfilter.h"
 
 /// Qt-includes
 #include <QApplication>
@@ -49,6 +50,7 @@ private:
     AfuBerechnungTrapantenne *BerechnungTrap;
     AfuBerechnungAnzeigeFrequenz *AnzeigeFrequenz;
     AfuBerechnungAmateurfunkBaender *AmateurfunkBaender;
+    AfuBerechnungFilter *WidgetFilter;
     AfuBerechnungWattDbm *UmrechnungWattDbm;
     AfuBerechnungResoTrans *BerechnungResoTrans;
     AfuBerechnungWiderstand *Widerstand;
@@ -56,10 +58,7 @@ private:
 
     QWidget *myWidget = new QWidget();
 
-    QMenu *menuDatei;
-    QAction *menuDateiNeu;
-    QAction *menuDateiOeffnen;
-    QAction *menuDateiSpeichern;
+    QMenu *menuProgramm;
     QAction *menuDateiBeenden;
 
     QMenu *menuBearbeiten;
@@ -85,6 +84,7 @@ private:
 
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
+    QAction *menuHilfeFilter;
     QAction *menuHilfeFrequenzen;
     QAction *menuHilfeAmateurfunk;
     QAction *menuHilfeWattDbm;
@@ -110,9 +110,6 @@ protected:
     //void closeEvent(QCloseEvent *event);
 
 private slots:
-    void triggeredNeu();
-    void triggeredOeffnen();
-    void triggeredSpeichern();
     void triggeredBeenden();
     void triggeredInfo();
     void triggeredAnzeigeFrequenz();
@@ -125,6 +122,7 @@ private slots:
     void triggeredLuftspuleBerechnen();
     void triggeredTrapBerechnen();
     void triggeredResoTransBerechnen();
+    void triggeredFilter();
     void triggeredWattDbm();
     void triggeredWiderstand();
     void triggeredRedo();
