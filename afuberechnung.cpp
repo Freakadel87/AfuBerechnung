@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     AfuBerechnung myWidget;
-    myWidget.setWindowTitle("Berechnungen für Amateurfunk");
+    myWidget.setWindowTitle("Berechnungen für Antennenbau");
     myWidget.setGeometry(350, 350, 600, 500); // x-Koordinate, y-Koordinate, Fensterhoehe und Fensterbreite
     myWidget.show();
     return a.exec();

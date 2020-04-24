@@ -62,14 +62,11 @@ private:
     QLineEdit *EditResoFreq;
     QLineEdit *EditLaengeIst;
     QLineEdit *EditFreqSoll;
-    QLineEdit *EditWelle;
     QComboBox *ComboWelle;
     QLineEdit *EditLaengeResoIst;
     QLineEdit *EditLaengeSoll;
     QLineEdit *EditDraht;
     QLabel *LabelDrahtIstErgebnis;
-
-
 
     // Erstelle Buttons
     QPushButton *ButtonBeenden;

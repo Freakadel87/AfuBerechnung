@@ -52,10 +52,6 @@ AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(pa
     EditFreqSoll->setInputMask("000.00");
     EditFreqSoll->setCursorPosition(0);
 
-    EditWelle = new QLineEdit;
-    EditWelle->setFont(QFont("Arial", 11, QFont::Normal));
-    EditWelle->setReadOnly(true);
-
     ComboWelle = new QComboBox;
     QStringList s_ListWelle;
     s_ListWelle << "Halbwelle" << "Viertelwelle";
@@ -102,8 +98,7 @@ AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(pa
     GridLayout->addWidget(EditFreqSoll, 2,2);
     GridLayout->addWidget(EinheitFreqSoll, 2,3);
     GridLayout->addWidget(LabelWelle, 3,0);
-    GridLayout->addWidget(EditWelle, 3,2);
-    GridLayout->addWidget(ComboWelle, 3,3);
+    GridLayout->addWidget(ComboWelle, 3,2);
     GridLayout->addWidget(LabelLaengeResoIst, 4,0);
     GridLayout->addWidget(EditLaengeResoIst, 4,2);
     GridLayout->addWidget(EinheitLaengeResoIst, 4,3);
@@ -134,20 +129,21 @@ void AfuBerechnungTrapantenne::triggeredButtonBerechnenClicked()
 {
     // Auswahl der Welle
     QString s_AuswahlWelle = ComboWelle->currentText();
+    QString s_Halbwelle;
+    QString s_Viertelwelle;
+
     if (s_AuswahlWelle == "Halbwelle")
     {
-        QString s_Halbwelle = "2";
-        EditWelle->setText(s_Halbwelle);
+        s_Halbwelle = "2";
+        f_PufferWelle = 2.0;
     }
     else if (s_AuswahlWelle == "Viertelwelle")
     {
-        QString s_Viertelwelle = "4";
-        EditWelle->setText(s_Viertelwelle);
+        s_Viertelwelle = "4";
+        f_PufferWelle = 4.0;
     }
 
-
     f_PufferFreqIst = EditResoFreq->text().toFloat();
-    f_PufferWelle = EditWelle->text().toFloat();
 
     // Berechnung der Laenge fuer Resonanz Ist
     f_Puffer = f_Licht / f_PufferFreqIst / f_PufferWelle;
@@ -174,7 +170,6 @@ void AfuBerechnungTrapantenne::triggeredButtonLeerenClicked()
 {
     EditDraht->clear();
     LabelDiffErgebnis->clear();
-    ///LabelDrahtIstErgebnis->clear();
     EditFreqSoll->clear();
     EditLaengeIst->clear();
     EditLaengeResoIst->clear();
