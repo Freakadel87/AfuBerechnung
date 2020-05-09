@@ -35,6 +35,7 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QTextEdit>
+#include <QPixmap>
 
 class AfuBerechnung : public QMainWindow
 {
@@ -57,6 +58,8 @@ private:
     AfuBerechnungEinstellungen *WidgetEinstellungen;
 
     QWidget *myWidget = new QWidget();
+
+    QLabel *LabelStartbild;
 
     QMenu *menuProgramm;
     QAction *menuDateiBeenden;

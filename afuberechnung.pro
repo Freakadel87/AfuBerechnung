@@ -60,3 +60,6 @@ HEADERS += \
 
 FORMS +=
 
+RESOURCES += \
+    Bilder.qrc
+

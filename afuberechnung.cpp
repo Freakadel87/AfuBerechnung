@@ -112,6 +112,13 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     ButtonResoTrans->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonResoTrans->setGeometry(25,295,85,85);
 
+    // Bild auf der Startseite einfuegen
+    QPixmap Startbild("C:/Users/Büro/Pictures/Amateurfunk_Wellenlaenge.JPG");
+/// Zu erledigen: Bei Projektweitergabe (Release) kann der C:/-Pfad nicht bestehen bleiben?
+    LabelStartbild = new QLabel(this);
+    LabelStartbild->setPixmap(Startbild);
+    LabelStartbild->setGeometry(325,250,250,250);
+
     // Verbindung der Buttons
     QObject::connect(ButtonFrequenz, SIGNAL(clicked(bool)), this, SLOT(triggeredFrequenzBerechnen()));
     QObject::connect(ButtonInduktivitaet, SIGNAL(clicked(bool)), this, SLOT(triggeredInduktivitaetBerechnen()));
