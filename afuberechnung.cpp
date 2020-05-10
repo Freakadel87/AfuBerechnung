@@ -123,7 +123,8 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
 
     // Bild auf der Startseite einfuegen
     QPixmap Startbild("C:/Users/Büro/Pictures/Amateurfunk_Wellenlaenge.JPG");
-/// Zu erledigen: Bei Projektweitergabe (Release) kann der C:/-Pfad nicht bestehen bleiben?
+
+/// Zu erledigen: Bei Projektweitergabe (Release) kann der C:/ -Pfad nicht bestehen bleiben?
     LabelStartbild = new QLabel(this);
     LabelStartbild->setPixmap(Startbild);
     LabelStartbild->setGeometry(325,250,250,250);
