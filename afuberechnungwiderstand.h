@@ -2,9 +2,12 @@
 #define AFUBERECHNUNGWIDERSTAND_H
 
 // Interne Includes
+#include "stdlib.h"
 
 // Systeminterne Includes
 #include <math.h>
+#include <string>
+#include <iostream>
 
 // Qt Includes
 #include <QMainWindow>
@@ -32,6 +35,8 @@ private:
     QLabel *LabelSchritt_1;
     QComboBox *ComboBox_1;
     QLabel *LabelSchritt_2;
+    QHBoxLayout *HLayoutCombo;
+    QVBoxLayout *VLayoutButton;
 
     QComboBox *ComboFirstRing;
     QComboBox *ComboSecondRing;
@@ -39,8 +44,17 @@ private:
     QComboBox *ComboMultiplier;
     QComboBox *ComboTolerance;
     QComboBox *ComboTemperatur;
-    QLineEdit *EditWiderstandswert;
-    QLabel *LabelWiderstandswert;
+    QLabel *LabelWiderstandswertOhm;
+    QLabel *LabelWiderstandswertKiloOhm;
+    QLabel *LabelWiderstandswertMegaOhm;
+    QLabel *LabelErgebnisOhm;
+    QLabel *LabelErgebnisKiloOhm;
+    QLabel *LabelErgebnisMegaOhm;
+
+    QLabel *LabelMaxTolWert;
+    QLabel *LabelErgebnisMaxTol;
+    QLabel *LabelMinTolWert;
+    QLabel *LabelErgebnisMinTol;
 
     // Erstelle Buttons
     QPushButton *ButtonBeenden;

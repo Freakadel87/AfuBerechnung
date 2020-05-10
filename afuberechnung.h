@@ -104,6 +104,7 @@ private:
     QPushButton *ButtonBeenden;
     QPushButton *ButtonDrahtlaenge;
     QPushButton *ButtonResoTrans;
+    QPushButton *ButtonWiderstand;
 
 public:
     AfuBerechnung(QWidget *parent = 0);

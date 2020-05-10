@@ -111,6 +111,15 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     ButtonResoTrans->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonResoTrans->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonResoTrans->setGeometry(25,295,85,85);
+    ButtonWiderstand = new QPushButton("Widerstand\n bestimmen", this);
+    ButtonWiderstand->setStyleSheet("QPushButton {image: url(H:/Github/Bilder/Widerstand.jpg);}");
+    ButtonWiderstand->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
+    ButtonWiderstand->setFont(QFont("Arial", 10, QFont::Normal));
+    ButtonWiderstand->setGeometry(125,295,85,85);
+
+//    QIcon iconBildWiderstand;
+//    iconBildWiderstand.addFile("H:/Github/Bilder/Widerstand.jpg");
+//    ButtonWiderstand->setIcon(iconBildWiderstand);
 
     // Bild auf der Startseite einfuegen
     QPixmap Startbild("C:/Users/Büro/Pictures/Amateurfunk_Wellenlaenge.JPG");
@@ -129,6 +138,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     QObject::connect(ButtonDrahtlaenge, SIGNAL(clicked(bool)), this, SLOT(triggeredDrahtlaengeBerechnen()));
     QObject::connect(ButtonBeenden, SIGNAL(clicked(bool)), this, SLOT(triggeredBeenden()));
     QObject::connect(ButtonResoTrans, SIGNAL(clicked(bool)), this, SLOT(triggeredResoTransBerechnen()));
+    QObject::connect(ButtonWiderstand, SIGNAL(clicked(bool)), this, SLOT(triggeredWiderstand()));
 }
 
 void AfuBerechnung::triggeredBeenden()
