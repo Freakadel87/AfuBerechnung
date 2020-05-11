@@ -1,5 +1,7 @@
 #include "afuberechnungwiderstand.h"
 
+// Variablendeklaration
+
 AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(parent)
 {
     LabelSchritt_1 = new QLabel("Schritt 1: Wählen Sie bitte die Anzahl der Bänder.");
@@ -12,10 +14,7 @@ AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(pare
     LabelSchritt_2  = new QLabel("Schritt 2: Wählen Sie bitte den Farbcode aus");
     LabelSchritt_2->setFont(QFont("Arial", 11, QFont::Normal));
 
-    QString s_Auswahl = ComboBox_1->currentText();
 
-    //if (s_Auswahl == "5 Ringe")
-    //   {
     ComboFirstRing = new QComboBox;
     QStringList s_ListFirst;
     s_ListFirst <<"<leer>"<<"0"<<"1"<<"2"<<"3"<<"4"<<"5"<<"6"<<"7"<<"8"<<"9";
@@ -94,6 +93,7 @@ AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(pare
     HLayoutCombo->addWidget(ComboThirdRing);
     HLayoutCombo->addWidget(ComboMultiplier);
     HLayoutCombo->addWidget(ComboTolerance);
+    HLayoutCombo->addWidget(ComboTemperatur);
 
     LabelErgebnisOhm = new QLabel;
     LabelErgebnisOhm->setFont(QFont("Arial", 11, QFont::Normal));
@@ -175,17 +175,45 @@ void AfuBerechnungWiderstand::triggeredButtonBerechnenClicked()
     double d_WertMegaOhm = 0.0;
 
     // Auslesen der Pull-Down Menues
-    d_WertFirst = ComboFirstRing->currentText().toDouble();
-    d_WertSecond = ComboSecondRing->currentText().toDouble();
-    d_WertThird = ComboThirdRing->currentText().toDouble();
+    QString s_FirstRing;
+    QString s_SecondRing;
+    QString s_ThirdRing;
 
+    if (s_FirstRing == "<leer>")
+    {
+        d_WertFirst = 1.0;
+    }
+    else
+    {
+        d_WertFirst = ComboFirstRing->currentText().toDouble();
+    }
+
+    if (s_SecondRing == "<leer>")
+    {
+        d_WertSecond = 1.0;
+    }
+    else
+    {
+        d_WertSecond = ComboSecondRing->currentText().toDouble();
+    }
+
+    if (s_ThirdRing == "<leer>")
+    {
+        d_WertThird = 1.0;
+    }
+    else
+    {
+        d_WertThird = ComboThirdRing->currentText().toDouble();
+    }
+
+    /// Zu erledigen: Auswahl 4 Ringe wird die Rechnung nicht korrekt ausgeführt
     d_WertPuffer = d_WertFirst * 10 + d_WertSecond;
     d_WertErgebnis = d_WertPuffer * 10 + d_WertThird;
 
     // Auswertung des vierten Ringes (Multiplikator)
     QString s_WertMultiplier = ComboMultiplier->currentText();
 
-    if (s_WertMultiplier == "0.01") /// Zu erledigen: Datentyp double benoetigt
+    if (s_WertMultiplier == "0.01")
     {
         d_WertMultiplier = 0.0100;
         d_WertOhmPuffer = d_WertErgebnis * d_WertMultiplier;
@@ -254,7 +282,7 @@ void AfuBerechnungWiderstand::triggeredButtonBerechnenClicked()
     // Auswertung des fuenften Ringes (Toleranz)
     QString s_WertToleranz = ComboTolerance->currentText();
 
-    if (s_WertToleranz == "0.05%") /// Zu erledigen: Datentyp double benoetigt
+    if (s_WertToleranz == "0.05%")
     {
         d_WertTolPuffer = d_WertOhm /100.0 * 0.05;
         d_WertMinTol = d_WertOhm - d_WertTolPuffer;
