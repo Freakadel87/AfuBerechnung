@@ -163,16 +163,16 @@ void AfuBerechnungWiderstand::triggeredButtonBeendenClicked()
 void AfuBerechnungWiderstand::triggeredButtonBerechnenClicked()
 {
     // Variablendefinition fuer Multiplikator
-    double d_WertFirst = 0;
-    double d_WertSecond = 0;
-    double d_WertThird = 0;
-    double d_WertPuffer = 0;
-    double d_WertErgebnis = 0;
-    double d_WertOhmPuffer = 0;
-    double d_WertMultiplier = 0.0;
-    double d_WertOhm = 0.0;
-    double d_WertKiloOhm = 0.0;
-    double d_WertMegaOhm = 0.0;
+    double d_WertFirst {0.0};
+    double d_WertSecond {0.0};
+    double d_WertThird {0.0};
+    double d_WertPuffer {0.0};
+    double d_WertErgebnis {0.0};
+    double d_WertOhmPuffer {0.0};
+    double d_WertMultiplier {0.0};
+    double d_WertOhm {0.0};
+    double d_WertKiloOhm {0.0};
+    double d_WertMegaOhm {0.0};
 
     // Auslesen der Pull-Down Menues
     QString s_FirstRing;
