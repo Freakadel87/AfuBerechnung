@@ -31,10 +31,12 @@ AfuBerechnungInduktivitaet::AfuBerechnungInduktivitaet(QWidget *parent) : QDialo
     EditEingabeF->setFont(QFont("Arial", 11, QFont::Thin));
     EditEingabeF->setInputMask("00000.00");
     EditEingabeF->setCursorPosition(0);
+    EditEingabeF->setToolTip("Geben Sie hier Ihre Frequenz in [MHz] ein.");
     EditEingabeC = new QLineEdit;
     EditEingabeC->setFont(QFont("Arial", 11, QFont::Thin));
     EditEingabeC->setInputMask("00000.00");
     EditEingabeC->setCursorPosition(0);
+    EditEingabeC->setToolTip("Geben Sie hier Ihre Kapazität in [pF] ein.");
 
     // Erstelle Buttons
     ButtonBeenden = new QPushButton(tr("Beenden"));

@@ -53,7 +53,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBerechnenTrap = menuBerechnen->addAction("Trapantenne berechnen...", this, SLOT(triggeredTrapBerechnen()));
     menuBerechnenResoTrans = menuBerechnen->addAction("Resonanztransformator berechnen...", this, SLOT(triggeredResoTransBerechnen()));
     menuBerechnen->addSeparator();
-    menuBerechnenWiderstand = menuBerechnen->addAction("Widerstand", this, SLOT(triggeredWiderstand()));
+    menuBerechnenWiderstand = menuBerechnen->addAction("Widerstand bestimmen...", this, SLOT(triggeredWiderstand()));
 
     // Erstelle Menue --> Optionen --> ...
     menuOptionen = menuBar()->addMenu(tr("Optionen"));

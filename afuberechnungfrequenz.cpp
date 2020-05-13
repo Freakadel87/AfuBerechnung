@@ -25,10 +25,12 @@ AfuBerechnungFrequenz::AfuBerechnungFrequenz(QWidget *parent) : QDialog(parent)
     EditEingabeL->setFont(QFont("Arial", 11, QFont::Thin));
     EditEingabeL->setInputMask("00000.00");
     EditEingabeL->setCursorPosition(0);
+    EditEingabeL->setToolTip("Geben Sie hier Ihre Indultivität in [µH] ein.");
     EditEingabeC = new QLineEdit;
     EditEingabeC->setFont(QFont("Arial", 11, QFont::Thin));
     EditEingabeC->setInputMask("00000.00");
     EditEingabeC->setCursorPosition(0);
+    EditEingabeC->setToolTip("Geben Sie hier Ihre Kapazität [pF] ein.");
 
     // Erstelle Buttons
     ButtonBeenden = new QPushButton(tr("Beenden"));

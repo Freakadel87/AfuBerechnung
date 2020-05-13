@@ -16,6 +16,7 @@ AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(pare
 
 
     ComboFirstRing = new QComboBox;
+    ComboFirstRing->setToolTip("Wählen Sie hier den Wert des 1. Ringes aus.");
     QStringList s_ListFirst;
     s_ListFirst <<"<leer>"<<"0"<<"1"<<"2"<<"3"<<"4"<<"5"<<"6"<<"7"<<"8"<<"9";
     ComboFirstRing->addItems(s_ListFirst);
@@ -34,6 +35,7 @@ AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(pare
     ComboFirstRing->setItemData(10, QBrush(QColor::fromRgb(255,255,255)), Qt::BackgroundRole);
 
     ComboSecondRing = new QComboBox;
+    ComboSecondRing->setToolTip("Wählen Sie hier den Wert des 2. Ringes aus.");
     QStringList s_ListSecond;
     s_ListSecond <<"<leer>"<<"0"<<"1"<<"2"<<"3"<<"4"<<"5"<<"6"<<"7"<<"8"<<"9";
     ComboSecondRing->addItems(s_ListSecond);
@@ -52,6 +54,7 @@ AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(pare
     ComboSecondRing->setItemData(10, QBrush(QColor::fromRgb(255,255,255)), Qt::BackgroundRole);
 
     ComboThirdRing = new QComboBox;
+    ComboThirdRing->setToolTip("Wählen Sie hier den Wert des 3. Ringes aus.");
     QStringList s_ListThird;
     s_ListThird <<"<leer>"<<"0"<<"1"<<"2"<<"3"<<"4"<<"5"<<"6"<<"7"<<"8"<<"9";
     ComboThirdRing->addItems(s_ListThird);
@@ -70,18 +73,21 @@ AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(pare
     ComboThirdRing->setItemData(10, QBrush(QColor::fromRgb(255,255,255)), Qt::BackgroundRole);
 
     ComboMultiplier = new QComboBox;
+    ComboMultiplier->setToolTip("Wählen Sie hier den Multiplikator (4. Ring) aus.");
     QStringList s_ListMultiplier;
     s_ListMultiplier <<"<leer>"<<"0.01"<<"0.1"<<"1"<<"10"<<"100"<<"1k"<<"10k"<<"100k"<<"1M"<<"10M";
     ComboMultiplier->addItems(s_ListMultiplier);
     ComboMultiplier->setFont(QFont("Arial", 11, QFont::Normal));
 
     ComboTolerance = new QComboBox;
+    ComboTolerance->setToolTip("Wählen Sie hier die Toleranz (5. Ring) aus.");
     QStringList s_ListTolerance;
     s_ListTolerance <<"<leer>"<<"10%"<<"5%"<<"1%"<<"2%"<<"0.5%"<<"0.25%"<<"0.1%"<<"0.05%";
     ComboTolerance->addItems(s_ListTolerance);
     ComboTolerance->setFont(QFont("Arial", 11, QFont::Normal));
 
     ComboTemperatur = new QComboBox;
+    ComboTemperatur->setToolTip("Wählen Sie hier den Temperaturkoeffizienten (6. Ring) aus.");
     QStringList s_ListTemperature;
     s_ListTemperature <<"<leer>"<<"100ppm"<<"50ppm"<<"15ppm"<<"25ppm";
     ComboTemperatur->addItems(s_ListTemperature);

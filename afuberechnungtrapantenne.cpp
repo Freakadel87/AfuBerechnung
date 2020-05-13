@@ -41,16 +41,19 @@ AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(pa
     EditResoFreq->setFont(QFont("Arial", 11, QFont::Normal));
     EditResoFreq->setInputMask("000.00");
     EditResoFreq->setCursorPosition(0);
+    EditResoFreq->setToolTip("Geben Sie hier Ihre Frequenz in [MHz] ein.");
 
     EditLaengeIst = new QLineEdit;
     EditLaengeIst->setFont(QFont("Arial", 11, QFont::Normal));
     EditLaengeIst->setInputMask("00.00");
     EditLaengeIst->setCursorPosition(0);
+    EditLaengeIst->setToolTip("Geben Sie hier die Ist-Länge in [m] ein.");
 
     EditFreqSoll = new QLineEdit;
     EditFreqSoll->setFont(QFont("Arial", 11, QFont::Normal));
     EditFreqSoll->setInputMask("000.00");
     EditFreqSoll->setCursorPosition(0);
+    EditFreqSoll->setToolTip("Geben Sie hier die Soll-Frequenz in [MHz] ein.");
 
     ComboWelle = new QComboBox;
     QStringList s_ListWelle;
@@ -62,16 +65,19 @@ AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(pa
     EditLaengeResoIst->setFont(QFont("Arial", 11, QFont::Normal));
     EditLaengeResoIst->setInputMask("00.00");
     EditLaengeResoIst->setCursorPosition(0);
+    EditLaengeResoIst->setToolTip("Geben Sie hier die Ist-Resonanzlänge in [m] ein.");
 
     EditLaengeSoll = new QLineEdit;
     EditLaengeSoll->setFont(QFont("Arial", 11, QFont::Normal));
     EditLaengeSoll->setInputMask("00.00");
     EditLaengeSoll->setCursorPosition(0);
+    EditLaengeSoll->setToolTip("Geben Sie hier die Soll-Länge in [m] ein.");
 
     EditDraht = new QLineEdit;
     EditDraht->setFont(QFont("Arial", 11, QFont::Normal));
     EditDraht->setInputMask("00.00");
     EditDraht->setCursorPosition(0);
+    EditDraht->setToolTip("Geben Sie hier den VF-Draht ein");
 
     LabelDrahtIst = new QLabel;
     LabelDrahtIst->setFont(QFont("Arial", 11, QFont::Normal));
