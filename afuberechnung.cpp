@@ -144,7 +144,28 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
 
 void AfuBerechnung::triggeredBeenden()
 {
-    close();
+    // Abfrage ob das Programm tatsaechlich beendet werden soll
+    int ret {0};
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Question);
+    msgBox.setWindowTitle("Programmbeendung");
+    msgBox.setText(tr("Wollen Sie das Programm wirklich beenden?"));
+    msgBox.addButton(QMessageBox::Yes);
+    msgBox.addButton(QMessageBox::No);
+    msgBox.setButtonText(QMessageBox::Yes, tr("Ja"));
+    msgBox.setButtonText(QMessageBox::No, tr("Nein"));
+    msgBox.setDefaultButton(QMessageBox::No);
+    msgBox.setEscapeButton(QMessageBox::No);
+    ret = msgBox.exec();
+
+    if (ret == QMessageBox::Yes)
+    {
+        close();
+    }
+    else if (ret == QMessageBox::No)
+    {
+        return;
+    }
 }
 
 void AfuBerechnung::triggeredFrequenzBerechnen()
