@@ -80,17 +80,23 @@ void AfuBerechnungInduktivitaet::triggeredButtonBerechnenClicked()
     QString s_TextC = EditEingabeC->text();
     QString s_TextF = EditEingabeF->text();
 
+    // Felder nach Korrektur wieder weiß
+    EditEingabeC->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
+    EditEingabeF->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
+
     if (s_TextC == ".")
     {
         QMessageBox::warning(this, tr("Fehler bei der Eingabe!"),
                              tr("Es wurde das Feld für die Kapazität nicht korrekt besetzt!\n"
                                 "Bitte prüfen Sie Ihre Eingabe noch einmal."));
+        EditEingabeC->setStyleSheet("QLineEdit {background-color : rgb(255,48,48); color : black;}");
     }
     if (s_TextF == ".")
     {
         QMessageBox::warning(this, tr("Fehler bei der Eingabe!"),
                              tr("Es wurde das Feld für die Frequenz nicht korrekt besetzt!\n"
                                 "Bitte prüfen Sie Ihre Eingabe noch einmal."));
+        EditEingabeF->setStyleSheet("QLineEdit {background-color : rgb(255,48,48); color : black;}");
     }
     /// Noch zu erledigen:
     /// Die Formel arbeitet nicht richtig, oder die Formel von Frank ist falsch
@@ -110,4 +116,6 @@ void AfuBerechnungInduktivitaet::triggeredButtonLeerenClicked()
     LabelLoesung->clear();
     EditEingabeC->clear();
     EditEingabeF->clear();
+    EditEingabeC->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
+    EditEingabeF->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
 }

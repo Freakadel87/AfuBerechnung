@@ -36,6 +36,7 @@
 #include <QGridLayout>
 #include <QTextEdit>
 #include <QPixmap>
+#include <windows.h>
 
 class AfuBerechnung : public QMainWindow
 {

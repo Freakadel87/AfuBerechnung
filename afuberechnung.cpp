@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     AfuBerechnung myWidget;
     myWidget.setWindowTitle("Berechnungen für Antennenbau");
-    myWidget.setGeometry(350, 350, 600, 500); // x-Koordinate, y-Koordinate, Fensterhoehe und Fensterbreite
+    myWidget.setGeometry(800, 400, 600, 500); // x-Koordinate, y-Koordinate, Fensterhoehe und Fensterbreite
     myWidget.show();
     return a.exec();
 }
@@ -148,8 +148,10 @@ void AfuBerechnung::triggeredBeenden()
     int ret {0};
     QMessageBox msgBox;
     msgBox.setIcon(QMessageBox::Question);
-    msgBox.setWindowTitle("Programmbeendung");
-    msgBox.setText(tr("Wollen Sie das Programm wirklich beenden?"));
+    msgBox.setFont(QFont("Arial", 11, QFont::Normal));
+    msgBox.setWindowTitle("AfuBerechnung beenden?");
+    msgBox.setText(tr("Wollen Sie das Programm wirklich beenden?\n"
+                      "Alle bisher eingegebenen Daten gehen dadurch verloren."));
     msgBox.addButton(QMessageBox::Yes);
     msgBox.addButton(QMessageBox::No);
     msgBox.setButtonText(QMessageBox::Yes, tr("Ja"));
@@ -158,7 +160,7 @@ void AfuBerechnung::triggeredBeenden()
     msgBox.setEscapeButton(QMessageBox::No);
     ret = msgBox.exec();
 
-    if (ret == QMessageBox::Yes)
+    if (ret == QMessageBox::Yes) // Programm wird beendet
     {
         close();
     }

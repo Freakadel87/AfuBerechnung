@@ -74,17 +74,23 @@ void AfuBerechnungFrequenz::triggeredButtonBerechnenClicked()
     QString s_TextC = EditEingabeC->text();
     QString s_TextL = EditEingabeL->text();
 
+    // Felder nach Korrektur wieder weiß
+    EditEingabeC->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
+    EditEingabeL->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
+
     if (s_TextC == ".")
     {
         QMessageBox::warning(this, tr("Fehler bei der Eingabe!"),
                              tr("Es wurde das Feld für die Kapazität nicht korrekt besetzt!\n"
                                 "Bitte prüfen Sie Ihre Eingabe noch einmal."));
+        EditEingabeC->setStyleSheet("QLineEdit {background-color : rgb(255,48,48); color : black;}");
     }
     if (s_TextL == ".")
     {
         QMessageBox::warning(this, tr("Fehler bei der Eingabe!"),
                              tr("Es wurde das Feld für die Induktivität nicht korrekt besetzt!\n"
                                 "Bitte prüfen Sie Ihre Eingabe noch einmal."));
+        EditEingabeL->setStyleSheet("QLineEdit {background-color : rgb(255,48,48); color : black;}");
     }
 
     // Thomsonsche Schwingungsformel
@@ -103,4 +109,6 @@ void AfuBerechnungFrequenz::triggeredButtonLeerenClicked()
     LabelLoesung->clear();
     EditEingabeC->clear();
     EditEingabeL->clear();
+    EditEingabeC->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
+    EditEingabeL->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
 }
