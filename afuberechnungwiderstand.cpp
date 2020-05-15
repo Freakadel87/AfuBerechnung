@@ -14,7 +14,7 @@ AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(pare
     LabelSchritt_2  = new QLabel("Schritt 2: Wählen Sie bitte den Farbcode aus");
     LabelSchritt_2->setFont(QFont("Arial", 11, QFont::Normal));
 
-
+    // Erstellung der Pull-Down Menues
     ComboFirstRing = new QComboBox;
     ComboFirstRing->setToolTip("Wählen Sie hier den Wert des 1. Ringes aus.");
     QStringList s_ListFirst;
