@@ -42,7 +42,7 @@ class AfuBerechnung : public QMainWindow
 {
     Q_OBJECT
 
-private:
+private:    
     AfuBerechnungFrequenz *BerechnungFrequenz;
     AfuBerechnungInduktivitaet *BerechnungInduktivitaet;
     AfuBerechnungKapazitaet *BerechnungKapazitaet;

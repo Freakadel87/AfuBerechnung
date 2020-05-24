@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file alias="edit-cut">C:/Users/Büro/Desktop/edit-cut.svg</file>
+    </qresource>
+</RCC>

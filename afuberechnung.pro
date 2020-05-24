@@ -61,5 +61,6 @@ HEADERS += \
 FORMS +=
 
 RESOURCES += \
-    Bilder.qrc
+    Bilder.qrc \
+    icons.qrc
 
