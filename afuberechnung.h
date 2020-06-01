@@ -16,6 +16,7 @@
 #include "afuberechnungwiderstand.h"
 #include "afuberechnungeinstellungen.h"
 #include "afuberechnungfilter.h"
+#include "afuberechnungentfernung.h"
 
 /// Qt-includes
 #include <QApplication>
@@ -57,6 +58,7 @@ private:
     AfuBerechnungResoTrans *BerechnungResoTrans;
     AfuBerechnungWiderstand *Widerstand;
     AfuBerechnungEinstellungen *WidgetEinstellungen;
+    AfuBerechnungEntfernung *WidgetEntfernung;
 
     QWidget *myWidget = new QWidget();
 
@@ -82,6 +84,7 @@ private:
     QAction *menuBerechnenTrap;
     QAction *menuBerechnenResoTrans;
     QAction *menuBerechnenWiderstand;
+    QAction *menuBerechnenEntfernung;
 
     QMenu *menuOptionen;
     QAction *menuEinstellungen;
@@ -127,6 +130,7 @@ private slots:
     void triggeredLuftspuleBerechnen();
     void triggeredTrapBerechnen();
     void triggeredResoTransBerechnen();
+    void triggeredEntfernungBerechnen();
     void triggeredFilter();
     void triggeredWattDbm();
     void triggeredWiderstand();

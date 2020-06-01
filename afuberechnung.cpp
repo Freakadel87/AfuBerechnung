@@ -33,7 +33,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBearbeitenUndo->setIcon(QIcon::fromTheme("document-undo"));
     menuBearbeiten->addSeparator();
     menuBearbeitenCut = menuBearbeiten->addAction("Ausschneiden", this, SLOT(triggeredCut()));
-    menuBearbeitenCut->setIcon(QIcon::fromTheme("C:/Users/Büro/Desktop/edit-cut.svg"));
+   // menuBearbeitenCut->setIcon(QIcon::fromTheme("C:/Users/Büro/Desktop/edit-cut.svg"));
     menuBearbeiten->addSeparator();
     menuBearbeitenCopy = menuBearbeiten->addAction("Kopieren", this, SLOT(triggeredCopy()));
     menuBearbeitenCopy->setIcon(QIcon::fromTheme("copy.png"));
@@ -54,13 +54,15 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBerechnenResoTrans = menuBerechnen->addAction("Resonanztransformator berechnen...", this, SLOT(triggeredResoTransBerechnen()));
     menuBerechnen->addSeparator();
     menuBerechnenWiderstand = menuBerechnen->addAction("Widerstand bestimmen...", this, SLOT(triggeredWiderstand()));
+    menuBerechnen->addSeparator();
+    menuBerechnenEntfernung = menuBerechnen->addAction("Entfernung auf der Kugeloberfläche berechnen...", this, SLOT(triggeredEntfernungBerechnen()));
 
     // Erstelle Menue --> Optionen --> ...
     menuOptionen = menuBar()->addMenu(tr("Optionen"));
     menuOptionen->setFont(QFont("Arial", 10, QFont::Normal));
     menuEinstellungen = menuOptionen->addAction("Einstellungen...", this, SLOT(triggeredEinstellungen()));
 
-    // erstelle Menue --> Hilfe --> ...
+    // Erstelle Menue --> Hilfe --> ...
     menuHilfe = menuBar()->addMenu(tr("Hilfe"));
     menuHilfe->setFont(QFont("Arial", 10, QFont::Normal));
     menuHilfeInfo = menuHilfe->addAction("Informationen", this, SLOT(triggeredInfo()));
@@ -270,6 +272,13 @@ void AfuBerechnung::triggeredWiderstand()
     Widerstand = new AfuBerechnungWiderstand(this);
     Widerstand->setWindowTitle("Widerstands-Farbcodetabelle");
     Widerstand->show();
+}
+
+void AfuBerechnung::triggeredEntfernungBerechnen()
+{
+    WidgetEntfernung = new AfuBerechnungEntfernung(this);
+    WidgetEntfernung->setWindowTitle("Exakte Entfernungsberechnung für die Kugeloberfläche");
+    WidgetEntfernung->show();
 }
 
 void AfuBerechnung::triggeredEinstellungen()
