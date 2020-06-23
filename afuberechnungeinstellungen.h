@@ -17,6 +17,7 @@
 #include <QColorDialog>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QSettings>
 
 class AfuBerechnungEinstellungen : public QDialog
 {
@@ -35,13 +36,15 @@ private:
     QHBoxLayout *UnteresLayout;
     QPushButton *ButtonSchriftart;
     QPushButton *ButtonSchriftfarbe;
-    QPushButton *ButtonBeenden;
+    QPushButton *ButtonAbbrechen;
     QPushButton *ButtonOk;
 
 private slots:
-    void triggeredButtonBeendenClicked();
+    void triggeredButtonAbbrechenClicked();
     void triggeredButtonOkClicked();
     void triggeredButtonSchriftartClicked();
     void triggeredButtonSchriftfarbeClicked();
+    void LoadConfig();
+    void SaveConfig();
 };
 #endif // AFUBERECHNUNGEINSTELLUNGEN_H
