@@ -66,3 +66,6 @@ RESOURCES += \
     Bilder.qrc \
     icons.qrc
 
+DISTFILES += \
+    Projektnotizen
+

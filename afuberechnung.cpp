@@ -89,35 +89,42 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     ButtonKapazitaet->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonKapazitaet->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonKapazitaet->setGeometry(225,75,85,85);
+    LabelButton2 = new QLabel("Sonstige Berechnungen:", this);
+    LabelButton2->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
+    LabelButton2->setFont(QFont("Arial", 10, QFont::Bold));
+    LabelButton2->setGeometry(25,165,450,25); //x, y, Laenge, Breite
     ButtonSpule = new QPushButton("Spule \n berechnen", this);
     ButtonSpule->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonSpule->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonSpule->setGeometry(25,185,85,85);
+    ButtonSpule->setGeometry(25,195,85,85);
     ButtonLuftspule = new QPushButton("Luftspule \n berechnen", this);
     ButtonLuftspule->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonLuftspule->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonLuftspule->setGeometry(125,185,85,85);
+    ButtonLuftspule->setGeometry(125,195,85,85);
     ButtonTrap = new QPushButton("Traps \n berechnen", this);
     ButtonTrap->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonTrap->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonTrap->setGeometry(225,185,85,85);
+    ButtonTrap->setGeometry(225,195,85,85);
     ButtonDrahtlaenge = new QPushButton("Drahtlänge \n berechnen", this);
     ButtonDrahtlaenge->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonDrahtlaenge->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonDrahtlaenge->setGeometry(325,185,85,85);
+    ButtonDrahtlaenge->setGeometry(325,195,85,85);
     ButtonBeenden = new QPushButton("Beenden", this);
     ButtonBeenden->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonBeenden->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonBeenden->setGeometry(25,395,85,42);
+    ButtonBeenden->setGeometry(25,405,85,42);
     ButtonResoTrans = new QPushButton("Resonanz- \n transform. \n berechnen", this);
     ButtonResoTrans->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonResoTrans->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonResoTrans->setGeometry(25,295,85,85);
+    ButtonResoTrans->setGeometry(25,305,85,85);
     ButtonWiderstand = new QPushButton("Widerstand\n bestimmen", this);
     ButtonWiderstand->setStyleSheet("QPushButton {image: url(H:/Github/Bilder/Widerstand.jpg);}");
     ButtonWiderstand->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonWiderstand->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonWiderstand->setGeometry(125,295,85,85);
+    ButtonWiderstand->setGeometry(125,305,85,85);
+    CheckBoxFenster = new QCheckBox("Fenster im Vordergrund", this);
+    CheckBoxFenster->setFont(QFont("Arial", 10, QFont::Normal));
+    CheckBoxFenster->setGeometry(25,430,200,85);
 
 //    QIcon iconBildWiderstand;
 //    iconBildWiderstand.addFile("H:/Github/Bilder/Widerstand.jpg");
@@ -142,6 +149,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     QObject::connect(ButtonBeenden, SIGNAL(clicked(bool)), this, SLOT(triggeredBeenden()));
     QObject::connect(ButtonResoTrans, SIGNAL(clicked(bool)), this, SLOT(triggeredResoTransBerechnen()));
     QObject::connect(ButtonWiderstand, SIGNAL(clicked(bool)), this, SLOT(triggeredWiderstand()));
+    QObject::connect(CheckBoxFenster, SIGNAL(clicked(bool)), this, SLOT(triggeredCheckBoxChecked()));
 }
 
 void AfuBerechnung::triggeredBeenden()
@@ -165,6 +173,7 @@ void AfuBerechnung::triggeredBeenden()
     if (ret == QMessageBox::Yes) // Programm wird beendet
     {
         close();
+        myWidget->deleteLater(); // Zerstoere alle Fenster nach Beendigung des Programms
     }
     else if (ret == QMessageBox::No)
     {
@@ -209,7 +218,7 @@ void AfuBerechnung::triggeredDrahtlaengeBerechnen()
 
 void AfuBerechnung::triggeredLuftspuleBerechnen()
 {
-    /// Zu erledigen
+    /// Zu erledigen: Fehlfunktion
     //    BerechnungLuftspule = new AfuBerechnungLuftspule(this);
     //    BerechnungLuftspule->setWindowTitle("Berechnung der Luftspule");
     //    BerechnungLuftspule->show();
@@ -287,6 +296,21 @@ void AfuBerechnung::triggeredEinstellungen()
     WidgetEinstellungen = new AfuBerechnungEinstellungen(this);
     WidgetEinstellungen->setWindowTitle("Einstellungen");
     WidgetEinstellungen->show();
+}
+
+void AfuBerechnung::triggeredCheckBoxChecked()
+{
+    if (CheckBoxFenster->isChecked())
+    {
+        /// Zu erledigen: Fenster bleibt nicht im Vordergrund...welcher BEfehl bei QWidget???
+        myWidget->activateWindow();
+        myWidget->raise();
+    }
+    else
+    {
+        /// Zu erledigen: Fenster kann in den Hintergrund versetzt werden.
+        /// Zu erledigen: Bit 'isChecked' mit QSettings abspeichern
+    }
 }
 
 void AfuBerechnung::triggeredCut()

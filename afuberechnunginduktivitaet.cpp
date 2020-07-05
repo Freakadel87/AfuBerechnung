@@ -50,19 +50,19 @@ AfuBerechnungInduktivitaet::AfuBerechnungInduktivitaet(QWidget *parent) : QDialo
     ButtonLeeren->setFont(QFont("Arial", 11, QFont::Thin));
 
     QGridLayout *GridLayout = new QGridLayout(this);
-    GridLayout->addWidget(LabelEingabeC, 0, 0);
-    GridLayout->addWidget(EditEingabeC, 0, 2);
-    GridLayout->addWidget(LabelEinheitC, 0, 3);
-    GridLayout->addWidget(LabelEingabeF, 1, 0);
-    GridLayout->addWidget(EditEingabeF, 1, 2);
-    GridLayout->addWidget(LabelEinheitF, 1, 3);
-    GridLayout->addWidget(LabelLoesung, 3, 0);
-    GridLayout->addWidget(LabelAusgabeL, 5, 0);
-    GridLayout->addWidget(LabelLoesung, 5, 2);
-    GridLayout->addWidget(LabelEinheitL, 5, 3);
-    GridLayout->addWidget(ButtonBerechnen, 6, 0);
-    GridLayout->addWidget(ButtonLeeren, 6, 1);
-    GridLayout->addWidget(ButtonBeenden, 6, 2);
+    GridLayout->addWidget(LabelEingabeC,0,0);
+    GridLayout->addWidget(EditEingabeC,0,2);
+    GridLayout->addWidget(LabelEinheitC,0,3);
+    GridLayout->addWidget(LabelEingabeF,1,0);
+    GridLayout->addWidget(EditEingabeF,1,2);
+    GridLayout->addWidget(LabelEinheitF,1,3);
+    GridLayout->addWidget(LabelLoesung,3,0);
+    GridLayout->addWidget(LabelAusgabeL,5,0);
+    GridLayout->addWidget(LabelLoesung,5,2);
+    GridLayout->addWidget(LabelEinheitL,5,3);
+    GridLayout->addWidget(ButtonBerechnen,6,0);
+    GridLayout->addWidget(ButtonLeeren,7,0);
+    GridLayout->addWidget(ButtonBeenden,8,0);
 
     QObject::connect(ButtonBerechnen, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBerechnenClicked()));
     QObject::connect(ButtonLeeren, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonLeerenClicked()));

@@ -72,35 +72,6 @@ AfuBerechnungEntfernung::AfuBerechnungEntfernung(QWidget *parent) : QDialog(pare
     QObject::connect(ButtonBeenden, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBeendenClicked()));
 }
 
-void AfuBerechnungEntfernung::triggeredButtonBeendenClicked()
-{
-    // Abfrage ob das Programm tatsaechlich beendet werden soll
-    int ret {0};
-    QMessageBox msgBox;
-    msgBox.setIcon(QMessageBox::Question);
-    msgBox.setFont(QFont("Arial", 11, QFont::Normal));
-    msgBox.setWindowTitle("Exakte Entfernungsberechnung für die Kugeloberfläche beenden?");
-    msgBox.setText(tr("Wollen Sie das Programm wirklich beenden?\n"
-                      "Alle bisher eingegebenen Daten gehen dadurch verloren."));
-    msgBox.addButton(QMessageBox::Yes);
-    msgBox.addButton(QMessageBox::No);
-    msgBox.setButtonText(QMessageBox::Yes, tr("Ja"));
-    msgBox.setButtonText(QMessageBox::No, tr("Nein"));
-    msgBox.setDefaultButton(QMessageBox::No);
-    msgBox.setEscapeButton(QMessageBox::No);
-    ret = msgBox.exec();
-
-    if (ret == QMessageBox::Yes) // Programm wird beendet
-    {
-        triggeredButtonLeerenClicked();
-        close();
-    }
-    else if (ret == QMessageBox::No)
-    {
-        return;
-    }
-}
-
 void AfuBerechnungEntfernung::triggeredButtonBerechnenClicked()
 {
     const float f_ErdRadius = 6'378.388; // Erdradius in km
@@ -174,4 +145,33 @@ void AfuBerechnungEntfernung::triggeredButtonLeerenClicked()
     EditEingabeLon1->clear();
     EditEingabeLon2->clear();
     LabelEntfernung->clear();
+}
+
+void AfuBerechnungEntfernung::triggeredButtonBeendenClicked()
+{
+    // Abfrage, ob das Programm tatsaechlich beendet werden soll
+    int ret {0};
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Question);
+    msgBox.setFont(QFont("Arial", 11, QFont::Normal));
+    msgBox.setWindowTitle("Exakte Entfernungsberechnung für die Kugeloberfläche beenden?");
+    msgBox.setText(tr("Wollen Sie das Programm wirklich beenden?\n"
+                      "Alle bisher eingegebenen Daten gehen dadurch verloren."));
+    msgBox.addButton(QMessageBox::Yes);
+    msgBox.addButton(QMessageBox::No);
+    msgBox.setButtonText(QMessageBox::Yes, tr("Ja"));
+    msgBox.setButtonText(QMessageBox::No, tr("Nein"));
+    msgBox.setDefaultButton(QMessageBox::No);
+    msgBox.setEscapeButton(QMessageBox::No);
+    ret = msgBox.exec();
+
+    if (ret == QMessageBox::Yes) // Programm wird beendet
+    {
+        triggeredButtonLeerenClicked();
+        close();
+    }
+    else if (ret == QMessageBox::No)
+    {
+        return;
+    }
 }

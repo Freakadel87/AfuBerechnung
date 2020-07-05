@@ -20,6 +20,7 @@
 
 /// Qt-includes
 #include <QApplication>
+#include <QCheckBox>
 #include <QFont>
 #include <QMainWindow>
 #include <QMenu>
@@ -99,6 +100,7 @@ private:
     QGridLayout *GridLayoutButton;
 
     QLabel *LabelButton1;
+    QLabel *LabelButton2;
     QPushButton *ButtonFrequenz;
     QPushButton *ButtonInduktivitaet;
     QPushButton *ButtonKapazitaet;
@@ -109,6 +111,8 @@ private:
     QPushButton *ButtonDrahtlaenge;
     QPushButton *ButtonResoTrans;
     QPushButton *ButtonWiderstand;
+
+    QCheckBox *CheckBoxFenster;
 
 public:
     AfuBerechnung(QWidget *parent = 0);
@@ -140,6 +144,7 @@ private slots:
     void triggeredCopy();
     void triggeredPaste();
     void triggeredEinstellungen();
+    void triggeredCheckBoxChecked();
 };
 
 #endif // AFUBERECHNUNG_H
