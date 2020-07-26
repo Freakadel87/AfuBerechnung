@@ -30,6 +30,7 @@ SOURCES += \
     afuberechnungentfernung.cpp \
     afuberechnungfilter.cpp \
     afuberechnungresotrans.cpp \
+    afuberechnungsprache.cpp \
     afuberechnungwattdbm.cpp \
         afuberechnung.cpp \
     afuberechnungfrequenz.cpp \
@@ -52,6 +53,7 @@ HEADERS += \
     afuberechnungkapazitaet.h \
     afuberechnunginduktivitaet.h \
     afuberechnungresotrans.h \
+    afuberechnungsprache.h \
     afuberechnungverlaengerungsspule.h \
     afuberechnungdrahtlaenge.h \
     afuberechnungluftspule.h \

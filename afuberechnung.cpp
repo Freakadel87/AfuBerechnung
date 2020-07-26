@@ -61,9 +61,10 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuOptionen = menuBar()->addMenu(tr("Optionen"));
     menuOptionen->setFont(QFont("Arial", 10, QFont::Normal));
     menuEinstellungen = menuOptionen->addAction("Einstellungen...", this, SLOT(triggeredEinstellungen()));
+    menuSprache = menuOptionen->addAction("Sprachumschaltung", this, SLOT(triggeredSprache()));
 
     // Erstelle Menue --> Hilfe --> ...
-    menuHilfe = menuBar()->addMenu(tr("Hilfe"));
+    menuHilfe = menuBar()->addMenu(tr("Hilfe/Info"));
     menuHilfe->setFont(QFont("Arial", 10, QFont::Normal));
     menuHilfeInfo = menuHilfe->addAction("Informationen", this, SLOT(triggeredInfo()));
     menuHilfe->addSeparator();
@@ -296,6 +297,13 @@ void AfuBerechnung::triggeredEinstellungen()
     WidgetEinstellungen = new AfuBerechnungEinstellungen(this);
     WidgetEinstellungen->setWindowTitle("Einstellungen");
     WidgetEinstellungen->show();
+}
+
+void AfuBerechnung::triggeredSprache()
+{
+    WidgetSprache = new AfuBerechnungSprache(this);
+    WidgetSprache->setWindowTitle(tr("Sprachumschaltung"));
+    WidgetSprache->show();
 }
 
 void AfuBerechnung::triggeredCheckBoxChecked()

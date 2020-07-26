@@ -15,6 +15,7 @@
 #include "afuberechnungwattdbm.h"
 #include "afuberechnungwiderstand.h"
 #include "afuberechnungeinstellungen.h"
+#include "afuberechnungsprache.h"
 #include "afuberechnungfilter.h"
 #include "afuberechnungentfernung.h"
 
@@ -59,6 +60,7 @@ private:
     AfuBerechnungResoTrans *BerechnungResoTrans;
     AfuBerechnungWiderstand *Widerstand;
     AfuBerechnungEinstellungen *WidgetEinstellungen;
+    AfuBerechnungSprache *WidgetSprache;
     AfuBerechnungEntfernung *WidgetEntfernung;
 
     QWidget *myWidget = new QWidget();
@@ -89,6 +91,7 @@ private:
 
     QMenu *menuOptionen;
     QAction *menuEinstellungen;
+    QAction *menuSprache;
 
     QMenu *menuHilfe;
     QAction *menuHilfeInfo;
@@ -144,6 +147,7 @@ private slots:
     void triggeredCopy();
     void triggeredPaste();
     void triggeredEinstellungen();
+    void triggeredSprache();
     void triggeredCheckBoxChecked();
 };
 
