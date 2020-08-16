@@ -171,12 +171,12 @@ void AfuBerechnung::triggeredBeenden()
     msgBox.setEscapeButton(QMessageBox::No);
     ret = msgBox.exec();
 
-    if (ret == QMessageBox::Yes) // Programm wird beendet
+    if(ret == QMessageBox::Yes) //Programm wird beendet
     {
         close();
-        myWidget->deleteLater(); // Zerstoere alle Fenster nach Beendigung des Programms
+        myWidget->deleteLater(); //Zerstoere alle Fenster nach Beendigung des Programms
     }
-    else if (ret == QMessageBox::No)
+    else if(ret == QMessageBox::No)
     {
         return;
     }
@@ -308,7 +308,7 @@ void AfuBerechnung::triggeredSprache()
 
 void AfuBerechnung::triggeredCheckBoxChecked()
 {
-    if (CheckBoxFenster->isChecked())
+    if(CheckBoxFenster->isChecked())
     {
         /// Zu erledigen: Fenster bleibt nicht im Vordergrund...welcher BEfehl bei QWidget???
         myWidget->activateWindow();

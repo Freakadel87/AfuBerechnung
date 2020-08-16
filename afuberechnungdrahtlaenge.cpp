@@ -55,7 +55,7 @@ AfuBerechnungDrahtlaenge::AfuBerechnungDrahtlaenge(QWidget *parent) : QDialog(pa
     EditEingabeFrequenz->setToolTip(tr("Geben Sie hier Ihre Frequenz in MHz ein. \nBeispiel: 7.2 oder 14.35"));
     EditEingabeLambda = new QLineEdit;
     EditEingabeLambda->setFont(QFont("Arial", 11, QFont::Normal));
-    EditEingabeLambda->setToolTip(tr("Geben Sie '2' für Lambda-Halbe oder '4' für Lambda-Viertel ein. \nAuch jede ander Zahl wird in der Berechnung akzeptiert."));
+    EditEingabeLambda->setToolTip(tr("Geben Sie '<b>2</b>' für Lambda-Halbe oder '<b>4</b>' für Lambda-Viertel ein. \nAuch jede ander Zahl wird in der Berechnung akzeptiert."));
     EditEingabeLambda->setCursorPosition(0);
     EditEingabeLambda->setText("2");
     LabelLichtWert = new QLabel("299.792");
