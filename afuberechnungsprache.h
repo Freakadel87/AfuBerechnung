@@ -15,9 +15,13 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QGridLayout>
 #include <QSettings>
 #include <QRadioButton>
 #include <QMessageBox>
+#include <QFont>
+#include <QIcon>
+#include <QSize>
 
 class AfuBerechnungSprache : public QDialog
 {
@@ -30,7 +34,9 @@ public:
 private:
     //Objekterstellung
     QVBoxLayout *MainLayout;
-    QVBoxLayout *LayoutSprache;
+    QGridLayout *GridSprache;
+    QVBoxLayout *LayoutSpracheLinks;
+    QVBoxLayout *LayoutSpracheRechts;
     QHBoxLayout *LayoutButton;
     QPushButton *ButtonAbbrechen;
     QPushButton *ButtonOk;
@@ -41,6 +47,7 @@ private:
     QRadioButton *RadioButtonIta;
     QRadioButton *RadioButtonSpa;
     QRadioButton *RadioButtonPor;
+    QRadioButton *RadioButtonPol;
 
 private slots:
     void triggeredButtonAbbrechenClicked(); //Button ABBRECHEN betaetigt
@@ -52,6 +59,7 @@ private slots:
     void triggeredRadioButtonItaClicked(); //Sprache ITALIENISCH
     void triggeredRadioButtonSpaClicked(); //Sprache SPANISCH
     void triggeredRadioButtonPorClicked(); //Sprache PORTUGISISCH
+    void triggeredRadioButtonPolClicked(); //Sprache POLNISCH
     void LoadConfig(); //Lade zuvor gespeicherte Parameter zurueck
     void SaveConfig(); //Speichere vorgenommene Parameter
 };

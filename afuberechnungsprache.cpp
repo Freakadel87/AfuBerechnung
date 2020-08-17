@@ -8,36 +8,45 @@ QString sSprache{}; //Variable fuer ausgewaehlte Sprache
 
 AfuBerechnungSprache::AfuBerechnungSprache(QWidget *parent) : QDialog(parent)
 {
-    RadioButtonDeu = new QRadioButton(tr("de"));
-    RadioButtonDeu->setFont(QFont("Arial", 10, QFont::Normal));
+    RadioButtonDeu = new QRadioButton(tr("DE"));
+    RadioButtonDeu->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonDeu->setToolTip(tr("Deutsche Sprache auswählen."));
-    RadioButtonEng = new QRadioButton(tr("en"));
-    RadioButtonEng->setFont(QFont("Arial", 10, QFont::Normal));
+    RadioButtonEng = new QRadioButton(tr("ENG"));
+    RadioButtonEng->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonEng->setToolTip(tr("Englische Sprache auswählen."));
-    RadioButtonFra = new QRadioButton(tr("fr"));
-    RadioButtonFra->setFont(QFont("Arial", 10, QFont::Normal));
+    RadioButtonFra = new QRadioButton(tr("FR"));
+    RadioButtonFra->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonFra->setToolTip(tr("Französische Sprache auswählen."));
-    RadioButtonRus = new QRadioButton(tr("ru"));
-    RadioButtonRus->setFont(QFont("Arial", 10, QFont::Normal));
+    RadioButtonRus = new QRadioButton(tr("RU"));
+    RadioButtonRus->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonRus->setToolTip(tr("Russische Sprache auswählen."));
-    RadioButtonIta = new QRadioButton(tr("it"));
-    RadioButtonIta->setFont(QFont("Arial", 10, QFont::Normal));
+    RadioButtonIta = new QRadioButton(tr("IT"));
+    RadioButtonIta->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonIta->setToolTip(tr("Italienische Sprache auswählen."));
-    RadioButtonSpa = new QRadioButton(tr("spa"));
-    RadioButtonSpa->setFont(QFont("Arial", 10, QFont::Normal));
+    RadioButtonSpa = new QRadioButton(tr("SPA"));
+    RadioButtonSpa->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonSpa->setToolTip(tr("Spanische Sprache auswählen."));
-    RadioButtonPor = new QRadioButton(tr("por"));
-    RadioButtonPor->setFont(QFont("Arial", 10, QFont::Normal));
+    RadioButtonPor = new QRadioButton(tr("POR"));
+    RadioButtonPor->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonPor->setToolTip(tr("Portugisische Sprache auswählen."));
+    RadioButtonPol = new QRadioButton(tr("PL"));
+    RadioButtonPol->setFont(QFont("Arial", 10, QFont::DemiBold));
+    RadioButtonPol->setToolTip(tr("Polnische Sprache auswählen."));
 
-    LayoutSprache = new QVBoxLayout; //Layout Zusammensetzung
-    LayoutSprache->addWidget(RadioButtonDeu);
-    LayoutSprache->addWidget(RadioButtonEng);
-    LayoutSprache->addWidget(RadioButtonFra);
-    LayoutSprache->addWidget(RadioButtonRus);
-    LayoutSprache->addWidget(RadioButtonIta);
-    LayoutSprache->addWidget(RadioButtonSpa);
-    LayoutSprache->addWidget(RadioButtonPor);
+    LayoutSpracheLinks = new QVBoxLayout; //Layout Linke Seite
+    LayoutSpracheLinks->addWidget(RadioButtonDeu);
+    LayoutSpracheLinks->addWidget(RadioButtonEng);
+    LayoutSpracheLinks->addWidget(RadioButtonFra);
+    LayoutSpracheLinks->addWidget(RadioButtonRus);
+    LayoutSpracheRechts = new QVBoxLayout; //Layout Rechte Seite
+    LayoutSpracheRechts->addWidget(RadioButtonIta);
+    LayoutSpracheRechts->addWidget(RadioButtonSpa);
+    LayoutSpracheRechts->addWidget(RadioButtonPor);
+    LayoutSpracheRechts->addWidget(RadioButtonPol);
+
+    GridSprache = new QGridLayout; //Layout Zusammensetzung
+    GridSprache->addLayout(LayoutSpracheLinks,0,0);
+    GridSprache->addLayout(LayoutSpracheRechts,0,1);
 
     ///TODO: Aufruf und Umschaltung fehlt noch
 
@@ -53,10 +62,10 @@ AfuBerechnungSprache::AfuBerechnungSprache(QWidget *parent) : QDialog(parent)
     LayoutButton->addWidget(ButtonOk);
     LayoutButton->addWidget(ButtonAbbrechen);
 
-    LoadConfig(); //Lade gespeicherte Parameter aus Speicher
+    LoadConfig(); //Lade gespeicherte Parameter aus Speicher, wenn Fenster neu aufgerufen wird
 
     MainLayout = new QVBoxLayout(this); //Erstelle Hauptansicht
-    MainLayout->addLayout(LayoutSprache,0);
+    MainLayout->addLayout(GridSprache,0);
     MainLayout->addLayout(LayoutButton,1);
 
     //Objektkonnektivitaet
@@ -69,6 +78,7 @@ AfuBerechnungSprache::AfuBerechnungSprache(QWidget *parent) : QDialog(parent)
     QObject::connect(RadioButtonIta, SIGNAL(clicked(bool)), this, SLOT(triggeredRadioButtonItaClicked()));
     QObject::connect(RadioButtonSpa, SIGNAL(clicked(bool)), this, SLOT(triggeredRadioButtonSpaClicked()));
     QObject::connect(RadioButtonPor, SIGNAL(clicked(bool)), this, SLOT(triggeredRadioButtonPorClicked()));
+    QObject::connect(RadioButtonPol, SIGNAL(clicked(bool)), this, SLOT(triggeredRadioButtonPolClicked()));
 }
 
 //Button ABBRECHEN betaetigt
@@ -132,42 +142,208 @@ void AfuBerechnungSprache::triggeredRadioButtonDeuClicked()
 {
     ///TODO: Sprache wird ausgewählt und erst übernommen, wenn Ok-Button betätigt wird.
     sSprache = (tr("Gewählte Sprache: <b>Deutsch</b> wird übernommen und gespeichert."));
+
+    RadioButtonDeu->setStyleSheet("QRadioButton {background-color : rgb(202,255,112); color : black;}");
+    RadioButtonEng->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonFra->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonIta->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPol->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPor->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonRus->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonSpa->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+
+    RadioButtonDeu->setChecked(true);
+    RadioButtonEng->setChecked(false);
+    RadioButtonFra->setChecked(false);
+    RadioButtonIta->setChecked(false);
+    RadioButtonPol->setChecked(false);
+    RadioButtonPor->setChecked(false);
+    RadioButtonRus->setChecked(false);
+    RadioButtonSpa->setChecked(false);
+
+    SaveConfig(); //Speichere Auswahl
 }
 
 //Sprache ENGLISCH ausgewaehlt
 void AfuBerechnungSprache::triggeredRadioButtonEngClicked()
 {
     sSprache = (tr("Gewählte Sprache: <b>Englisch</b> wird übernommen und gespeichert."));
+
+    RadioButtonEng->setStyleSheet("QRadioButton {background-color : rgb(202,255,112); color : black;}");
+    RadioButtonDeu->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonFra->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonIta->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPol->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPor->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonRus->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonSpa->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+
+    RadioButtonDeu->setChecked(false);
+    RadioButtonEng->setChecked(true);
+    RadioButtonFra->setChecked(false);
+    RadioButtonIta->setChecked(false);
+    RadioButtonPol->setChecked(false);
+    RadioButtonPor->setChecked(false);
+    RadioButtonRus->setChecked(false);
+    RadioButtonSpa->setChecked(false);
+
+    SaveConfig(); //Speichere Auswahl
 }
 
 //Sprache FRANZOESISCH ausgewaehlt
 void AfuBerechnungSprache::triggeredRadioButtonFraClicked()
 {
     sSprache = (tr("Gewählte Sprache: <b>Französisch</b> wird übernommen und gespeichert."));
+
+    RadioButtonFra->setStyleSheet("QRadioButton {background-color : rgb(202,255,112); color : black;}");
+    RadioButtonEng->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonDeu->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonIta->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPol->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPor->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonRus->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonSpa->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+
+    RadioButtonDeu->setChecked(false);
+    RadioButtonEng->setChecked(false);
+    RadioButtonFra->setChecked(true);
+    RadioButtonIta->setChecked(false);
+    RadioButtonPol->setChecked(false);
+    RadioButtonPor->setChecked(false);
+    RadioButtonRus->setChecked(false);
+    RadioButtonSpa->setChecked(false);
+
+    SaveConfig(); //Speichere Auswahl
 }
 
 //Sprache RUSSISCH ausgewaehlt
 void AfuBerechnungSprache::triggeredRadioButtonRusClicked()
 {
     sSprache = (tr("Gewählte Sprache: <b>Russisch</b> wird übernommen und gespeichert."));
+
+    RadioButtonRus->setStyleSheet("QRadioButton {background-color : rgb(202,255,112); color : black;}");
+    RadioButtonEng->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonFra->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonIta->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPol->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPor->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonDeu->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonSpa->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+
+    RadioButtonDeu->setChecked(false);
+    RadioButtonEng->setChecked(false);
+    RadioButtonFra->setChecked(false);
+    RadioButtonIta->setChecked(false);
+    RadioButtonPol->setChecked(false);
+    RadioButtonPor->setChecked(false);
+    RadioButtonRus->setChecked(true);
+    RadioButtonSpa->setChecked(false);
+
+    SaveConfig(); //Speichere Auswahl
 }
 
 //Sprache ITALIENISCH ausgewaehlt
 void AfuBerechnungSprache::triggeredRadioButtonItaClicked()
 {
     sSprache = (tr("Gewählte Sprache: <b>Italienisch</b> wird übernommen und gespeichert."));
+
+    RadioButtonIta->setStyleSheet("QRadioButton {background-color : rgb(202,255,112); color : black;}");
+    RadioButtonEng->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonFra->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonDeu->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPol->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPor->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonRus->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonSpa->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+
+    RadioButtonDeu->setChecked(false);
+    RadioButtonEng->setChecked(false);
+    RadioButtonFra->setChecked(false);
+    RadioButtonIta->setChecked(true);
+    RadioButtonPol->setChecked(false);
+    RadioButtonPor->setChecked(false);
+    RadioButtonRus->setChecked(false);
+    RadioButtonSpa->setChecked(false);
+
+    SaveConfig(); //Speichere Auswahl
 }
 
 //Sprache SPANISCH ausgewaehlt
 void AfuBerechnungSprache::triggeredRadioButtonSpaClicked()
 {
     sSprache = (tr("Gewählte Sprache: <b>Spanisch</b> wird übernommen und gespeichert."));
+
+    RadioButtonSpa->setStyleSheet("QRadioButton {background-color : rgb(202,255,112); color : black;}");
+    RadioButtonEng->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonFra->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonIta->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPol->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPor->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonRus->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonDeu->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+
+    RadioButtonDeu->setChecked(false);
+    RadioButtonEng->setChecked(false);
+    RadioButtonFra->setChecked(false);
+    RadioButtonIta->setChecked(false);
+    RadioButtonPol->setChecked(false);
+    RadioButtonPor->setChecked(false);
+    RadioButtonRus->setChecked(false);
+    RadioButtonSpa->setChecked(true);
+
+    SaveConfig(); //Speichere Auswahl
 }
 
 //Sprache PORTUGISISCH ausgewaehlt
 void AfuBerechnungSprache::triggeredRadioButtonPorClicked()
 {
     sSprache = (tr("Gewählte Sprache: <b>Portugisisch</b> wird übernommen und gespeichert."));
+
+    RadioButtonPor->setStyleSheet("QRadioButton {background-color : rgb(202,255,112); color : black;}");
+    RadioButtonEng->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonFra->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonIta->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPol->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonDeu->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonRus->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonSpa->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+
+    RadioButtonDeu->setChecked(false);
+    RadioButtonEng->setChecked(false);
+    RadioButtonFra->setChecked(false);
+    RadioButtonIta->setChecked(false);
+    RadioButtonPol->setChecked(false);
+    RadioButtonPor->setChecked(true);
+    RadioButtonRus->setChecked(false);
+    RadioButtonSpa->setChecked(false);
+
+    SaveConfig(); //Speichere Auswahl
+}
+
+//Sprache POLNISCH ausgewaehlt
+void AfuBerechnungSprache::triggeredRadioButtonPolClicked()
+{
+    sSprache = (tr("Gewählte Sprache: <b>Polnisch</b> wird übernommen und gespeichert."));
+
+    RadioButtonPol->setStyleSheet("QRadioButton {background-color : rgb(202,255,112); color : black;}");
+    RadioButtonEng->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonFra->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonIta->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonDeu->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonPor->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonRus->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+    RadioButtonSpa->setStyleSheet("QRadioButton {background-color : rgb(240,240,240); color : black;}");
+
+    RadioButtonDeu->setChecked(false);
+    RadioButtonEng->setChecked(false);
+    RadioButtonFra->setChecked(false);
+    RadioButtonIta->setChecked(false);
+    RadioButtonPol->setChecked(true);
+    RadioButtonPor->setChecked(false);
+    RadioButtonRus->setChecked(false);
+    RadioButtonSpa->setChecked(false);
+
+    SaveConfig(); //Speichere Auswahl
 }
 
 //Lade gespeicherte Parameter und schreibe sie zurueck
@@ -180,5 +356,6 @@ void AfuBerechnungSprache::LoadConfig()
 void AfuBerechnungSprache::SaveConfig()
 {
     ///TODO: Noch nicht komplett
+    ///Farbe und Auswahl speichern
     //Config.setValue("/Schriftart", )
 }
