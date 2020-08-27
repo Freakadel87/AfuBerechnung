@@ -40,6 +40,7 @@
 #include <QTextEdit>
 #include <QPixmap>
 #include <windows.h>
+#include <QSettings>
 
 class AfuBerechnung : public QMainWindow
 {
@@ -149,6 +150,8 @@ private slots:
     void triggeredEinstellungen();
     void triggeredSprache();
     void triggeredCheckBoxChecked();
+    void LoadConfig();
+    void SaveConfig();
 };
 
 #endif // AFUBERECHNUNG_H

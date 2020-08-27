@@ -1,35 +1,43 @@
 #include "afuberechnungsprache.h"
 
 //Variablendeklaration
-//QSettings Config;
+QSettings Settings;
 QString sSprache{}; //Variable fuer ausgewaehlte Sprache
+bool bMerker_Deu {false};
+bool bMerker_Eng {false};
+bool bMerker_Ita {false};
+bool bMerker_Fra {false};
+bool bMerker_Rus {false};
+bool bMerker_Spa {false};
+bool bMerker_Por {false};
+bool bMerker_Pol {false};
 
 ///TODO: Es ist noch unklar, wie mit dem qt-Linguist gearbeitet werden muss.
 
 AfuBerechnungSprache::AfuBerechnungSprache(QWidget *parent) : QDialog(parent)
 {
-    RadioButtonDeu = new QRadioButton(tr("DE"));
+    RadioButtonDeu = new QRadioButton(tr("deutsch"));
     RadioButtonDeu->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonDeu->setToolTip(tr("Deutsche Sprache auswählen."));
-    RadioButtonEng = new QRadioButton(tr("ENG"));
+    RadioButtonEng = new QRadioButton(tr("englisch"));
     RadioButtonEng->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonEng->setToolTip(tr("Englische Sprache auswählen."));
-    RadioButtonFra = new QRadioButton(tr("FR"));
+    RadioButtonFra = new QRadioButton(tr("französisch"));
     RadioButtonFra->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonFra->setToolTip(tr("Französische Sprache auswählen."));
-    RadioButtonRus = new QRadioButton(tr("RU"));
+    RadioButtonRus = new QRadioButton(tr("russisch"));
     RadioButtonRus->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonRus->setToolTip(tr("Russische Sprache auswählen."));
-    RadioButtonIta = new QRadioButton(tr("IT"));
+    RadioButtonIta = new QRadioButton(tr("italienisch"));
     RadioButtonIta->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonIta->setToolTip(tr("Italienische Sprache auswählen."));
-    RadioButtonSpa = new QRadioButton(tr("SPA"));
+    RadioButtonSpa = new QRadioButton(tr("spanisch"));
     RadioButtonSpa->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonSpa->setToolTip(tr("Spanische Sprache auswählen."));
-    RadioButtonPor = new QRadioButton(tr("POR"));
+    RadioButtonPor = new QRadioButton(tr("portugisisch"));
     RadioButtonPor->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonPor->setToolTip(tr("Portugisische Sprache auswählen."));
-    RadioButtonPol = new QRadioButton(tr("PL"));
+    RadioButtonPol = new QRadioButton(tr("polnisch"));
     RadioButtonPol->setFont(QFont("Arial", 10, QFont::DemiBold));
     RadioButtonPol->setToolTip(tr("Polnische Sprache auswählen."));
 
@@ -84,7 +92,6 @@ AfuBerechnungSprache::AfuBerechnungSprache(QWidget *parent) : QDialog(parent)
 //Button ABBRECHEN betaetigt
 void AfuBerechnungSprache::triggeredButtonAbbrechenClicked()
 {
-    ///TODO: Das Fenster muss nach Beendung noch zerstoert werden, um keine Zombies im RAM zu haben
     ///TODO: Abfrage nur zeigen, wenn tatsächlich etwas geändert wurde (Registrierung Mausklick möglich?)
 
     //Abfrage ob Aenderung gespeichert werden soll
@@ -107,9 +114,12 @@ void AfuBerechnungSprache::triggeredButtonAbbrechenClicked()
     {
         SaveConfig(); //Speichere vorgenommene Parameter
         close();
+        destroy();
     }
     else if(retAbbrechen == QMessageBox::No) //Aenderung verwerfen und schließen
     {
+        ///TODO: Funktion nicht gegeben, springt nicht auf die zuvor eingestellte Sprache zurueck
+        LoadConfig();
         close();
         destroy();
     }
@@ -118,22 +128,38 @@ void AfuBerechnungSprache::triggeredButtonAbbrechenClicked()
 //Button OK betaetigt
 void AfuBerechnungSprache::triggeredButtonOkClicked()
 {
-    //Abfrage ob Aenderung gespeichert werden soll
-    int retOk {0};
-    QMessageBox msgBox;
-    msgBox.setIcon(QMessageBox::Information);
-    msgBox.setFont(QFont("Arial", 11, QFont::Normal));
-    msgBox.setWindowTitle(tr("Änderung übernehmen und speichern"));
-    msgBox.setInformativeText(sSprache);
-    msgBox.addButton(QMessageBox::Ok);
-    retOk = msgBox.exec();
-
-    SaveConfig(); //Speicher vorgenommene Parameter
-
-    if(retOk == QMessageBox::Ok) //Aenderung speichern und Fenster schließen
+    if(bMerker_Deu==false && bMerker_Eng==false && bMerker_Fra==false && bMerker_Ita==false &&
+            bMerker_Pol==false && bMerker_Por==false && bMerker_Rus==false && bMerker_Spa==false)
     {
-       close();
-       destroy();
+        //Warnmeldung, wenn keine Sprache ausgewaehlt wurde
+        int retOk {0};
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Warning);
+        msgBox.setFont(QFont("Arial", 11, QFont::Normal));
+        msgBox.setWindowTitle(tr("Warnung!"));
+        msgBox.setInformativeText(tr("Achtung: Es wurde keine Sprache ausgewählt!"));
+        msgBox.addButton(QMessageBox::Ok);
+        retOk = msgBox.exec();
+    }
+    else
+    {
+        //Abfrage ob Aenderung gespeichert werden soll
+        int retOk {0};
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Information);
+        msgBox.setFont(QFont("Arial", 11, QFont::Normal));
+        msgBox.setWindowTitle(tr("Information Auswahl"));
+        msgBox.setInformativeText(sSprache);
+        msgBox.addButton(QMessageBox::Ok);
+        retOk = msgBox.exec();
+
+        SaveConfig(); //Speicher vorgenommene Parameter
+
+        if(retOk == QMessageBox::Ok) //Aenderung speichern und Fenster schließen
+        {
+            close();
+            destroy();
+        }
     }
 }
 
@@ -161,7 +187,14 @@ void AfuBerechnungSprache::triggeredRadioButtonDeuClicked()
     RadioButtonRus->setChecked(false);
     RadioButtonSpa->setChecked(false);
 
-    SaveConfig(); //Speichere Auswahl
+    bMerker_Deu = true;
+    bMerker_Eng = false;
+    bMerker_Fra = false;
+    bMerker_Ita = false;
+    bMerker_Pol = false;
+    bMerker_Por = false;
+    bMerker_Rus = false;
+    bMerker_Spa = false;
 }
 
 //Sprache ENGLISCH ausgewaehlt
@@ -187,7 +220,14 @@ void AfuBerechnungSprache::triggeredRadioButtonEngClicked()
     RadioButtonRus->setChecked(false);
     RadioButtonSpa->setChecked(false);
 
-    SaveConfig(); //Speichere Auswahl
+    bMerker_Eng = true;
+    bMerker_Deu = false;
+    bMerker_Fra = false;
+    bMerker_Ita = false;
+    bMerker_Pol = false;
+    bMerker_Por = false;
+    bMerker_Rus = false;
+    bMerker_Spa = false;
 }
 
 //Sprache FRANZOESISCH ausgewaehlt
@@ -213,7 +253,14 @@ void AfuBerechnungSprache::triggeredRadioButtonFraClicked()
     RadioButtonRus->setChecked(false);
     RadioButtonSpa->setChecked(false);
 
-    SaveConfig(); //Speichere Auswahl
+    bMerker_Fra = true;
+    bMerker_Deu = false;
+    bMerker_Eng = false;
+    bMerker_Ita = false;
+    bMerker_Pol = false;
+    bMerker_Por = false;
+    bMerker_Rus = false;
+    bMerker_Spa = false;
 }
 
 //Sprache RUSSISCH ausgewaehlt
@@ -239,7 +286,14 @@ void AfuBerechnungSprache::triggeredRadioButtonRusClicked()
     RadioButtonRus->setChecked(true);
     RadioButtonSpa->setChecked(false);
 
-    SaveConfig(); //Speichere Auswahl
+    bMerker_Rus = true;
+    bMerker_Deu = false;
+    bMerker_Eng = false;
+    bMerker_Fra = false;
+    bMerker_Ita = false;
+    bMerker_Pol = false;
+    bMerker_Por = false;
+    bMerker_Spa = false;
 }
 
 //Sprache ITALIENISCH ausgewaehlt
@@ -265,7 +319,14 @@ void AfuBerechnungSprache::triggeredRadioButtonItaClicked()
     RadioButtonRus->setChecked(false);
     RadioButtonSpa->setChecked(false);
 
-    SaveConfig(); //Speichere Auswahl
+    bMerker_Ita = true;
+    bMerker_Deu = false;
+    bMerker_Eng = false;
+    bMerker_Fra = false;
+    bMerker_Pol = false;
+    bMerker_Por = false;
+    bMerker_Rus = false;
+    bMerker_Spa = false;
 }
 
 //Sprache SPANISCH ausgewaehlt
@@ -291,7 +352,14 @@ void AfuBerechnungSprache::triggeredRadioButtonSpaClicked()
     RadioButtonRus->setChecked(false);
     RadioButtonSpa->setChecked(true);
 
-    SaveConfig(); //Speichere Auswahl
+    bMerker_Spa = true;
+    bMerker_Deu = false;
+    bMerker_Eng = false;
+    bMerker_Fra = false;
+    bMerker_Ita = false;
+    bMerker_Pol = false;
+    bMerker_Por = false;
+    bMerker_Rus = false;
 }
 
 //Sprache PORTUGISISCH ausgewaehlt
@@ -317,7 +385,14 @@ void AfuBerechnungSprache::triggeredRadioButtonPorClicked()
     RadioButtonRus->setChecked(false);
     RadioButtonSpa->setChecked(false);
 
-    SaveConfig(); //Speichere Auswahl
+    bMerker_Por = true;
+    bMerker_Deu = false;
+    bMerker_Eng = false;
+    bMerker_Fra = false;
+    bMerker_Ita = false;
+    bMerker_Pol = false;
+    bMerker_Rus = false;
+    bMerker_Spa = false;
 }
 
 //Sprache POLNISCH ausgewaehlt
@@ -343,19 +418,142 @@ void AfuBerechnungSprache::triggeredRadioButtonPolClicked()
     RadioButtonRus->setChecked(false);
     RadioButtonSpa->setChecked(false);
 
-    SaveConfig(); //Speichere Auswahl
+    bMerker_Pol = true;
+    bMerker_Deu = false;
+    bMerker_Eng = false;
+    bMerker_Fra = false;
+    bMerker_Ita = false;
+    bMerker_Por = false;
+    bMerker_Rus = false;
+    bMerker_Spa = false;
 }
 
 //Lade gespeicherte Parameter und schreibe sie zurueck
 void AfuBerechnungSprache::LoadConfig()
 {
-    ///TODO: Fehlt noch
+    bool bSpeicherDeu = bMerker_Deu;
+    bool bSpeicherEng = bMerker_Eng;
+    bool bSpeicherFra = bMerker_Fra;
+    bool bSpeicherIta = bMerker_Ita;
+    bool bSpeicherPol = bMerker_Pol;
+    bool bSpeicherPor = bMerker_Por;
+    bool bSpeicherRus = bMerker_Rus;
+    bool bSpeicherSpa = bMerker_Spa;
+
+    if(bSpeicherDeu == true)
+    {
+        RadioButtonDeu->setChecked(true);
+        RadioButtonDeu->setChecked(false);
+        RadioButtonEng->setChecked(false);
+        RadioButtonFra->setChecked(false);
+        RadioButtonIta->setChecked(false);
+        RadioButtonPol->setChecked(false);
+        RadioButtonPor->setChecked(false);
+        RadioButtonRus->setChecked(false);
+        RadioButtonSpa->setChecked(false);
+    }
+
+    if(bSpeicherEng == true)
+    {
+        RadioButtonEng->setChecked(true);
+        RadioButtonDeu->setChecked(false);
+        RadioButtonEng->setChecked(false);
+        RadioButtonFra->setChecked(false);
+        RadioButtonIta->setChecked(false);
+        RadioButtonPol->setChecked(false);
+        RadioButtonPor->setChecked(false);
+        RadioButtonRus->setChecked(false);
+        RadioButtonSpa->setChecked(false);
+    }
+
+    if(bSpeicherFra == true)
+    {
+        RadioButtonFra->setChecked(true);
+        RadioButtonDeu->setChecked(false);
+        RadioButtonEng->setChecked(false);
+        RadioButtonFra->setChecked(false);
+        RadioButtonIta->setChecked(false);
+        RadioButtonPol->setChecked(false);
+        RadioButtonPor->setChecked(false);
+        RadioButtonRus->setChecked(false);
+        RadioButtonSpa->setChecked(false);
+    }
+
+    if(bSpeicherIta == true)
+    {
+        RadioButtonIta->setChecked(true);
+        RadioButtonDeu->setChecked(false);
+        RadioButtonEng->setChecked(false);
+        RadioButtonFra->setChecked(false);
+        RadioButtonIta->setChecked(false);
+        RadioButtonPol->setChecked(false);
+        RadioButtonPor->setChecked(false);
+        RadioButtonRus->setChecked(false);
+        RadioButtonSpa->setChecked(false);
+    }
+
+    if(bSpeicherPol == true)
+    {
+        RadioButtonPol->setChecked(true);
+        RadioButtonDeu->setChecked(false);
+        RadioButtonEng->setChecked(false);
+        RadioButtonFra->setChecked(false);
+        RadioButtonIta->setChecked(false);
+        RadioButtonPol->setChecked(false);
+        RadioButtonPor->setChecked(false);
+        RadioButtonRus->setChecked(false);
+        RadioButtonSpa->setChecked(false);
+    }
+
+    if(bSpeicherPor == true)
+    {
+        RadioButtonPor->setChecked(true);
+        RadioButtonDeu->setChecked(false);
+        RadioButtonEng->setChecked(false);
+        RadioButtonFra->setChecked(false);
+        RadioButtonIta->setChecked(false);
+        RadioButtonPol->setChecked(false);
+        RadioButtonPor->setChecked(false);
+        RadioButtonRus->setChecked(false);
+        RadioButtonSpa->setChecked(false);
+    }
+
+    if(bSpeicherRus == true)
+    {
+        RadioButtonRus->setChecked(true);
+        RadioButtonDeu->setChecked(false);
+        RadioButtonEng->setChecked(false);
+        RadioButtonFra->setChecked(false);
+        RadioButtonIta->setChecked(false);
+        RadioButtonPol->setChecked(false);
+        RadioButtonPor->setChecked(false);
+        RadioButtonRus->setChecked(false);
+        RadioButtonSpa->setChecked(false);
+    }
+
+    if(bSpeicherSpa == true)
+    {
+        RadioButtonSpa->setChecked(true);
+        RadioButtonDeu->setChecked(false);
+        RadioButtonEng->setChecked(false);
+        RadioButtonFra->setChecked(false);
+        RadioButtonIta->setChecked(false);
+        RadioButtonPol->setChecked(false);
+        RadioButtonPor->setChecked(false);
+        RadioButtonRus->setChecked(false);
+        RadioButtonSpa->setChecked(false);
+    }
 }
 
 //Speichere vorgenommene Parameter
 void AfuBerechnungSprache::SaveConfig()
 {
-    ///TODO: Noch nicht komplett
-    ///Farbe und Auswahl speichern
-    //Config.setValue("/Schriftart", )
+    Settings.value("RadioButtonDeu", bMerker_Deu);
+    Settings.value("RadioButtonEng", bMerker_Eng);
+    Settings.value("RadioButtonFra", bMerker_Fra);
+    Settings.value("RadioButtonIta", bMerker_Ita);
+    Settings.value("RadioButtonPol", bMerker_Pol);
+    Settings.value("RadioButtonPor", bMerker_Por);
+    Settings.value("RadioButtonRus", bMerker_Rus);
+    Settings.value("RadioButtonSpa", bMerker_Spa);
 }

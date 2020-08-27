@@ -1,5 +1,9 @@
 #include "afuberechnung.h"
 
+//Variablendeklaration
+QSettings SettingsAfuFenster;
+bool bMerkerFenster {false};
+
 AfuBerechnung::~AfuBerechnung()
 {
 
@@ -138,6 +142,8 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     LabelStartbild = new QLabel(this);
     LabelStartbild->setPixmap(Startbild);
     LabelStartbild->setGeometry(325,250,250,250);
+
+    LoadConfig(); //Lade gespeicherte Parameter
 
     // Verbindung der Buttons
     QObject::connect(ButtonFrequenz, SIGNAL(clicked(bool)), this, SLOT(triggeredFrequenzBerechnen()));
@@ -310,15 +316,16 @@ void AfuBerechnung::triggeredCheckBoxChecked()
 {
     if(CheckBoxFenster->isChecked())
     {
-        /// Zu erledigen: Fenster bleibt nicht im Vordergrund...welcher BEfehl bei QWidget???
+        /// Zu erledigen: Fenster bleibt nicht im Vordergrund...welcher Befehl bei QWidget???
         myWidget->activateWindow();
         myWidget->raise();
     }
     else
     {
         /// Zu erledigen: Fenster kann in den Hintergrund versetzt werden.
-        /// Zu erledigen: Bit 'isChecked' mit QSettings abspeichern
     }
+
+    SaveConfig(); //Speichere Parameter
 }
 
 void AfuBerechnung::triggeredCut()
@@ -344,4 +351,22 @@ void AfuBerechnung::triggeredRedo()
 void AfuBerechnung::triggeredUndo()
 {
 
+}
+
+void AfuBerechnung::LoadConfig()
+{
+    if(bMerkerFenster == true)
+    {
+        CheckBoxFenster->setChecked(true);
+    }
+    else
+    {
+        CheckBoxFenster->setChecked(false);
+    }
+}
+
+void AfuBerechnung::SaveConfig()
+{
+    ///TODO: Sinnvoll??? Fenster wird nicht erneut geoeffnet.
+    SettingsAfuFenster.value("CheckBoxFenster", bMerkerFenster);
 }
