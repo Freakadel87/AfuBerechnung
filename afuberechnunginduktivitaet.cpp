@@ -98,7 +98,7 @@ void AfuBerechnungInduktivitaet::triggeredButtonBerechnenClicked()
                                 "Bitte prüfen Sie Ihre Eingabe noch einmal."));
         EditEingabeF->setStyleSheet("QLineEdit {background-color : rgb(255,48,48); color : black;}");
     }
-    /// Noch zu erledigen:
+    /// Noch TODO:
     /// Die Formel arbeitet nicht richtig, oder die Formel von Frank ist falsch
     // Thomsonsche Schwingungsformel
     f_PufferF = EditEingabeF->text().toFloat();

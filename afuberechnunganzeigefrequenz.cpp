@@ -18,7 +18,7 @@ AfuBerechnungAnzeigeFrequenz::AfuBerechnungAnzeigeFrequenz(QWidget *parent) : QD
     ButtonBeenden->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonBeenden->setFont(QFont("Arial", 11, QFont::Normal));
 
-    /// Noch zu erledigen - Darstellung der Frequenzen als Text, je nach Wahl der ComboBox
+    /// Noch TODO - Darstellung der Frequenzen als Text, je nach Wahl der ComboBox
 
     QStringList s_Betriebsart;
     s_Betriebsart <<"<Bitte auswählen>"<<"PSK"<<"RTTY"<<"FT8"<<"FT4";

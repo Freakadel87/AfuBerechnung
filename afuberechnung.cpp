@@ -22,6 +22,16 @@ int main(int argc, char *argv[])
 AfuBerechnung::AfuBerechnung(QWidget *parent)
     : QMainWindow(parent)
 {
+    ///TODO: Timer wird nicht aktualisiert. Der Code muss wahrscheinlich in das MAIN Programm
+
+    //Auslesen und darstellen des Zeitstempels
+    QDateTime qDateTime = QDateTime::currentDateTime(); //Timer auslesen
+    QString sTime = qDateTime.toString(Qt::SystemLocaleLongDate); //Timerwert als String wandeln
+    LabelTime = new QLabel(this);
+    LabelTime->setText(sTime); //Text von Label setzen
+    LabelTime->setGeometry(350,400,300,50);
+    LabelTime->setFont(QFont("Arial", 10, QFont::Normal));
+
     // Erstelle Menue --> Datei --> ...
     menuProgramm = menuBar()->addMenu(tr("Programm"));
     menuProgramm->setFont(QFont("Arial", 10, QFont::Normal));
@@ -78,6 +88,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuHilfeFrequenzen = menuHilfe->addAction("Frequenzen...", this, SLOT(triggeredAnzeigeFrequenz()));
     menuHilfeAmateurfunk = menuHilfe->addAction("Amateurfunk-Bänder...", this, SLOT(triggeredAmateurfunkBaender()));
 
+    //Erstellung der Buttons im Hauptfenster
     LabelButton1 = new QLabel("Thomsonscher Schwingungskreis:", this);
     LabelButton1->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     LabelButton1->setFont(QFont("Arial", 10, QFont::Bold));
@@ -138,7 +149,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     // Bild auf der Startseite einfuegen
     QPixmap Startbild("C:/Users/Büro/Pictures/Amateurfunk_Wellenlaenge.JPG");
 
-/// Zu erledigen: Bei Projektweitergabe (Release) kann der C:/ -Pfad nicht bestehen bleiben?
+/// TODO: Bei Projektweitergabe (Release) kann der C:/ -Pfad nicht bestehen bleiben?
     LabelStartbild = new QLabel(this);
     LabelStartbild->setPixmap(Startbild);
     LabelStartbild->setGeometry(325,250,250,250);
@@ -225,7 +236,7 @@ void AfuBerechnung::triggeredDrahtlaengeBerechnen()
 
 void AfuBerechnung::triggeredLuftspuleBerechnen()
 {
-    /// Zu erledigen: Fehlfunktion
+    /// TODO: Fehlfunktion
     //    BerechnungLuftspule = new AfuBerechnungLuftspule(this);
     //    BerechnungLuftspule->setWindowTitle("Berechnung der Luftspule");
     //    BerechnungLuftspule->show();
@@ -299,7 +310,7 @@ void AfuBerechnung::triggeredEntfernungBerechnen()
 
 void AfuBerechnung::triggeredEinstellungen()
 {
-    /// Zu erledigen: Neues Fenster erstellen für Schriftart und -größe
+    /// TODO: Neues Fenster erstellen für Schriftart und -größe
     WidgetEinstellungen = new AfuBerechnungEinstellungen(this);
     WidgetEinstellungen->setWindowTitle("Einstellungen");
     WidgetEinstellungen->show();
@@ -316,13 +327,13 @@ void AfuBerechnung::triggeredCheckBoxChecked()
 {
     if(CheckBoxFenster->isChecked())
     {
-        /// Zu erledigen: Fenster bleibt nicht im Vordergrund...welcher Befehl bei QWidget???
+        /// TODO: Fenster bleibt nicht im Vordergrund...welcher Befehl bei QWidget???
         myWidget->activateWindow();
         myWidget->raise();
     }
     else
     {
-        /// Zu erledigen: Fenster kann in den Hintergrund versetzt werden.
+        /// TODO: Fenster kann in den Hintergrund versetzt werden.
     }
 
     SaveConfig(); //Speichere Parameter

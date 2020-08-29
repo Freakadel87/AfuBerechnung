@@ -41,6 +41,7 @@
 #include <QPixmap>
 #include <windows.h>
 #include <QSettings>
+#include <QDateTime>
 
 class AfuBerechnung : public QMainWindow
 {
@@ -67,6 +68,7 @@ private:
     QWidget *myWidget = new QWidget();
 
     QLabel *LabelStartbild;
+    QLabel *LabelTime;
 
     QMenu *menuProgramm;
     QAction *menuDateiBeenden;

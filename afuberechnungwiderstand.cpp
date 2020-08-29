@@ -212,7 +212,7 @@ void AfuBerechnungWiderstand::triggeredButtonBerechnenClicked()
         d_WertThird = ComboThirdRing->currentText().toDouble();
     }
 
-    /// Zu erledigen: Auswahl 4 Ringe wird die Rechnung nicht korrekt ausgeführt
+    /// TODO: Auswahl 4 Ringe wird die Rechnung nicht korrekt ausgeführt
     d_WertPuffer = d_WertFirst * 10 + d_WertSecond;
     d_WertErgebnis = d_WertPuffer * 10 + d_WertThird;
 
