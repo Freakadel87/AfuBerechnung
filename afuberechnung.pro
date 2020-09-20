@@ -29,6 +29,7 @@ SOURCES += \
     afuberechnungeinstellungen.cpp \
     afuberechnungentfernung.cpp \
     afuberechnungfilter.cpp \
+    afuberechnungplotter.cpp \
     afuberechnungresotrans.cpp \
     afuberechnungsprache.cpp \
     afuberechnungswr.cpp \
@@ -53,6 +54,7 @@ HEADERS += \
     afuberechnungfrequenz.h \
     afuberechnungkapazitaet.h \
     afuberechnunginduktivitaet.h \
+    afuberechnungplotter.h \
     afuberechnungresotrans.h \
     afuberechnungsprache.h \
     afuberechnungswr.h \
@@ -68,7 +70,8 @@ FORMS +=
 
 RESOURCES += \
     Bilder.qrc \
-    icons.qrc
+    icons.qrc #\
+    #plotter.qrc
 
 DISTFILES += \
     Projektnotizen

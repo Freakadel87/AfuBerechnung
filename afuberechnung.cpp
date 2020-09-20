@@ -47,7 +47,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBearbeitenUndo->setIcon(QIcon::fromTheme("document-undo"));
     menuBearbeiten->addSeparator();
     menuBearbeitenCut = menuBearbeiten->addAction("Ausschneiden", this, SLOT(triggeredCut()));
-   // menuBearbeitenCut->setIcon(QIcon::fromTheme("C:/Users/Büro/Desktop/edit-cut.svg"));
+    // menuBearbeitenCut->setIcon(QIcon::fromTheme("C:/Users/Büro/Desktop/edit-cut.svg"));
     menuBearbeiten->addSeparator();
     menuBearbeitenCopy = menuBearbeiten->addAction("Kopieren", this, SLOT(triggeredCopy()));
     menuBearbeitenCopy->setIcon(QIcon::fromTheme("copy.png"));
