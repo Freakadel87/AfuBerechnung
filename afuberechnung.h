@@ -11,6 +11,7 @@
 #include "afuberechnungtrapantenne.h"
 #include "afuberechnunganzeigefrequenz.h"
 #include "afuberechnungresotrans.h"
+#include "afuberechnungswr.h"
 #include "afuberechnungamateurfunkbaender.h"
 #include "afuberechnungwattdbm.h"
 #include "afuberechnungwiderstand.h"
@@ -64,6 +65,7 @@ private:
     AfuBerechnungEinstellungen *WidgetEinstellungen;
     AfuBerechnungSprache *WidgetSprache;
     AfuBerechnungEntfernung *WidgetEntfernung;
+    AfuBerechnungSwr *WidgetSwr;
 
     QWidget *myWidget = new QWidget();
 
@@ -89,6 +91,7 @@ private:
     QAction *menuBerechnenLuftspule;
     QAction *menuBerechnenTrap;
     QAction *menuBerechnenResoTrans;
+    QAction *menuBerechnenSwr;
     QAction *menuBerechnenWiderstand;
     QAction *menuBerechnenEntfernung;
 
@@ -140,6 +143,7 @@ private slots:
     void triggeredLuftspuleBerechnen();
     void triggeredTrapBerechnen();
     void triggeredResoTransBerechnen();
+    void triggeredSwrBerechnen();
     void triggeredEntfernungBerechnen();
     void triggeredFilter();
     void triggeredWattDbm();

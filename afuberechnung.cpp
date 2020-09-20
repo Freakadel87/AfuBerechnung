@@ -67,6 +67,8 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBerechnenTrap = menuBerechnen->addAction("Trapantenne berechnen...", this, SLOT(triggeredTrapBerechnen()));
     menuBerechnenResoTrans = menuBerechnen->addAction("Resonanztransformator berechnen...", this, SLOT(triggeredResoTransBerechnen()));
     menuBerechnen->addSeparator();
+    menuBerechnenSwr = menuBerechnen->addAction("SWR-Tabelle...", this, SLOT(triggeredSwrBerechnen()));
+    menuBerechnen->addSeparator();
     menuBerechnenWiderstand = menuBerechnen->addAction("Widerstand bestimmen...", this, SLOT(triggeredWiderstand()));
     menuBerechnen->addSeparator();
     menuBerechnenEntfernung = menuBerechnen->addAction("Entfernung auf der Kugeloberfläche berechnen...", this, SLOT(triggeredEntfernungBerechnen()));
@@ -254,6 +256,13 @@ void AfuBerechnung::triggeredResoTransBerechnen()
     BerechnungResoTrans = new AfuBerechnungResoTrans(this);
     BerechnungResoTrans->setWindowTitle("Resonanztransformation berechnen");
     BerechnungResoTrans->show();
+}
+
+void AfuBerechnung::triggeredSwrBerechnen()
+{
+    WidgetSwr = new AfuBerechnungSwr(this);
+    WidgetSwr->setWindowTitle("SWR-Tabelle");
+    WidgetSwr->show();
 }
 
 void AfuBerechnung::triggeredInfo()
