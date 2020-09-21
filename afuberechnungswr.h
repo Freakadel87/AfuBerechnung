@@ -38,7 +38,7 @@ private:
     //Objekterstellung
     QGridLayout *GridLayout;
     QVBoxLayout *MainLayout;
-    QHBoxLayout *LayoutButton;
+
     QPushButton *ButtonAbbrechen;
     QPushButton *ButtonOk;
 

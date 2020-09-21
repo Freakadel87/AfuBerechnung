@@ -3,9 +3,6 @@
 //Variablendeklaration
 //QSettings Settings;
 
-
-///TODO: Es ist noch unklar, wie mit dem qt-Linguist gearbeitet werden muss.
-
 AfuBerechnungSwr::AfuBerechnungSwr(QWidget *parent) : QDialog(parent)
 {
     LabelUeberschrift = new QLabel(tr("SWR-Tabelle"));
@@ -61,8 +58,6 @@ AfuBerechnungSwr::AfuBerechnungSwr(QWidget *parent) : QDialog(parent)
     EditZeile19 = new QLineEdit();
     EditZeile20 = new QLineEdit();
 
-
-
     //Erstelle Buttons
     ButtonAbbrechen = new QPushButton(tr("Abbrechen"));
     ButtonAbbrechen->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
@@ -70,10 +65,6 @@ AfuBerechnungSwr::AfuBerechnungSwr(QWidget *parent) : QDialog(parent)
     ButtonOk = new QPushButton(tr("OK"));
     ButtonOk->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonOk->setFont(QFont("Arial", 10, QFont::Thin));
-
-    LayoutButton = new QHBoxLayout; //Layout Zusammensetzung
-    LayoutButton->addWidget(ButtonOk);
-    LayoutButton->addWidget(ButtonAbbrechen);
 
     GridLayout = new QGridLayout(this);
     GridLayout->addWidget(LabelUeberschrift,0,1);
@@ -123,7 +114,8 @@ AfuBerechnungSwr::AfuBerechnungSwr(QWidget *parent) : QDialog(parent)
     GridLayout->addWidget(EditZeile19,21,2);
     GridLayout->addWidget(EditZeile20,22,2);
 
-
+    GridLayout->addWidget(ButtonOk,24,1);
+    GridLayout->addWidget(ButtonAbbrechen,25,1);
 
     //Objektkonnektivitaet
     QObject::connect(ButtonOk, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonOkClicked()));
@@ -137,39 +129,41 @@ void AfuBerechnungSwr::triggeredButtonAbbrechenClicked()
     ///TODO: Abfrage nur zeigen, wenn tatsächlich etwas geändert wurde (Registrierung Mausklick möglich?)
 
     //Abfrage ob Aenderung gespeichert werden soll
-//    int retAbbrechen {0};
-//    QMessageBox msgBox;
-//    msgBox.setIcon(QMessageBox::Question);
-//    msgBox.setFont(QFont("Arial", 11, QFont::Normal));
-//    msgBox.setWindowTitle(tr("Änderungen speichern?"));
-//    msgBox.setText(tr("Es wurde eine andere Sprache ausgewählt,\n"
-//                      "Wollen Sie die ausgewählte Sprache anwenden und speichern?"));
-//    msgBox.addButton(QMessageBox::Yes);
-//    msgBox.addButton(QMessageBox::No);
-//    msgBox.setButtonText(QMessageBox::Yes, tr("Ja"));
-//    msgBox.setButtonText(QMessageBox::No, tr("Nein"));
-//    msgBox.setDefaultButton(QMessageBox::No);
-//    msgBox.setEscapeButton(QMessageBox::No);
-//    retAbbrechen = msgBox.exec();
+    int retAbbrechen {0};
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Question);
+    msgBox.setFont(QFont("Arial", 11, QFont::Normal));
+    msgBox.setWindowTitle(tr("Änderungen speichern?"));
+    msgBox.setText(tr("Die zuvor eingegebenen Daten gehen verloren.,\n"
+                      "Wollen Sie speichern und beenden?"));
+    msgBox.addButton(QMessageBox::Yes);
+    msgBox.addButton(QMessageBox::No);
+    msgBox.setButtonText(QMessageBox::Yes, tr("Ja"));
+    msgBox.setButtonText(QMessageBox::No, tr("Nein"));
+    msgBox.setDefaultButton(QMessageBox::No);
+    msgBox.setEscapeButton(QMessageBox::No);
+    retAbbrechen = msgBox.exec();
 
-//    if(retAbbrechen == QMessageBox::Yes) //Aenderung speichern und Fenster schließen
-//    {
-//        SaveConfig(); //Speichere vorgenommene Parameter
-//        close();
-//        destroy();
-//    }
-//    else if(retAbbrechen == QMessageBox::No) //Aenderung verwerfen und schließen
-//    {
-//        ///TODO: Funktion nicht gegeben, springt nicht auf die zuvor eingestellte Sprache zurueck
-//        LoadConfig();
-//        close();
-//        destroy();
-//    }
+    if(retAbbrechen == QMessageBox::Yes) //Aenderung speichern und Fenster schließen
+    {
+        SaveConfig(); //Speichere vorgenommene Parameter
+        close();
+        destroy();
+    }
+    else if(retAbbrechen == QMessageBox::No) //Aenderung verwerfen und schließen
+    {
+        ///TODO: Funktion nicht gegeben, springt nicht auf die zuvor eingestellte Sprache zurueck
+        LoadConfig();
+        close();
+        destroy();
+    }
 }
 
 //Button OK betaetigt
 void AfuBerechnungSwr::triggeredButtonOkClicked()
 {
+    ///TODO:
+    ///Eingegebene Daten werden uebernommen und als Kurve in einem x/y-Koordinatensystem uebernommen.
 //    if()
 //    {
 //        //Warnmeldung, wenn keine Sprache ausgewaehlt wurde
