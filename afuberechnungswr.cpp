@@ -10,7 +10,7 @@ AfuBerechnungSwr::AfuBerechnungSwr(QWidget *parent) : QDialog(parent)
     LabelBandwahl = new QLabel(tr("Band"));
     ComboBoxBandwahl = new QComboBox();
     QStringList sListBand;
-    sListBand<<"10m"<<"12m"<<"15m"<<"17m"<<"20m"<<"40m"<<"80m"<<"160m";
+    sListBand<<"<Auswahl>"<<"10m"<<"12m"<<"15m"<<"17m"<<"20m"<<"40m"<<"80m"<<"160m";
     ComboBoxBandwahl->addItems(sListBand);
 
     LabelSpalte1 = new QLabel(tr("Frequenz"));
@@ -144,13 +144,13 @@ void AfuBerechnungSwr::triggeredButtonAbbrechenClicked()
     msgBox.setEscapeButton(QMessageBox::No);
     retAbbrechen = msgBox.exec();
 
-    if(retAbbrechen == QMessageBox::Yes) //Aenderung speichern und Fenster schließen
+    if (retAbbrechen == QMessageBox::Yes) //Aenderung speichern und Fenster schließen
     {
         SaveConfig(); //Speichere vorgenommene Parameter
         close();
         destroy();
     }
-    else if(retAbbrechen == QMessageBox::No) //Aenderung verwerfen und schließen
+    else if (retAbbrechen == QMessageBox::No) //Aenderung verwerfen und schließen
     {
         ///TODO: Funktion nicht gegeben, springt nicht auf die zuvor eingestellte Sprache zurueck
         LoadConfig();
@@ -164,7 +164,7 @@ void AfuBerechnungSwr::triggeredButtonOkClicked()
 {
     ///TODO:
     ///Eingegebene Daten werden uebernommen und als Kurve in einem x/y-Koordinatensystem uebernommen.
-//    if()
+//    if ()
 //    {
 //        //Warnmeldung, wenn keine Sprache ausgewaehlt wurde
 //        int retOk {0};
@@ -190,7 +190,7 @@ void AfuBerechnungSwr::triggeredButtonOkClicked()
 
 //        SaveConfig(); //Speicher vorgenommene Parameter
 
-//        if(retOk == QMessageBox::Ok) //Aenderung speichern und Fenster schließen
+//        if (retOk == QMessageBox::Ok) //Aenderung speichern und Fenster schließen
 //        {
 //            close();
 //            destroy();
@@ -202,7 +202,53 @@ void AfuBerechnungSwr::triggeredComboBox()
 {
     QString sBand = ComboBoxBandwahl->currentText();
 
-    if(sBand == "10m")
+    if (sBand == "<Auswahl>")
+    {
+        LabelZeile1->setVisible(false);
+        LabelZeile2->setVisible(false);
+        LabelZeile3->setVisible(false);
+        LabelZeile4->setVisible(false);
+        LabelZeile5->setVisible(false);
+        LabelZeile6->setVisible(false);
+        LabelZeile7->setVisible(false);
+        LabelZeile8->setVisible(false);
+        LabelZeile9->setVisible(false);
+        LabelZeile10->setVisible(false);
+        LabelZeile11->setVisible(false);
+        LabelZeile12->setVisible(false);
+        LabelZeile13->setVisible(false);
+        LabelZeile14->setVisible(false);
+        LabelZeile15->setVisible(false);
+        LabelZeile16->setVisible(false);
+        LabelZeile17->setVisible(false);
+        LabelZeile18->setVisible(false);
+        LabelZeile19->setVisible(false);
+        LabelZeile20->setVisible(false);
+
+        EditZeile1->setVisible(true);
+        //EditZeile1->setStyleSheet("QLineEdit {background-color : rgb(190,190,190); color : black;}"); // Funktioniert nicht
+        EditZeile2->setVisible(true);
+        EditZeile3->setVisible(true);
+        EditZeile4->setVisible(true);
+        EditZeile5->setVisible(true);
+        EditZeile6->setVisible(true);
+        EditZeile7->setVisible(true);
+        EditZeile8->setVisible(true);
+        EditZeile9->setVisible(true);
+        EditZeile10->setVisible(true);
+        EditZeile11->setVisible(true);
+        EditZeile12->setVisible(true);
+        EditZeile13->setVisible(true);
+        EditZeile14->setVisible(true);
+        EditZeile15->setVisible(true);
+        EditZeile16->setVisible(true);
+        EditZeile17->setVisible(true);
+        EditZeile18->setVisible(true);
+        EditZeile19->setVisible(true);
+        EditZeile20->setVisible(true);
+    }
+
+    if (sBand == "10m")
     {
         LabelZeile1->setVisible(true);
         LabelZeile2->setVisible(true);
@@ -224,6 +270,27 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile18->setVisible(true);
         LabelZeile19->setVisible(true);
         LabelZeile20->setVisible(true);
+
+        EditZeile1->setVisible(true);
+        EditZeile2->setVisible(true);
+        EditZeile3->setVisible(true);
+        EditZeile4->setVisible(true);
+        EditZeile5->setVisible(true);
+        EditZeile6->setVisible(true);
+        EditZeile7->setVisible(true);
+        EditZeile8->setVisible(true);
+        EditZeile9->setVisible(true);
+        EditZeile10->setVisible(true);
+        EditZeile11->setVisible(true);
+        EditZeile12->setVisible(true);
+        EditZeile13->setVisible(true);
+        EditZeile14->setVisible(true);
+        EditZeile15->setVisible(true);
+        EditZeile16->setVisible(true);
+        EditZeile17->setVisible(true);
+        EditZeile18->setVisible(true);
+        EditZeile19->setVisible(true);
+        EditZeile20->setVisible(true);
 
         LabelZeile1->setText("28.000");
         LabelZeile2->setText("28.100");
@@ -247,7 +314,7 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile20->setText("29.900");
     }
 
-    else if(sBand == "12m")
+    else if (sBand == "12m")
     {
         LabelZeile1->setVisible(true);
         LabelZeile2->setVisible(true);
@@ -270,6 +337,27 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile19->setVisible(false);
         LabelZeile20->setVisible(false);
 
+        EditZeile1->setVisible(true);
+        EditZeile2->setVisible(true);
+        EditZeile3->setVisible(true);
+        EditZeile4->setVisible(true);
+        EditZeile5->setVisible(true);
+        EditZeile6->setVisible(true);
+        EditZeile7->setVisible(true);
+        EditZeile8->setVisible(true);
+        EditZeile9->setVisible(true);
+        EditZeile10->setVisible(true);
+        EditZeile11->setVisible(true);
+        EditZeile12->setVisible(false);
+        EditZeile13->setVisible(false);
+        EditZeile14->setVisible(false);
+        EditZeile15->setVisible(false);
+        EditZeile16->setVisible(false);
+        EditZeile17->setVisible(false);
+        EditZeile18->setVisible(false);
+        EditZeile19->setVisible(false);
+        EditZeile20->setVisible(false);
+
         LabelZeile1->setText("24.890");
         LabelZeile2->setText("24.900");
         LabelZeile3->setText("24.910");
@@ -283,7 +371,7 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile11->setText("24.990");
     }
 
-    else if(sBand == "15m")
+    else if (sBand == "15m")
     {
         LabelZeile1->setVisible(true);
         LabelZeile2->setVisible(true);
@@ -306,6 +394,27 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile19->setVisible(false);
         LabelZeile20->setVisible(false);
 
+        EditZeile1->setVisible(true);
+        EditZeile2->setVisible(true);
+        EditZeile3->setVisible(true);
+        EditZeile4->setVisible(true);
+        EditZeile5->setVisible(true);
+        EditZeile6->setVisible(true);
+        EditZeile7->setVisible(true);
+        EditZeile8->setVisible(true);
+        EditZeile9->setVisible(true);
+        EditZeile10->setVisible(true);
+        EditZeile11->setVisible(false);
+        EditZeile12->setVisible(false);
+        EditZeile13->setVisible(false);
+        EditZeile14->setVisible(false);
+        EditZeile15->setVisible(false);
+        EditZeile16->setVisible(false);
+        EditZeile17->setVisible(false);
+        EditZeile18->setVisible(false);
+        EditZeile19->setVisible(false);
+        EditZeile20->setVisible(false);
+
         LabelZeile1->setText("21.000");
         LabelZeile2->setText("21.050");
         LabelZeile3->setText("21.100");
@@ -318,7 +427,7 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile10->setText("21.450");
     }
 
-    else if(sBand == "17m")
+    else if (sBand == "17m")
     {
         LabelZeile1->setVisible(true);
         LabelZeile2->setVisible(true);
@@ -341,6 +450,27 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile19->setVisible(false);
         LabelZeile20->setVisible(false);
 
+        EditZeile1->setVisible(true);
+        EditZeile2->setVisible(true);
+        EditZeile3->setVisible(true);
+        EditZeile4->setVisible(true);
+        EditZeile5->setVisible(true);
+        EditZeile6->setVisible(true);
+        EditZeile7->setVisible(true);
+        EditZeile8->setVisible(true);
+        EditZeile9->setVisible(true);
+        EditZeile10->setVisible(false);
+        EditZeile11->setVisible(false);
+        EditZeile12->setVisible(false);
+        EditZeile13->setVisible(false);
+        EditZeile14->setVisible(false);
+        EditZeile15->setVisible(false);
+        EditZeile16->setVisible(false);
+        EditZeile17->setVisible(false);
+        EditZeile18->setVisible(false);
+        EditZeile19->setVisible(false);
+        EditZeile20->setVisible(false);
+
         LabelZeile1->setText("18.068");
         LabelZeile2->setText("18.100");
         LabelZeile3->setText("18.110");
@@ -352,7 +482,7 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile9->setText("18.170");
     }
 
-    else if(sBand == "20m")
+    else if (sBand == "20m")
     {
         LabelZeile1->setVisible(true);
         LabelZeile2->setVisible(true);
@@ -375,6 +505,27 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile19->setVisible(false);
         LabelZeile20->setVisible(false);
 
+        EditZeile1->setVisible(true);
+        EditZeile2->setVisible(true);
+        EditZeile3->setVisible(true);
+        EditZeile4->setVisible(true);
+        EditZeile5->setVisible(true);
+        EditZeile6->setVisible(true);
+        EditZeile7->setVisible(true);
+        EditZeile8->setVisible(true);
+        EditZeile9->setVisible(true);
+        EditZeile10->setVisible(false);
+        EditZeile11->setVisible(false);
+        EditZeile12->setVisible(false);
+        EditZeile13->setVisible(false);
+        EditZeile14->setVisible(false);
+        EditZeile15->setVisible(false);
+        EditZeile16->setVisible(false);
+        EditZeile17->setVisible(false);
+        EditZeile18->setVisible(false);
+        EditZeile19->setVisible(false);
+        EditZeile20->setVisible(false);
+
         LabelZeile1->setText("14.000");
         LabelZeile2->setText("14.050");
         LabelZeile3->setText("14.100");
@@ -385,7 +536,7 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile8->setText("14.350");
     }
 
-    else if(sBand == "40m")
+    else if (sBand == "40m")
     {
         LabelZeile1->setVisible(true);
         LabelZeile2->setVisible(true);
@@ -407,6 +558,27 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile18->setVisible(true);
         LabelZeile19->setVisible(true);
         LabelZeile20->setVisible(true);
+
+        EditZeile1->setVisible(true);
+        EditZeile2->setVisible(true);
+        EditZeile3->setVisible(true);
+        EditZeile4->setVisible(true);
+        EditZeile5->setVisible(true);
+        EditZeile6->setVisible(true);
+        EditZeile7->setVisible(true);
+        EditZeile8->setVisible(true);
+        EditZeile9->setVisible(true);
+        EditZeile10->setVisible(true);
+        EditZeile11->setVisible(true);
+        EditZeile12->setVisible(true);
+        EditZeile13->setVisible(true);
+        EditZeile14->setVisible(true);
+        EditZeile15->setVisible(true);
+        EditZeile16->setVisible(true);
+        EditZeile17->setVisible(true);
+        EditZeile18->setVisible(true);
+        EditZeile19->setVisible(true);
+        EditZeile20->setVisible(true);
 
         LabelZeile1->setText("7.000");
         LabelZeile2->setText("7.010");
@@ -430,7 +602,7 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile20->setText("7.190");
     }
 
-    else if(sBand == "80m")
+    else if (sBand == "80m")
     {
         LabelZeile1->setVisible(true);
         LabelZeile2->setVisible(true);
@@ -453,6 +625,28 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile19->setVisible(false);
         LabelZeile20->setVisible(false);
 
+        EditZeile1->setVisible(true);
+        EditZeile2->setVisible(true);
+        EditZeile3->setVisible(true);
+        EditZeile4->setVisible(true);
+        EditZeile5->setVisible(true);
+        EditZeile6->setVisible(true);
+        EditZeile7->setVisible(true);
+        EditZeile8->setVisible(true);
+        EditZeile9->setVisible(true);
+        EditZeile10->setVisible(true);
+        EditZeile11->setVisible(true);
+        EditZeile12->setVisible(true);
+        EditZeile13->setVisible(true);
+        EditZeile14->setVisible(true);
+        EditZeile15->setVisible(true);
+        EditZeile16->setVisible(true);
+        EditZeile17->setVisible(false);
+        EditZeile18->setVisible(false);
+        EditZeile19->setVisible(false);
+        EditZeile20->setVisible(false);
+
+
         LabelZeile1->setText("3.500");
         LabelZeile2->setText("3.520");
         LabelZeile3->setText("3.540");
@@ -471,7 +665,7 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile16->setText("3.800");
     }
 
-    else if(sBand == "160m")
+    else if (sBand == "160m")
     {
         LabelZeile1->setVisible(true);
         LabelZeile2->setVisible(true);
@@ -493,6 +687,27 @@ void AfuBerechnungSwr::triggeredComboBox()
         LabelZeile18->setVisible(false);
         LabelZeile19->setVisible(false);
         LabelZeile20->setVisible(false);
+
+        EditZeile1->setVisible(true);
+        EditZeile2->setVisible(true);
+        EditZeile3->setVisible(true);
+        EditZeile4->setVisible(true);
+        EditZeile5->setVisible(true);
+        EditZeile6->setVisible(true);
+        EditZeile7->setVisible(true);
+        EditZeile8->setVisible(true);
+        EditZeile9->setVisible(true);
+        EditZeile10->setVisible(true);
+        EditZeile11->setVisible(false);
+        EditZeile12->setVisible(false);
+        EditZeile13->setVisible(false);
+        EditZeile14->setVisible(false);
+        EditZeile15->setVisible(false);
+        EditZeile16->setVisible(false);
+        EditZeile17->setVisible(false);
+        EditZeile18->setVisible(false);
+        EditZeile19->setVisible(false);
+        EditZeile20->setVisible(false);
 
         LabelZeile1->setText("1.810");
         LabelZeile2->setText("1.820");

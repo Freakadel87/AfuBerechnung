@@ -37,7 +37,7 @@
 
 //void AfuBerechnungPlotter::ZoomOut()
 //{
-//    if(CurZoom > 0)
+//    if (CurZoom > 0)
 //    {
 //        --CurZoom;
 //        ZoomOutButton->setEnabled(CurZoom > 0);
@@ -49,7 +49,7 @@
 
 //void AfuBerechnungPlotter::ZoomIn()
 //{
-//    if(CurZoom < ZoomStack.count() - 1)
+//    if (CurZoom < ZoomStack.count() - 1)
 //    {
 //        ++CurZoom;
 //        ZoomInButton->setEnabled(CurZoom < ZoomStack.count() - 1);
@@ -86,14 +86,14 @@
 //    QStylePainter painter(this);
 //    painter.drawPixmap(0,0,Pixmap);
 
-//    if(RubberBandIsShown)
+//    if (RubberBandIsShown)
 //    {
 //        painter.setPen(palette().light().color());
 //        painter.drawRect(RubberBandRect.normalized()
 //                         .adjusted(0,0,-1,-1));
 //    }
 
-//    if(hasFocus())
+//    if (hasFocus())
 //    {
 //        QStyleOptionFocusRect option;
 //        option.initFrom(this);

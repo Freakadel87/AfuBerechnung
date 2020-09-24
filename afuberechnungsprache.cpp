@@ -110,13 +110,13 @@ void AfuBerechnungSprache::triggeredButtonAbbrechenClicked()
     msgBox.setEscapeButton(QMessageBox::No);
     retAbbrechen = msgBox.exec();
 
-    if(retAbbrechen == QMessageBox::Yes) //Aenderung speichern und Fenster schließen
+    if (retAbbrechen == QMessageBox::Yes) //Aenderung speichern und Fenster schließen
     {
         SaveConfig(); //Speichere vorgenommene Parameter
         close();
         destroy();
     }
-    else if(retAbbrechen == QMessageBox::No) //Aenderung verwerfen und schließen
+    else if (retAbbrechen == QMessageBox::No) //Aenderung verwerfen und schließen
     {
         ///TODO: Funktion nicht gegeben, springt nicht auf die zuvor eingestellte Sprache zurueck
         LoadConfig();
@@ -128,7 +128,7 @@ void AfuBerechnungSprache::triggeredButtonAbbrechenClicked()
 //Button OK betaetigt
 void AfuBerechnungSprache::triggeredButtonOkClicked()
 {
-    if(bMerker_Deu==false && bMerker_Eng==false && bMerker_Fra==false && bMerker_Ita==false &&
+    if (bMerker_Deu==false && bMerker_Eng==false && bMerker_Fra==false && bMerker_Ita==false &&
             bMerker_Pol==false && bMerker_Por==false && bMerker_Rus==false && bMerker_Spa==false)
     {
         //Warnmeldung, wenn keine Sprache ausgewaehlt wurde
@@ -155,7 +155,7 @@ void AfuBerechnungSprache::triggeredButtonOkClicked()
 
         SaveConfig(); //Speicher vorgenommene Parameter
 
-        if(retOk == QMessageBox::Ok) //Aenderung speichern und Fenster schließen
+        if (retOk == QMessageBox::Ok) //Aenderung speichern und Fenster schließen
         {
             close();
             destroy();
@@ -440,7 +440,7 @@ void AfuBerechnungSprache::LoadConfig()
     bool bSpeicherRus = bMerker_Rus;
     bool bSpeicherSpa = bMerker_Spa;
 
-    if(bSpeicherDeu == true)
+    if (bSpeicherDeu == true)
     {
         RadioButtonDeu->setChecked(true);
         RadioButtonDeu->setChecked(false);
@@ -453,7 +453,7 @@ void AfuBerechnungSprache::LoadConfig()
         RadioButtonSpa->setChecked(false);
     }
 
-    if(bSpeicherEng == true)
+    if (bSpeicherEng == true)
     {
         RadioButtonEng->setChecked(true);
         RadioButtonDeu->setChecked(false);
@@ -466,7 +466,7 @@ void AfuBerechnungSprache::LoadConfig()
         RadioButtonSpa->setChecked(false);
     }
 
-    if(bSpeicherFra == true)
+    if (bSpeicherFra == true)
     {
         RadioButtonFra->setChecked(true);
         RadioButtonDeu->setChecked(false);
@@ -479,7 +479,7 @@ void AfuBerechnungSprache::LoadConfig()
         RadioButtonSpa->setChecked(false);
     }
 
-    if(bSpeicherIta == true)
+    if (bSpeicherIta == true)
     {
         RadioButtonIta->setChecked(true);
         RadioButtonDeu->setChecked(false);
@@ -492,7 +492,7 @@ void AfuBerechnungSprache::LoadConfig()
         RadioButtonSpa->setChecked(false);
     }
 
-    if(bSpeicherPol == true)
+    if (bSpeicherPol == true)
     {
         RadioButtonPol->setChecked(true);
         RadioButtonDeu->setChecked(false);
@@ -505,7 +505,7 @@ void AfuBerechnungSprache::LoadConfig()
         RadioButtonSpa->setChecked(false);
     }
 
-    if(bSpeicherPor == true)
+    if (bSpeicherPor == true)
     {
         RadioButtonPor->setChecked(true);
         RadioButtonDeu->setChecked(false);
@@ -518,7 +518,7 @@ void AfuBerechnungSprache::LoadConfig()
         RadioButtonSpa->setChecked(false);
     }
 
-    if(bSpeicherRus == true)
+    if (bSpeicherRus == true)
     {
         RadioButtonRus->setChecked(true);
         RadioButtonDeu->setChecked(false);
@@ -531,7 +531,7 @@ void AfuBerechnungSprache::LoadConfig()
         RadioButtonSpa->setChecked(false);
     }
 
-    if(bSpeicherSpa == true)
+    if (bSpeicherSpa == true)
     {
         RadioButtonSpa->setChecked(true);
         RadioButtonDeu->setChecked(false);
