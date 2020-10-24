@@ -22,6 +22,7 @@
 #include <QComboBox>
 #include <QPalette>
 #include <QColor>
+#include <QMessageBox>
 
 class AfuBerechnungWiderstand : public QDialog
 {

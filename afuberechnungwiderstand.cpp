@@ -8,7 +8,7 @@ AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(pare
     LabelSchritt_1->setFont(QFont("Arial", 11, QFont::Normal));
     ComboBox_1 = new QComboBox;
     QStringList s_ListRinge;
-    s_ListRinge<<"<leer>"<<"4 Ringe"<<"5 Ringe"<<"6 Ringe";
+    s_ListRinge<<"4 Ringe"<<"5 Ringe"<<"6 Ringe";
     ComboBox_1->addItems(s_ListRinge);
     ComboBox_1->setFont(QFont("Arial", 11, QFont::Normal));
     LabelSchritt_2  = new QLabel("Schritt 2: Wählen Sie bitte den Farbcode aus");
@@ -143,18 +143,18 @@ AfuBerechnungWiderstand::AfuBerechnungWiderstand(QWidget *parent) : QDialog(pare
     GridLayout->addWidget(LabelSchritt_1, 0, 0);
     GridLayout->addWidget(ComboBox_1, 0, 1);
     GridLayout->addWidget(LabelSchritt_2, 2, 0);
-    GridLayout->addLayout(HLayoutCombo,4,0);
-    GridLayout->addWidget(LabelWiderstandswertOhm, 6,0);
-    GridLayout->addWidget(LabelErgebnisOhm, 6,1);
-    GridLayout->addWidget(LabelMaxTolWert, 9,0);
-    GridLayout->addWidget(LabelErgebnisMaxTol, 9,1);
-    GridLayout->addWidget(LabelWiderstandswertKiloOhm, 7,0);
-    GridLayout->addWidget(LabelErgebnisKiloOhm, 7,1);
-    GridLayout->addWidget(LabelMinTolWert, 10,0);
-    GridLayout->addWidget(LabelErgebnisMinTol, 10,1);
-    GridLayout->addWidget(LabelWiderstandswertMegaOhm, 8,0);
-    GridLayout->addWidget(LabelErgebnisMegaOhm, 8,1);
-    GridLayout->addLayout(VLayoutButton,12,0);
+    GridLayout->addLayout(HLayoutCombo,5,0);
+    GridLayout->addWidget(LabelWiderstandswertOhm, 7,0);
+    GridLayout->addWidget(LabelErgebnisOhm, 7,1);
+    GridLayout->addWidget(LabelMaxTolWert, 10,0);
+    GridLayout->addWidget(LabelErgebnisMaxTol, 10,1);
+    GridLayout->addWidget(LabelWiderstandswertKiloOhm, 8,0);
+    GridLayout->addWidget(LabelErgebnisKiloOhm, 8,1);
+    GridLayout->addWidget(LabelMinTolWert, 11,0);
+    GridLayout->addWidget(LabelErgebnisMinTol, 11,1);
+    GridLayout->addWidget(LabelWiderstandswertMegaOhm, 9,0);
+    GridLayout->addWidget(LabelErgebnisMegaOhm, 9,1);
+    GridLayout->addLayout(VLayoutButton,13,0);
 
     QObject::connect(ButtonBerechnen, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBerechnenClicked()));
     QObject::connect(ButtonLeeren, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonLeerenClicked()));
@@ -210,6 +210,14 @@ void AfuBerechnungWiderstand::triggeredButtonBerechnenClicked()
     else
     {
         d_WertThird = ComboThirdRing->currentText().toDouble();
+    }
+
+    if (ComboFirstRing->currentText() != "" && ComboSecondRing->currentText() != "" && ComboThirdRing->currentText() != "" && ComboMultiplier->currentText() == "<leer>")
+    {
+        QMessageBox::warning(this, tr("Fehler bei der Eingabe!"),
+                             tr("Es wurde der Multiplier nicht besetzt!\n"
+                                "Bitte prüfen Sie Ihre Eingabe noch einmal."));
+        ComboMultiplier->setStyleSheet("QComboBox {background-color : rgb(255,48,48); color : black;}");
     }
 
     /// TODO: Auswahl 4 Ringe wird die Rechnung nicht korrekt ausgeführt
@@ -344,8 +352,8 @@ void AfuBerechnungWiderstand::triggeredButtonBerechnenClicked()
     }
     else if (s_WertToleranz == "<leer>")
     {
-        d_WertMinTol = 9999999;
-        d_WertMaxTol = 9999999;
+        d_WertMinTol = 0;
+        d_WertMaxTol = 0;
     }
     LabelErgebnisMinTol->setNum(d_WertMinTol);
     LabelErgebnisMaxTol->setNum(d_WertMaxTol);

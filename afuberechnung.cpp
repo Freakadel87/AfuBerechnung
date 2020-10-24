@@ -111,7 +111,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     LabelButton2->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     LabelButton2->setFont(QFont("Arial", 10, QFont::Bold));
     LabelButton2->setGeometry(25,165,450,25); //x, y, Laenge, Breite
-    ButtonSpule = new QPushButton("Spule \n berechnen", this);
+    ButtonSpule = new QPushButton("Verlängerungsspule \n berechnen", this);
     ButtonSpule->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonSpule->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonSpule->setGeometry(25,195,85,85);
