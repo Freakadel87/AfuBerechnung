@@ -3,6 +3,8 @@
 //Variablendeklaration
 QSettings SettingsAfuFenster;
 bool bMerkerFenster {false};
+bool G_bDezibelLeistung {false};
+bool G_bDezibelSpannung {false};
 
 AfuBerechnung::~AfuBerechnung()
 {
@@ -66,6 +68,9 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBerechnenLuftspule = menuBerechnen->addAction("Luftspule berechnen...", this, SLOT(triggeredLuftspuleBerechnen()));
     menuBerechnenTrap = menuBerechnen->addAction("Trapantenne berechnen...", this, SLOT(triggeredTrapBerechnen()));
     menuBerechnenResoTrans = menuBerechnen->addAction("Resonanztransformator berechnen...", this, SLOT(triggeredResoTransBerechnen()));
+    menuBerechnen->addSeparator();
+    menuBerechnenDezibelLeistung = menuBerechnen->addAction("Dezibelberechnung Leistung...", this, SLOT(triggeredDezibelBerechnenLeistung()));
+    menuBerechnenDezibelSpannung = menuBerechnen->addAction("Dezibelberechnung Spannung...", this, SLOT(triggeredDezibelBerechnenSpannung()));
     menuBerechnen->addSeparator();
     menuBerechnenSwr = menuBerechnen->addAction("SWR-Tabelle...", this, SLOT(triggeredSwrBerechnen()));
     menuBerechnen->addSeparator();
@@ -256,6 +261,22 @@ void AfuBerechnung::triggeredResoTransBerechnen()
     BerechnungResoTrans = new AfuBerechnungResoTrans(this);
     BerechnungResoTrans->setWindowTitle("Resonanztransformation berechnen");
     BerechnungResoTrans->show();
+}
+
+void AfuBerechnung::triggeredDezibelBerechnenLeistung()
+{
+    G_bDezibelLeistung = true;
+    WidgetDezibel = new AfuBerechnungDezibel(this);
+    WidgetDezibel->setWindowTitle("Dezibelberechnung Leistung");
+    WidgetDezibel->show();
+}
+
+void AfuBerechnung::triggeredDezibelBerechnenSpannung()
+{
+    G_bDezibelSpannung = true;
+    WidgetDezibel = new AfuBerechnungDezibel(this);
+    WidgetDezibel->setWindowTitle("Dezibelberechnung Spannung");
+    WidgetDezibel->show();
 }
 
 void AfuBerechnung::triggeredSwrBerechnen()

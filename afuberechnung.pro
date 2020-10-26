@@ -26,6 +26,7 @@ CONFIG += qt warn_off release debug
 
 SOURCES += \
     afuberechnungamateurfunkbaender.cpp \
+    afuberechnungdezibel.cpp \
     afuberechnungeinstellungen.cpp \
     afuberechnungentfernung.cpp \
     afuberechnungfilter.cpp \
@@ -48,6 +49,7 @@ SOURCES += \
 HEADERS += \
         afuberechnung.h \
     afuberechnungamateurfunkbaender.h \
+    afuberechnungdezibel.h \
     afuberechnungeinstellungen.h \
     afuberechnungentfernung.h \
     afuberechnungfilter.h \

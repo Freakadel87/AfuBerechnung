@@ -19,6 +19,7 @@
 #include "afuberechnungsprache.h"
 #include "afuberechnungfilter.h"
 #include "afuberechnungentfernung.h"
+#include "afuberechnungdezibel.h"
 
 /// Qt-includes
 #include <QApplication>
@@ -66,6 +67,8 @@ private:
     AfuBerechnungSprache *WidgetSprache;
     AfuBerechnungEntfernung *WidgetEntfernung;
     AfuBerechnungSwr *WidgetSwr;
+    AfuBerechnungDezibel *WidgetDezibel;
+
 
     QWidget *myWidget = new QWidget();
 
@@ -94,6 +97,8 @@ private:
     QAction *menuBerechnenSwr;
     QAction *menuBerechnenWiderstand;
     QAction *menuBerechnenEntfernung;
+    QAction *menuBerechnenDezibelLeistung;
+    QAction *menuBerechnenDezibelSpannung;
 
     QMenu *menuOptionen;
     QAction *menuEinstellungen;
@@ -148,6 +153,8 @@ private slots:
     void triggeredFilter();
     void triggeredWattDbm();
     void triggeredWiderstand();
+    void triggeredDezibelBerechnenLeistung();
+    void triggeredDezibelBerechnenSpannung();
     void triggeredRedo();
     void triggeredUndo();
     void triggeredCut();

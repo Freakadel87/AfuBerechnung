@@ -20,6 +20,7 @@
 //    ButtonBeenden = new QPushButton("Beenden");
 //    ButtonBerechnen = new QPushButton("Berechnen");
 //    ButtonLeeren = new QPushButton("Leeren");
+//    ButtonLeeren->setWhatsThis("Mit Klick auf diesen Button, werden alle \nEingabe- und Ausgabefelder gelöscht.");
 
 //    QGridLayout *GridLayout = new QGridLayout(this);
 //    GridLayout->addWidget(LabelDurchmesser, 0, 0);

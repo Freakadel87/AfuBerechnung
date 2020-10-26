@@ -90,6 +90,7 @@ AfuBerechnungTrapantenne::AfuBerechnungTrapantenne(QWidget *parent) : QDialog(pa
     ButtonBerechnen->setFont(QFont("Arial", 11, QFont::Normal));
     ButtonBerechnen->setStyleSheet("QPushButton {background-color : rgb(202,255,112); color : black;}");
     ButtonLeeren = new QPushButton(tr("Leeren"));
+    ButtonLeeren->setWhatsThis("Mit Klick auf diesen Button, werden alle \nEingabe- und Ausgabefelder gelöscht.");
     ButtonLeeren->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonLeeren->setFont(QFont("Arial", 11, QFont::Normal));
 
