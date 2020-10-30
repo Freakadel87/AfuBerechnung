@@ -10,7 +10,7 @@ AfuBerechnungDezibel::AfuBerechnungDezibel(QWidget *parent) : QDialog(parent)
     ButtonBerechnen->setStyleSheet("QPushButton {background-color : rgb(202,255,112); color : black;}");
     ButtonBerechnen->setFont(QFont("Arial", 11, QFont::Thin));
     ButtonLeeren = new QPushButton(tr("Leeren"));
-    ButtonLeeren->setWhatsThis("Mit Klick auf diesen Button, werden alle \nEingabe- und Ausgabefelder gelöscht.");
+    ButtonLeeren->setWhatsThis(tr("Mit Klick auf diesen Button, werden alle \nEingabe- und Ausgabefelder gelöscht."));
     ButtonLeeren->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonLeeren->setFont(QFont("Arial", 11, QFont::Thin));
 
@@ -33,17 +33,17 @@ AfuBerechnungDezibel::AfuBerechnungDezibel(QWidget *parent) : QDialog(parent)
         EditEingabeEingangsLeistungP1->setFont(QFont("Arial", 11, QFont::Thin));
         EditEingabeEingangsLeistungP1->setInputMask("00000.00");
         EditEingabeEingangsLeistungP1->setCursorPosition(0);
-        EditEingabeEingangsLeistungP1->setToolTip("Geben Sie hier Ihre Eingangsleistung P1 in [W] ein.");
+        EditEingabeEingangsLeistungP1->setToolTip(tr("Geben Sie hier Ihre Eingangsleistung P1 in [W] ein."));
         EditEingabeAusgangsLeistungP2 = new QLineEdit;
         EditEingabeAusgangsLeistungP2->setFont(QFont("Arial", 11, QFont::Thin));
         EditEingabeAusgangsLeistungP2->setInputMask("00000.00");
         EditEingabeAusgangsLeistungP2->setCursorPosition(0);
-        EditEingabeAusgangsLeistungP2->setToolTip("Geben Sie hier Ihre Ausgangsleistung P2 [W] ein.");
+        EditEingabeAusgangsLeistungP2->setToolTip(tr("Geben Sie hier Ihre Ausgangsleistung P2 [W] ein."));
         EditErgebnis = new QLineEdit;
         EditErgebnis->setFont(QFont("Arial", 11, QFont::Thin));
         EditErgebnis->setInputMask("00000.00");
         EditErgebnis->setCursorPosition(0);
-        EditErgebnis->setToolTip("Ergebnis Dezibel Leistung [W].");
+        EditErgebnis->setToolTip(tr("Ergebnis Dezibel Leistung [W]."));
 
         QGridLayout *GridLayout = new QGridLayout(this);
         GridLayout->addWidget(LabelEingangsLeistungP1,0,0);
@@ -75,17 +75,17 @@ AfuBerechnungDezibel::AfuBerechnungDezibel(QWidget *parent) : QDialog(parent)
         EditEingabeEingangsSpannungU1->setFont(QFont("Arial", 11, QFont::Thin));
         EditEingabeEingangsSpannungU1->setInputMask("00000.00");
         EditEingabeEingangsSpannungU1->setCursorPosition(0);
-        EditEingabeEingangsSpannungU1->setToolTip("Geben Sie hier Ihre Eingangsspannung U1 in [mV] ein.");
+        EditEingabeEingangsSpannungU1->setToolTip(tr("Geben Sie hier Ihre Eingangsspannung U1 in [mV] ein."));
         EditEingabeAusgangsSpannungU2 = new QLineEdit;
         EditEingabeAusgangsSpannungU2->setFont(QFont("Arial", 11, QFont::Thin));
         EditEingabeAusgangsSpannungU2->setInputMask("00000.00");
         EditEingabeAusgangsSpannungU2->setCursorPosition(0);
-        EditEingabeAusgangsSpannungU2->setToolTip("Geben Sie hier Ihre Ausgangsspannung U2 [mV] ein.");
+        EditEingabeAusgangsSpannungU2->setToolTip(tr("Geben Sie hier Ihre Ausgangsspannung U2 [mV] ein."));
         EditErgebnis = new QLineEdit;
         EditErgebnis->setFont(QFont("Arial", 11, QFont::Thin));
         EditErgebnis->setInputMask("00000.00");
         EditErgebnis->setCursorPosition(0);
-        EditErgebnis->setToolTip("Ergebnis Dezibel Spannung [dB].");
+        EditErgebnis->setToolTip(tr("Ergebnis Dezibel Spannung [dB]."));
 
         QGridLayout *GridLayout = new QGridLayout(this);
         GridLayout->addWidget(LabelEingangsSpannungU1,0,0);

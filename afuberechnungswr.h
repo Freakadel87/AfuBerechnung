@@ -88,12 +88,11 @@ private:
     QLineEdit *EditZeile19;
     QLineEdit *EditZeile20;
 
-
-
 private slots:
     void triggeredButtonAbbrechenClicked(); //Button ABBRECHEN betaetigt
     void triggeredButtonOkClicked(); //Button OK betaetigt
     void triggeredComboBox();
+    void CreatePlotter();
     void LoadConfig(); //Lade zuvor gespeicherte Parameter zurueck
     void SaveConfig(); //Speichere vorgenommene Parameter
 };

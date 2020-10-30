@@ -722,6 +722,11 @@ void AfuBerechnungSwr::triggeredComboBox()
     }
 }
 
+void AfuBerechnungSwr::CreatePlotter()
+{
+
+}
+
 //Lade gespeicherte Parameter und schreibe sie zurueck
 void AfuBerechnungSwr::LoadConfig()
 {
