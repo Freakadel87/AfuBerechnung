@@ -19,8 +19,9 @@
 #include <QFont>
 #include <QMessageBox>
 
-extern bool G_bDezibelLeistung;
-extern bool G_bDezibelSpannung;
+#include "afuberechnungappsettings.h"
+
+extern int G_iMODE;
 
 class AfuBerechnungDezibel : public QDialog
 {

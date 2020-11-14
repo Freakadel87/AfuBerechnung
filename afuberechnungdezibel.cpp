@@ -14,8 +14,9 @@ AfuBerechnungDezibel::AfuBerechnungDezibel(QWidget *parent) : QDialog(parent)
     ButtonLeeren->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonLeeren->setFont(QFont("Arial", 11, QFont::Thin));
 
-    // Dezibelberechnung Leistung ausgewaehlt
-    if (G_bDezibelLeistung == true)
+    switch (G_iMODE)
+    {
+    case WIDGETDEZIBELLEISTUNG:
     {
         // Erstelle Textfelder
         LabelAusgangsLeistungP2 = new QLabel(tr("Ausgangsleistung P2:"));
@@ -55,9 +56,9 @@ AfuBerechnungDezibel::AfuBerechnungDezibel(QWidget *parent) : QDialog(parent)
         GridLayout->addWidget(ButtonBerechnen,6,0);
         GridLayout->addWidget(ButtonLeeren,7,0);
         GridLayout->addWidget(ButtonBeenden,8,0);
+        break;
     }
-    // Dezibelberechnung Spannung ausgewaehlt
-    else if (G_bDezibelSpannung == true)
+    case WIDGETDEZIBELSPANNUNG:
     {
         // Erstelle Textfelder
         LabelAusgangsSpannungU2 = new QLabel(tr("Ausgangsspannung U2:"));
@@ -97,8 +98,16 @@ AfuBerechnungDezibel::AfuBerechnungDezibel(QWidget *parent) : QDialog(parent)
         GridLayout->addWidget(ButtonBerechnen,6,0);
         GridLayout->addWidget(ButtonLeeren,7,0);
         GridLayout->addWidget(ButtonBeenden,8,0);
+        break;
     }
-
+    default:
+    {
+        QMessageBox::critical(this,"Fehler(100)"
+                                   "Der G_iMODE wurde nicht korrekt besetzt. Das Fenster konnte nicht aufgebaut werden. "
+                                   "Das Programm wird abgebrochen.","OK");
+        exit(100);
+    }
+    }
     QObject::connect(ButtonBerechnen, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBerechnenClicked()));
     QObject::connect(ButtonLeeren, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonLeerenClicked()));
     QObject::connect(ButtonBeenden, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonBeendenClicked()));
@@ -107,15 +116,15 @@ AfuBerechnungDezibel::AfuBerechnungDezibel(QWidget *parent) : QDialog(parent)
 void AfuBerechnungDezibel::triggeredButtonBeendenClicked()
 {
     triggeredButtonLeerenClicked();
-    G_bDezibelLeistung = false;
-    G_bDezibelSpannung = false;
     close();
     parent()->destroyed(nullptr); // Zerstoere Widget, damit im Hauptspeicerh keine Zombies entstehen
 }
 
 void AfuBerechnungDezibel::triggeredButtonBerechnenClicked()
 {
-    if ( G_bDezibelLeistung == true)
+    switch (G_iMODE)
+    {
+    case WIDGETDEZIBELLEISTUNG:
     {
         double dP1 = EditEingabeEingangsLeistungP1->text().toFloat(nullptr); // Eingabe der Eingangsleistung in Watt P1
         double dP2 = EditEingabeAusgangsLeistungP2->text().toFloat(nullptr); // Eingabe der Ausgangsleistung in Watt P2
@@ -143,8 +152,9 @@ void AfuBerechnungDezibel::triggeredButtonBerechnenClicked()
                                     "Bitte prüfen Sie Ihre Eingabe noch einmal."));
             EditEingabeAusgangsLeistungP2->setStyleSheet("QLineEdit {background-color : rgb(255,48,48); color : black;}");
         }
+        break;
     }
-    else if (G_bDezibelSpannung == true)
+    case WIDGETDEZIBELSPANNUNG:
     {
         double dU1 = EditEingabeEingangsSpannungU1->text().toFloat(nullptr); // Eingabe der Eingangsspannung in mV U1
         double dU2 = EditEingabeAusgangsSpannungU2->text().toFloat(nullptr); // Eingabe der Ausgangsspannung in mV U2
@@ -172,25 +182,44 @@ void AfuBerechnungDezibel::triggeredButtonBerechnenClicked()
                                     "Bitte prüfen Sie Ihre Eingabe noch einmal."));
             EditEingabeAusgangsSpannungU2->setStyleSheet("QLineEdit {background-color : rgb(255,48,48); color : black;}");
         }
+        break;
+    }
+    default:
+    {
+        QMessageBox::critical(this,"Fehler(101)"
+                                   "Der G_iMODE wurde nicht korrekt besetzt. Die eingegebenen Daten konnten zur Berechnung nicht eingesetzt werden. "
+                                   "Das Programm wird abgebrochen.","OK");
+        exit(101);
+    }
     }
 }
 
 void AfuBerechnungDezibel::triggeredButtonLeerenClicked()
 {
-    if (G_bDezibelLeistung == true)
+    switch (G_iMODE)
+    {
+    case WIDGETDEZIBELLEISTUNG:
     {
         LabelAusgabeDezibel->clear();
         EditEingabeEingangsLeistungP1->clear();
         EditEingabeAusgangsLeistungP2->clear();
         EditEingabeEingangsLeistungP1->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
         EditEingabeAusgangsLeistungP2->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
+        break;
     }
-    else if (G_bDezibelSpannung == true)
+    case WIDGETDEZIBELSPANNUNG:
     {
         LabelAusgabeDezibel->clear();
         EditEingabeEingangsSpannungU1->clear();
         EditEingabeAusgangsSpannungU2->clear();
         EditEingabeEingangsSpannungU1->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
         EditEingabeAusgangsSpannungU2->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
+        break;
+    }
+    default:
+    {
+        QMessageBox::warning(this,"Warnung(102)"
+                                   "Der G_iMODE wurde nicht korrekt besetzt. Die Eingabefelder können nicht gelöscht werden.", "OK");
+    }
     }
 }

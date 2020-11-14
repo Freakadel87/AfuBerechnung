@@ -20,6 +20,7 @@
 #include "afuberechnungfilter.h"
 #include "afuberechnungentfernung.h"
 #include "afuberechnungdezibel.h"
+#include "afuberechnungappsettings.h"
 
 /// Qt-includes
 #include <QApplication>

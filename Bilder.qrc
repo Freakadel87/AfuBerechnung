@@ -1,9 +1,5 @@
 <RCC>
     <qresource prefix="/MyFiles">
         <file>afuberechnung.pro</file>
-        <file>E:/Bilder/Amateurfunk_HAMRadio.JPG</file>
-        <file>E:/Bilder/Amateurfunk_Wellenlaenge.JPG</file>
-        <file>E:/Bilder/Amateurfunkantenne.jpg</file>
-        <file>E:/Bilder/Spannungsteiler.JPG</file>
     </qresource>
 </RCC>
