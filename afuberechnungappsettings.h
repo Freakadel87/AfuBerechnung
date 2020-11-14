@@ -1,7 +1,7 @@
 #ifndef AFUBERECHNUNGAPPSETTINGS_H
 #define AFUBERECHNUNGAPPSETTINGS_H
 
-
+// Erstellung const Variablen fuer Widgets
 #define WIDGETDEZIBELSPANNUNG   10
 #define WIDGETDEZIBELLEISTUNG   11
 

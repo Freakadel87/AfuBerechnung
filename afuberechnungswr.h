@@ -25,6 +25,8 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QLabel>
+#include <QDialog>
+
 
 class AfuBerechnungSwr : public QDialog
 {

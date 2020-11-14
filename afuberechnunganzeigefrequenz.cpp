@@ -7,7 +7,7 @@ AfuBerechnungAnzeigeFrequenz::AfuBerechnungAnzeigeFrequenz(QWidget *parent) : QD
     LabelEingabe = new QLabel(tr("Betriebsart:"));
     LabelEingabe->setFont(QFont("Arial", 11, QFont::Normal));
     ComboBetriebsart = new QComboBox;
-    ComboBetriebsart->setToolTip("Wählen Sie die Amateurfunk-Betriebsart aus.");
+    ComboBetriebsart->setToolTip(tr("Wählen Sie die Amateurfunk-Betriebsart aus."));
     ComboBetriebsart->setStyleSheet("QComboBox {background-color : rgb(255,245,238); color : black;}");
     EditText = new QTextEdit;
     EditText->setFont(QFont("Arial", 11, QFont::Normal));

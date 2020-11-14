@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     AfuBerechnung myWidget;
     myWidget.setWindowTitle("Berechnungen für Antennenbau");
-    myWidget.setGeometry(800, 400, 600, 500); // x-Koordinate, y-Koordinate, Fensterhoehe und Fensterbreite
+    myWidget.setGeometry(800,400,1000,750); // x-Koordinate, y-Koordinate, Fensterhoehe und Fensterbreite
     myWidget.show();
     return a.exec();
 }
@@ -30,7 +30,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     QString sTime = qDateTime.toString(Qt::SystemLocaleLongDate); //Timerwert als String wandeln
     LabelTime = new QLabel(this);
     LabelTime->setText(sTime); //Text von Label setzen
-    LabelTime->setGeometry(350,400,300,50);
+    LabelTime->setGeometry(650,650,300,50);
     LabelTime->setFont(QFont("Arial", 10, QFont::Normal));
 
     // Erstelle Menue --> Datei --> ...
@@ -102,60 +102,60 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     ButtonFrequenz = new QPushButton(tr("Frequenz \n berechnen"), this);
     ButtonFrequenz->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonFrequenz->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonFrequenz->setGeometry(25,75,85,85);
+    ButtonFrequenz->setGeometry(25,75,120,120);
     ButtonInduktivitaet = new QPushButton(tr("Induktivität \n berechnen"), this);
     ButtonInduktivitaet->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonInduktivitaet->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonInduktivitaet->setGeometry(125,75,85,85);
+    ButtonInduktivitaet->setGeometry(150,75,120,120);
     ButtonKapazitaet = new QPushButton(tr("Kapazität \n berechnen"), this);
     ButtonKapazitaet->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonKapazitaet->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonKapazitaet->setGeometry(225,75,85,85);
+    ButtonKapazitaet->setGeometry(275,75,120,120);
     LabelButton2 = new QLabel(tr("Sonstige Berechnungen:"), this);
     LabelButton2->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     LabelButton2->setFont(QFont("Arial", 10, QFont::Bold));
-    LabelButton2->setGeometry(25,165,450,25); //x, y, Laenge, Breite
-    ButtonSpule = new QPushButton(tr("Verlängerungsspule \n berechnen"), this);
+    LabelButton2->setGeometry(25,200,450,25); //x, y, Laenge, Breite
+    ButtonSpule = new QPushButton(tr("Verlängerungs \n spule \n berechnen"), this);
     ButtonSpule->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonSpule->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonSpule->setGeometry(25,195,85,85);
-    ButtonLuftspule = new QPushButton(tr("Luftspule \n berechnen"), this);
+    ButtonSpule->setGeometry(25,225,120,120);
+    ButtonLuftspule = new QPushButton(tr("Luftspule- \n berechnen"), this);
     ButtonLuftspule->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonLuftspule->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonLuftspule->setGeometry(125,195,85,85);
+    ButtonLuftspule->setGeometry(150,225,120,120);
     ButtonTrap = new QPushButton(tr("Traps \n berechnen"), this);
     ButtonTrap->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonTrap->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonTrap->setGeometry(225,195,85,85);
+    ButtonTrap->setGeometry(275,225,120,120);
     ButtonDrahtlaenge = new QPushButton(tr("Drahtlänge \n berechnen"), this);
     ButtonDrahtlaenge->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonDrahtlaenge->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonDrahtlaenge->setGeometry(325,195,85,85);
+    ButtonDrahtlaenge->setGeometry(400,225,120,120);
     ButtonBeenden = new QPushButton(tr("Beenden"), this);
     ButtonBeenden->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonBeenden->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonBeenden->setGeometry(25,405,85,42);
+    ButtonBeenden->setGeometry(25,525,120,60);
     ButtonResoTrans = new QPushButton(tr("Resonanz- \n transform. \n berechnen"), this);
     ButtonResoTrans->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonResoTrans->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonResoTrans->setGeometry(25,305,85,85);
+    ButtonResoTrans->setGeometry(25,375,120,120);
     ButtonWiderstand = new QPushButton(tr("Widerstand\n bestimmen"), this);
     ButtonWiderstand->setStyleSheet("QPushButton {image: url(H:/Github/Bilder/Widerstand.jpg);}");
     ButtonWiderstand->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonWiderstand->setFont(QFont("Arial", 10, QFont::Normal));
-    ButtonWiderstand->setGeometry(125,305,85,85);
+    ButtonWiderstand->setGeometry(150,375,120,120);
     CheckBoxFenster = new QCheckBox(tr("Fenster im Vordergrund"), this);
     CheckBoxFenster->setFont(QFont("Arial", 10, QFont::Normal));
-    CheckBoxFenster->setGeometry(25,430,200,85);
+    CheckBoxFenster->setGeometry(25,650,200,85);
 
-//    QIcon iconBildWiderstand;
-//    iconBildWiderstand.addFile("H:/Github/Bilder/Widerstand.jpg");
-//    ButtonWiderstand->setIcon(iconBildWiderstand);
+    //    QIcon iconBildWiderstand;
+    //    iconBildWiderstand.addFile("H:/Github/Bilder/Widerstand.jpg");
+    //    ButtonWiderstand->setIcon(iconBildWiderstand);
 
     // Bild auf der Startseite einfuegen
     QPixmap Startbild("C:/Users/Büro/Pictures/Amateurfunk_Wellenlaenge.JPG");
 
-/// TODO: Bei Projektweitergabe (Release) kann der C:/ -Pfad nicht bestehen bleiben?
+    /// TODO: Bei Projektweitergabe (Release) kann der C:/ -Pfad nicht bestehen bleiben?
     LabelStartbild = new QLabel(this);
     LabelStartbild->setPixmap(Startbild);
     LabelStartbild->setGeometry(325,250,250,250);
@@ -194,14 +194,24 @@ void AfuBerechnung::triggeredBeenden()
     msgBox.setEscapeButton(QMessageBox::No);
     ret = msgBox.exec();
 
-    if (ret == QMessageBox::Yes) //Programm wird beendet
+    switch (ret)
+    {
+    case QMessageBox::Yes:
     {
         close();
         myWidget->deleteLater(); //Zerstoere alle Fenster nach Beendigung des Programms
+        break;
     }
-    else if (ret == QMessageBox::No)
+    case QMessageBox::No:
     {
         return;
+        break;
+    }
+    default:
+    {
+        QMessageBox::warning(this,"Warnung(103)"
+                                  "(ret) beinhaltet falsche Informationen zur Abfrage, ob das Programm beendet werden soll.","OK");
+    }
     }
 }
 
