@@ -23,9 +23,9 @@ int main(int argc, char *argv[])
 AfuBerechnung::AfuBerechnung(QWidget *parent)
     : QMainWindow(parent)
 {
-    ///TODO: Timer wird nicht aktualisiert. Der Code muss wahrscheinlich in das MAIN Programm
+    /// TODO: Timer wird nicht aktualisiert. Der Code muss wahrscheinlich in das MAIN Programm
 
-    //Auslesen und darstellen des Zeitstempels
+    // Auslesen und darstellen des Zeitstempels
     QDateTime qDateTime = QDateTime::currentDateTime(); //Timer auslesen
     QString sTime = qDateTime.toString(Qt::SystemLocaleLongDate); //Timerwert als String wandeln
     LabelTime = new QLabel(this);
