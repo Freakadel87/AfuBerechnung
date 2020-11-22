@@ -28,6 +28,10 @@
 #include <QDialog>
 #include <QTableWidget>
 #include <QTableWidgetItem>
+#include <QMenu>
+#include <QMenuBar>
+#include <QAction>
+#include <QMouseEvent>
 
 
 class AfuBerechnungSwr : public QDialog
@@ -48,7 +52,6 @@ private:
 
     QComboBox *ComboBoxBandwahl;
     QLabel *LabelBandwahl;
-    QLabel *LabelUeberschrift;
 
     QTableWidget *TableWidget;
 private slots:
@@ -59,5 +62,6 @@ private slots:
     void LoadConfig(); //Lade zuvor gespeicherte Parameter zurueck
     void SaveConfig(); //Speichere vorgenommene Parameter
     void addRow();
+    void MousePressEvent(QMouseEvent *event);
 };
 #endif // AFUBERECHNUNGSWR_H
