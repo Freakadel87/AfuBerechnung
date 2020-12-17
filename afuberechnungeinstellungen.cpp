@@ -2,6 +2,7 @@
 
 // Variablendeklaration
 QSettings Config;
+QFont AktFont, NeuFont, AltFont;
 
 AfuBerechnungEinstellungen::AfuBerechnungEinstellungen(QWidget *parent) : QDialog(parent)
 {
@@ -17,9 +18,9 @@ AfuBerechnungEinstellungen::AfuBerechnungEinstellungen(QWidget *parent) : QDialo
     ButtonSchriftfarbe->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
 
     // Erstelle Buttons
-    ButtonAbbrechen = new QPushButton(tr("Abbrechen"));
-    ButtonAbbrechen->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
-    ButtonAbbrechen->setFont(QFont("Arial", 10, QFont::Thin));
+//    ButtonAbbrechen = new QPushButton(tr("Abbrechen"));
+//    ButtonAbbrechen->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
+//    ButtonAbbrechen->setFont(QFont("Arial", 10, QFont::Thin));
     ButtonOk = new QPushButton(tr("OK"));
     ButtonOk->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonOk->setFont(QFont("Arial", 10, QFont::Thin));
@@ -30,12 +31,12 @@ AfuBerechnungEinstellungen::AfuBerechnungEinstellungen(QWidget *parent) : QDialo
     OberesLayout->addWidget(ButtonSchriftart);
     OberesLayout->addWidget(ButtonSchriftfarbe);
     UnteresLayout->addWidget(ButtonOk);
-    UnteresLayout->addWidget(ButtonAbbrechen);
+    //UnteresLayout->addWidget(ButtonAbbrechen);
     MainLayout->addLayout(OberesLayout,0);
     MainLayout->addLayout(UnteresLayout,4);
 
     QObject::connect(ButtonOk, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonOkClicked()));
-    QObject::connect(ButtonAbbrechen, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonAbbrechenClicked()));
+    //QObject::connect(ButtonAbbrechen, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonAbbrechenClicked()));
     QObject::connect(ButtonSchriftart, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonSchriftartClicked()));
     QObject::connect(ButtonSchriftfarbe, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonSchriftfarbeClicked()));
 }
@@ -43,50 +44,59 @@ AfuBerechnungEinstellungen::AfuBerechnungEinstellungen(QWidget *parent) : QDialo
 void AfuBerechnungEinstellungen::triggeredButtonAbbrechenClicked()
 {
     /// TODO: Das Fenster muss nach Beendung noch zerstoert werden, um keine Zombies im RAM zu haben
-    close();
+    //close();
 }
 
 void AfuBerechnungEinstellungen::triggeredButtonOkClicked()
 {
-    SaveConfig(); // Merke eingestellte Parameter
+    SaveConfig(); // Merke vorgenommene Einstellung
+    close();
 }
 
 void AfuBerechnungEinstellungen::triggeredButtonSchriftartClicked()
 {
-    // Variablendeklaration
-    bool b_Ok;
-    QFont AktFont;
-    QFont NeuFont = QFontDialog::getFont(&b_Ok, AktFont);
+    bool bOk;
+    NeuFont = QFontDialog::getFont(&bOk, AktFont);
 
-    if (b_Ok == true)
+    if (bOk == true)
     {
-        //...Benutzer hat einen neuen Font ausgewaehlt
-        ButtonOk->setFont(AktFont = NeuFont);
-        ButtonOk->repaint();
-        ButtonAbbrechen->setFont(AktFont = NeuFont);
-        ButtonAbbrechen->repaint();
-        ButtonSchriftart->setFont(AktFont = NeuFont);
-        ButtonSchriftart->repaint();
-        ButtonSchriftfarbe->setFont(AktFont = NeuFont);
-        ButtonSchriftfarbe->repaint();
+        // Button "OK" im QFontDialog
+        ButtonOk->setFont(NeuFont);
+        //ButtonAbbrechen->setFont(NeuFont);
+        ButtonSchriftart->setFont(NeuFont);
+        ButtonSchriftfarbe->setFont(NeuFont);
+        AltFont = NeuFont;
+    }
+    else
+    {
+        // Button "Cancel" QFontDialog
+        ButtonOk->setFont(AltFont);
+        //ButtonAbbrechen->setFont(AltFont);
+        ButtonSchriftart->setFont(AltFont);
+        ButtonSchriftfarbe->setFont(AltFont);
     }
 }
 
 void AfuBerechnungEinstellungen::triggeredButtonSchriftfarbeClicked()
 {
     ///TODO: Muss wahrscheinlich genauso aufgebaut werden, wie QFont-Dialog
-    ColorDialog->show();
+    QColor AktColor;
+    QColor NeuColor = QColorDialog::getColor(AktColor);
 }
 
 /// Lade gespeicherte Parameter und schreibe sie zurueck
 void AfuBerechnungEinstellungen::LoadConfig()
 {
-    ///TODO: Fehlt noch
+    Config.value("QFont", AltFont);
+    ButtonOk->setFont(AltFont);
+    //ButtonAbbrechen->setFont(AltFont);
+    ButtonSchriftart->setFont(AltFont);
+    ButtonSchriftfarbe->setFont(AltFont);
 }
 
 /// Merke eingestellte Parameter
 void AfuBerechnungEinstellungen::SaveConfig()
 {
-    ///TODO: Noch nicht komplett
-    //Config.setValue("/Schriftart", )
+    Config.setValue("QFont", NeuFont); // Einstellung Schriftart speichern
+    Config.setValue("QFont", AltFont);
 }

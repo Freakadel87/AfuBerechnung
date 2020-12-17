@@ -70,8 +70,8 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBerechnen->addSeparator();
     menuBerechnenDezibelLeistung = menuBerechnen->addAction(tr("Dezibelberechnung Leistung..."), this, SLOT(triggeredDezibelBerechnenLeistung()));
     menuBerechnenDezibelSpannung = menuBerechnen->addAction(tr("Dezibelberechnung Spannung..."), this, SLOT(triggeredDezibelBerechnenSpannung()));
-    menuBerechnen->addSeparator();
-    menuBerechnenSwr = menuBerechnen->addAction(tr("SWR-Tabelle..."), this, SLOT(triggeredSwrBerechnen()));
+    //menuBerechnen->addSeparator();
+    //menuBerechnenSwr = menuBerechnen->addAction(tr("SWR-Tabelle..."), this, SLOT(triggeredSwrBerechnen()));
     menuBerechnen->addSeparator();
     menuBerechnenWiderstand = menuBerechnen->addAction(tr("Widerstand bestimmen..."), this, SLOT(triggeredWiderstand()));
     menuBerechnen->addSeparator();

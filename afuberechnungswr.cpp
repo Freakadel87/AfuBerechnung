@@ -11,9 +11,12 @@ AfuBerechnungSwr::AfuBerechnungSwr(QWidget *parent) : QDialog(parent)
     sListBand<<"<Auswahl>"<<"10m"<<"12m"<<"15m"<<"17m"<<"20m"<<"40m"<<"60m"<<"80m"<<"160m";
     ComboBoxBandwahl->addItems(sListBand);
 
-    TableWidget = new QTableWidget(20,2);
+    TableWidget = new QTableWidget(20,2); // 20 Zeilen und 2 Spalten
     TableWidget->setHorizontalHeaderLabels(QStringList()<<tr("Frequenz")<<tr("SWR"));
     TableWidget->setGeometry(300,300,1000,1000);
+
+    WidgetTrend = new QWidget();
+    WidgetTrend->show();
 
     //Erstelle Buttons
     ButtonAbbrechen = new QPushButton(tr("Abbrechen"));
@@ -24,21 +27,34 @@ AfuBerechnungSwr::AfuBerechnungSwr(QWidget *parent) : QDialog(parent)
     ButtonOk->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonOk->setFont(QFont("Arial", 10, QFont::Thin));
     ButtonOk->setGeometry(10,10,50,50);
+    ButtonAuswertung = new QPushButton(tr("Auswertung starten"));
+    ButtonAuswertung->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
+    ButtonAuswertung->setFont(QFont("Arial", 10, QFont::Thin));
+    ButtonAuswertung->setGeometry(10,10,100,50);
+    ButtonAuswertung->setDisabled(true);
+    ButtonAuswertung->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : gray;}");
+
+    /// TODO: Aktivierung des Button nur, wenn min. ein SWR-Feld ausgefuellt worden ist.
+    ButtonAuswertung->setDisabled(false);
+    ButtonAuswertung->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
 
     GridLayout = new QGridLayout(this);
     GridLayout->addWidget(LabelBandwahl,0,1);
     GridLayout->addWidget(ComboBoxBandwahl,0,2);
     GridLayout->addWidget(ButtonOk,3,1);
     GridLayout->addWidget(ButtonAbbrechen,4,1);
+    GridLayout->addWidget(ButtonAuswertung,4,2);
     GridLayout->addWidget(TableWidget,1,2);
+    GridLayout->addWidget(WidgetTrend,1,3);
 
     //Objektkonnektivitaet
     QObject::connect(ButtonOk, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonOkClicked()));
     QObject::connect(ButtonAbbrechen, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonAbbrechenClicked()));
+    QObject::connect(ButtonAuswertung, SIGNAL(clicked(bool)), this, SLOT(triggeredButtonAuswertungClicked()));
     QObject::connect(ComboBoxBandwahl, SIGNAL(currentTextChanged(QString)), this, SLOT(triggeredComboBox()));
 }
 
-//Button ABBRECHEN betaetigt
+// Button ABBRECHEN betaetigt
 void AfuBerechnungSwr::triggeredButtonAbbrechenClicked()
 {
     ///TODO: Abfrage nur zeigen, wenn tatsächlich etwas geändert wurde (Registrierung Mausklick möglich?)
@@ -49,7 +65,7 @@ void AfuBerechnungSwr::triggeredButtonAbbrechenClicked()
     msgBox.setIcon(QMessageBox::Question);
     msgBox.setFont(QFont("Arial", 11, QFont::Normal));
     msgBox.setWindowTitle(tr("Änderungen speichern?"));
-    msgBox.setText(tr("Die zuvor eingegebenen Daten gehen verloren.,\n"
+    msgBox.setText(tr("Die zuvor eingegebenen Daten gehen verloren.\n"
                       "Wollen Sie speichern und beenden?"));
     msgBox.addButton(QMessageBox::Yes);
     msgBox.addButton(QMessageBox::No);
@@ -74,50 +90,26 @@ void AfuBerechnungSwr::triggeredButtonAbbrechenClicked()
     }
 }
 
-//Button OK betaetigt
+// Button OK betaetigt
 void AfuBerechnungSwr::triggeredButtonOkClicked()
-{        
+{
+
+}
+
+void AfuBerechnungSwr::triggeredButtonAuswertungClicked()
+{
     ///TODO:
     ///Eingegebene Daten werden uebernommen und als Kurve in einem x/y-Koordinatensystem uebernommen.
-    //    if ()
-    //    {
-    //        //Warnmeldung, wenn keine Sprache ausgewaehlt wurde
-    //        int retOk {0};
-    //        QMessageBox msgBox;
-    //        msgBox.setIcon(QMessageBox::Warning);
-    //        msgBox.setFont(QFont("Arial", 11, QFont::Normal));
-    //        msgBox.setWindowTitle(tr("Warnung!"));
-    //        msgBox.setInformativeText(tr("Achtung: Es wurde keine Sprache ausgewählt!"));
-    //        msgBox.addButton(QMessageBox::Ok);
-    //        retOk = msgBox.exec();
-    //    }
-    //    else
-    //    {
-    //        //Abfrage ob Aenderung gespeichert werden soll
-    //        int retOk {0};
-    //        QMessageBox msgBox;
-    //        msgBox.setIcon(QMessageBox::Information);
-    //        msgBox.setFont(QFont("Arial", 11, QFont::Normal));
-    //        msgBox.setWindowTitle(tr("Information Auswahl"));
-    //        msgBox.setInformativeText(sSprache);
-    //        msgBox.addButton(QMessageBox::Ok);
-    //        retOk = msgBox.exec();
+    /// Button Auswertung muss auf true gesetzt werden.
 
-    //        SaveConfig(); //Speicher vorgenommene Parameter
 
-    //        if (retOk == QMessageBox::Ok) //Aenderung speichern und Fenster schließen
-    //        {
-    //            close();
-    //            destroy();
-    //        }
-    //    }
 }
 
 void AfuBerechnungSwr::triggeredComboBox()
 {
     QString sBand = ComboBoxBandwahl->currentText();
 
-    if (sBand == "<Auswahl>")
+    if (sBand == tr("<Auswahl>"))
     {
         TableWidget->clear();
         TableWidget->setHorizontalHeaderLabels(QStringList()<<tr("Frequenz")<<tr("SWR"));

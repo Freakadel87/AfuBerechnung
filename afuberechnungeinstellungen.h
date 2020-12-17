@@ -18,6 +18,8 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QSettings>
+#include <QFont>
+#include <QColor>
 
 class AfuBerechnungEinstellungen : public QDialog
 {

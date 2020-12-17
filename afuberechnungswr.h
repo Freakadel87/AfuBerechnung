@@ -49,14 +49,17 @@ private:
 
     QPushButton *ButtonAbbrechen;
     QPushButton *ButtonOk;
+    QPushButton *ButtonAuswertung;
 
     QComboBox *ComboBoxBandwahl;
     QLabel *LabelBandwahl;
 
+    QWidget *WidgetTrend;
     QTableWidget *TableWidget;
 private slots:
     void triggeredButtonAbbrechenClicked(); //Button ABBRECHEN betaetigt
     void triggeredButtonOkClicked(); //Button OK betaetigt
+    void triggeredButtonAuswertungClicked();
     void triggeredComboBox();
     void CreatePlotter();
     void LoadConfig(); //Lade zuvor gespeicherte Parameter zurueck
