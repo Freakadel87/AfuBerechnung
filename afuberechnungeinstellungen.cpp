@@ -2,7 +2,7 @@
 
 // Variablendeklaration
 QSettings Config;
-QFont AktFont, NeuFont, AltFont;
+QFont FontAkt, FontNeu, FontAlt;
 
 AfuBerechnungEinstellungen::AfuBerechnungEinstellungen(QWidget *parent) : QDialog(parent)
 {
@@ -56,24 +56,24 @@ void AfuBerechnungEinstellungen::triggeredButtonOkClicked()
 void AfuBerechnungEinstellungen::triggeredButtonSchriftartClicked()
 {
     bool bOk;
-    NeuFont = QFontDialog::getFont(&bOk, AktFont);
+    FontNeu = QFontDialog::getFont(&bOk, FontAkt);
 
     if (bOk == true)
     {
         // Button "OK" im QFontDialog
-        ButtonOk->setFont(NeuFont);
-        //ButtonAbbrechen->setFont(NeuFont);
-        ButtonSchriftart->setFont(NeuFont);
-        ButtonSchriftfarbe->setFont(NeuFont);
-        AltFont = NeuFont;
+        ButtonOk->setFont(FontNeu);
+        //ButtonAbbrechen->setFont(FontNeu);
+        ButtonSchriftart->setFont(FontNeu);
+        ButtonSchriftfarbe->setFont(FontNeu);
+        FontAlt = FontNeu;
     }
-    else
+    else if (bOk == false)
     {
         // Button "Cancel" QFontDialog
-        ButtonOk->setFont(AltFont);
-        //ButtonAbbrechen->setFont(AltFont);
-        ButtonSchriftart->setFont(AltFont);
-        ButtonSchriftfarbe->setFont(AltFont);
+        ButtonOk->setFont(FontAlt);
+        //ButtonAbbrechen->setFont(FontAlt);
+        ButtonSchriftart->setFont(FontAlt);
+        ButtonSchriftfarbe->setFont(FontAlt);
     }
 }
 
@@ -87,16 +87,16 @@ void AfuBerechnungEinstellungen::triggeredButtonSchriftfarbeClicked()
 /// Lade gespeicherte Parameter und schreibe sie zurueck
 void AfuBerechnungEinstellungen::LoadConfig()
 {
-    Config.value("QFont", AltFont);
-    ButtonOk->setFont(AltFont);
-    //ButtonAbbrechen->setFont(AltFont);
-    ButtonSchriftart->setFont(AltFont);
-    ButtonSchriftfarbe->setFont(AltFont);
+    Config.value("QFont", FontAlt);
+    ButtonOk->setFont(FontAlt);
+    //ButtonAbbrechen->setFont(FontAlt);
+    ButtonSchriftart->setFont(FontAlt);
+    ButtonSchriftfarbe->setFont(FontAlt);
 }
 
 /// Merke eingestellte Parameter
 void AfuBerechnungEinstellungen::SaveConfig()
 {
-    Config.setValue("QFont", NeuFont); // Einstellung Schriftart speichern
-    Config.setValue("QFont", AltFont);
+    Config.setValue("QFont", FontNeu); // Einstellung Schriftart speichern
+    Config.setValue("QFont", FontAlt);
 }
