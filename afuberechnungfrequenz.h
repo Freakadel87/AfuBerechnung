@@ -21,6 +21,7 @@
 #include <QAction>
 #include <QFont>
 #include <QMessageBox>
+#include <QComboBox>
 
 class AfuBerechnungFrequenz : public QDialog
 {
@@ -31,11 +32,7 @@ public:
     AfuBerechnungFrequenz(QWidget *parent);
 
     // Variablendeklaration
-    float const d_Pi = 3.141592653589793238462643383279;
-    float d_PufferC;
-    float d_PufferL;
-    float d_PufferF;
-    float d_PufferFF;
+    float const fPi = 3.141592653589793238462643383279;
 
 private:
     // Erstelle Textfelder
@@ -44,8 +41,8 @@ private:
     QLabel *LabelAusgabeF;
     QLabel *LabelLoesung;
 
-    QLabel *LabelEinheitL;
-    QLabel *LabelEinheitC;
+    QComboBox *ComboEinheitL;
+    QComboBox *ComboEinheitC;
     QLabel *LabelEinheitF;
 
     // Erstelle Ein- und Ausgabefelder

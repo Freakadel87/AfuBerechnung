@@ -405,6 +405,8 @@ void AfuBerechnung::triggeredUndo()
 
 void AfuBerechnung::LoadConfig()
 {
+    SettingsAfuFenster.value("CheckBoxFenster", bMerkerFenster); // Lade gespeicherten Wert
+
     if (bMerkerFenster == true)
     {
         CheckBoxFenster->setChecked(true);
@@ -418,5 +420,5 @@ void AfuBerechnung::LoadConfig()
 void AfuBerechnung::SaveConfig()
 {
     ///TODO: Sinnvoll??? Fenster wird nicht erneut geoeffnet.
-    SettingsAfuFenster.value("CheckBoxFenster", bMerkerFenster);
+    SettingsAfuFenster.setValue("CheckBoxFenster", bMerkerFenster);
 }

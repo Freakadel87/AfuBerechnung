@@ -548,12 +548,12 @@ void AfuBerechnungSprache::LoadConfig()
 //Speichere vorgenommene Parameter
 void AfuBerechnungSprache::SaveConfig()
 {
-    Settings.value("RadioButtonDeu", bMerker_Deu);
-    Settings.value("RadioButtonEng", bMerker_Eng);
-    Settings.value("RadioButtonFra", bMerker_Fra);
-    Settings.value("RadioButtonIta", bMerker_Ita);
-    Settings.value("RadioButtonPol", bMerker_Pol);
-    Settings.value("RadioButtonPor", bMerker_Por);
-    Settings.value("RadioButtonRus", bMerker_Rus);
-    Settings.value("RadioButtonSpa", bMerker_Spa);
+    Settings.setValue("RadioButtonDeu", bMerker_Deu);
+    Settings.setValue("RadioButtonEng", bMerker_Eng);
+    Settings.setValue("RadioButtonFra", bMerker_Fra);
+    Settings.setValue("RadioButtonIta", bMerker_Ita);
+    Settings.setValue("RadioButtonPol", bMerker_Pol);
+    Settings.setValue("RadioButtonPor", bMerker_Por);
+    Settings.setValue("RadioButtonRus", bMerker_Rus);
+    Settings.setValue("RadioButtonSpa", bMerker_Spa);
 }

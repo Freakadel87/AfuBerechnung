@@ -18,6 +18,7 @@
 #include <QLineEdit>
 #include <QFont>
 #include <QMessageBox>
+#include <QComboBox>
 
 class AfuBerechnungInduktivitaet : public QDialog
 {
@@ -29,10 +30,6 @@ public:
 
     // Variablendeklaration
     float const f_Pi = 3.141592653589793238462643383279;
-    float f_PufferC;
-    float f_PufferL;
-    float f_PufferLL;
-    float f_PufferF;
 
 private:
     // Erstelle Textfelder
@@ -42,8 +39,8 @@ private:
     QLabel *LabelLoesung;
 
     QLabel *LabelEinheitL;
-    QLabel *LabelEinheitC;
-    QLabel *LabelEinheitF;
+    QComboBox *ComboEinheitC;
+    QComboBox *ComboEinheitF;
 
     // Erstelle Ein- und Ausgabefelder
     QLineEdit *EditEingabeF;

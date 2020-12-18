@@ -18,6 +18,7 @@
 #include <QLineEdit>
 #include <QFont>
 #include <QMessageBox>
+#include <QComboBox>
 
 class AfuBerechnungKapazitaet : public QDialog
 {
@@ -29,10 +30,6 @@ public:
 
     // Variablendeklaration
     float const f_Pi = 3.141592653589793238462643383279;
-    float f_PufferC {0.0};
-    float f_PufferCC {0.0};
-    float f_PufferL {0.0};
-    float f_PufferF {0.0};
 
 private:
     // Erstelle Textfelder
@@ -41,8 +38,8 @@ private:
     QLabel *LabelAusgabeC;
     QLabel *LabelLoesung;
 
-    QLabel *LabelEinheitL;
-    QLabel *LabelEinheitF;
+    QComboBox *ComboEinheitL;
+    QComboBox *ComboEinheitF;
     QLabel *LabelEinheitC;
 
     // Erstelle Ein- und Ausgabefelder

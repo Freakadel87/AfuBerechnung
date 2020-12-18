@@ -22,22 +22,28 @@ AfuBerechnungKapazitaet::AfuBerechnungKapazitaet(QWidget *parent) : QDialog(pare
 
     LabelEinheitC = new QLabel(tr("pF"));
     LabelEinheitC->setFont(QFont("Arial", 11, QFont::Thin));
-    LabelEinheitF = new QLabel(tr("MHz"));
-    LabelEinheitF->setFont(QFont("Arial", 11, QFont::Thin));
-    LabelEinheitL = new QLabel(tr("µH"));
-    LabelEinheitL->setFont(QFont("Arial", 11, QFont::Thin));
+
+    QStringList sLEinhF;
+    sLEinhF<<"MHz"<<"kHz"<<"Hz";
+    ComboEinheitF = new QComboBox();
+    ComboEinheitF->setFont(QFont("Arial", 11, QFont::Thin));
+    ComboEinheitF->addItems(sLEinhF);
+
+    QStringList sLEinhL;
+    sLEinhL<<"H"<<"mH"<<"µH"<<"nH"<<"pH";
+    ComboEinheitL = new QComboBox();
+    ComboEinheitL->setFont(QFont("Arial", 11, QFont::Thin));
+    ComboEinheitL->addItems(sLEinhL);
 
     // Erstelle Ein- und Ausgabefelder
     EditEingabeL = new QLineEdit;
     EditEingabeL->setFont(QFont("Arial", 11, QFont::Thin));
-    EditEingabeL->setInputMask("00000.00");
     EditEingabeL->setCursorPosition(0);
-    EditEingabeL->setToolTip("Geben Sie hier Ihre Induktivität in [µH] ein.");
+    EditEingabeL->setToolTip("Geben Sie hier Ihre Induktivität ein.");
     EditEingabeF = new QLineEdit;
     EditEingabeF->setFont(QFont("Arial", 11, QFont::Thin));
-    EditEingabeF->setInputMask("00000.00");
     EditEingabeF->setCursorPosition(0);
-    EditEingabeF->setToolTip("Geben Sie hier Ihre Frequenz in [MHz] ein.");
+    EditEingabeF->setToolTip("Geben Sie hier Ihre Frequenz ein.");
 
     // Erstelle Buttons
     ButtonBeenden = new QPushButton(tr("Beenden"));
@@ -54,10 +60,10 @@ AfuBerechnungKapazitaet::AfuBerechnungKapazitaet(QWidget *parent) : QDialog(pare
     QGridLayout *GridLayout = new QGridLayout(this);
     GridLayout->addWidget(LabelEingabeF,0,0);
     GridLayout->addWidget(EditEingabeF,0,2);
-    GridLayout->addWidget(LabelEinheitF,0,3);
+    GridLayout->addWidget(ComboEinheitF,0,3);
     GridLayout->addWidget(LabelEingabeL,1,0);
     GridLayout->addWidget(EditEingabeL,1,2);
-    GridLayout->addWidget(LabelEinheitL,1,3);
+    GridLayout->addWidget(ComboEinheitL,1,3);
     GridLayout->addWidget(LabelLoesung,3,0);
     GridLayout->addWidget(LabelAusgabeC,5,0);
     GridLayout->addWidget(LabelLoesung,5,2);
@@ -81,6 +87,48 @@ void AfuBerechnungKapazitaet::triggeredButtonBerechnenClicked()
 {
     QString s_TextF = EditEingabeF->text();
     QString s_TextL = EditEingabeL->text();
+    QString sEinhF = ComboEinheitF->currentText();
+    QString sEinhL = ComboEinheitL->currentText();
+    float f_PufferC {0.0};
+    float f_PufferCC {0.0};
+    float f_PufferL = EditEingabeL->text().toFloat();
+    float f_PufferF = EditEingabeF->text().toFloat();
+    float fFaktorL {0.0};
+    float fFaktorF {0.0};
+
+    if (sEinhL == "H")
+    {
+        fFaktorL = 1;
+    }
+    else if (sEinhL == "mH")
+    {
+        fFaktorL = 0.001;
+    }
+    else if (sEinhL == "µH")
+    {
+        fFaktorL = 0.000001;
+    }
+    else if (sEinhL == "nH")
+    {
+        fFaktorL = 0.000000001;
+    }
+    else if (sEinhL == "pH")
+    {
+        fFaktorL = 0.000000000001;
+    }
+
+    if (sEinhF == "MHz")
+    {
+        fFaktorF = 1000000;
+    }
+    else if (sEinhF == "kHz")
+    {
+        fFaktorF = 1000;
+    }
+    else if (sEinhF == "Hz")
+    {
+        fFaktorF = 1;
+    }
 
     // Felder nach Korrektur wieder weiß
     EditEingabeF->setStyleSheet("QLineEdit {background-color : rgb(255,255,255); color : black;}");
@@ -102,12 +150,8 @@ void AfuBerechnungKapazitaet::triggeredButtonBerechnenClicked()
     }
 
     // Thomsonsche Schwingungsformel
-    f_PufferF = EditEingabeF->text().toFloat();
-    f_PufferL = EditEingabeL->text().toFloat();
-
-    f_PufferC = 1 / ((2 * f_Pi * f_PufferF) * (2 * f_Pi * f_PufferF) * f_PufferL) / 0.001;
-   // f_PufferCC = (int)(f_PufferC*100+0.5)/100.0;
-    f_PufferCC = f_PufferC * 1000;
+    f_PufferC = 1 / ((2 * f_Pi * (f_PufferF*fFaktorF)) * (2 * f_Pi * (f_PufferF*fFaktorF)) * (f_PufferL*fFaktorL)) / 0.001;
+    f_PufferCC = f_PufferC * 1,000,000,000;
 
     LabelLoesung->setNum(f_PufferCC);
     LabelLoesung->setFont(QFont("Arial", 11, QFont::Thin));
