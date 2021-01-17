@@ -147,6 +147,36 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     CheckBoxFenster = new QCheckBox(tr("Fenster im Vordergrund"), this);
     CheckBoxFenster->setFont(QFont("Arial", 10, QFont::Normal));
     CheckBoxFenster->setGeometry(25,650,200,85);
+    TextEdit = new QTextEdit(this);
+    TextEdit->setGeometry(650,75,250,550);
+    TextEdit->setFont(QFont("Open Sans",10, QFont::Normal));
+    TextEditZeilen = new QTextEdit(this);
+    TextEditZeilen->setGeometry(610,75,35,550);
+    TextEditZeilen->setReadOnly(true);
+
+    ///Zu erledigen: Zeilennummerierung muss in TextEditZeilen gesetzt werden
+    //Erstellung der Zeilennummerierung
+    int i {0};
+
+    for (i=0; i<999; i++)
+    {
+
+    }
+
+//    GridLayout = new QGridLayout(this);
+//    GridLayout-> addWidget(LabelButton1,0,0,0,0);
+//    GridLayout->addWidget(ButtonFrequenz,1,0,0,0);
+//    GridLayout->addWidget(ButtonInduktivitaet,1,1,0,0);
+//    GridLayout->addWidget(ButtonKapazitaet,1,2);
+//    GridLayout->addWidget(LabelButton2,2,0);
+//    GridLayout->addWidget(ButtonSpule,3,0);
+//    GridLayout->addWidget(ButtonLuftspule,3,1);
+//    GridLayout->addWidget(ButtonTrap,3,2);
+//    GridLayout->addWidget(ButtonDrahtlaenge,3,3);
+//    GridLayout->addWidget(ButtonResoTrans,4,0);
+//    GridLayout->addWidget(ButtonWiderstand,4,1);
+//    GridLayout->addWidget(ButtonBeenden,6,0);
+//    GridLayout->addWidget(TextEdit,0,4);
 
     //    QIcon iconBildWiderstand;
     //    iconBildWiderstand.addFile("H:/Github/Bilder/Widerstand.jpg");

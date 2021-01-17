@@ -45,6 +45,7 @@
 #include <windows.h>
 #include <QSettings>
 #include <QDateTime>
+#include <QGridLayout>
 
 class AfuBerechnung : public QMainWindow
 {
@@ -72,6 +73,9 @@ private:
 
 
     QWidget *myWidget = new QWidget();
+    QGridLayout *GridLayout;
+    QTextEdit *TextEdit;
+    QTextEdit *TextEditZeilen;
 
     QLabel *LabelStartbild;
     QLabel *LabelTime;

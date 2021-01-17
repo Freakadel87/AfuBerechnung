@@ -150,10 +150,10 @@ void AfuBerechnungFrequenz::triggeredButtonBerechnenClicked()
         EditEingabeL->setStyleSheet("QLineEdit {background-color : rgb(255,48,48); color : black;}");
     }
 
-    /// Zu erledigen: Formel berechnen
+    /// Zu erledigen: Formel berechnen - Rundungsfehler vorhanden?
     // Thomsonsche Schwingungsformel
-    fPufferF = (1 / (2 * fPi * sqrt(((fPufferL*fFaktorL) * (fPufferC*fFaktorC))))) / 0.001;
-    fPufferFF = (int)(fPufferF*100+0.5)/100.0;
+    fPufferF = 1 / (2 * fPi * sqrt(fPufferL*fFaktorL * fPufferC*fFaktorC)) / 0.001;
+    fPufferFF = (float)(fPufferF*100.0+0.5)/100.0;
 
     LabelLoesung->setNum(fPufferFF);
     LabelLoesung->setFont(QFont("Arial", 11, QFont::Thin));
