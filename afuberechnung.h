@@ -45,7 +45,7 @@
 #include <windows.h>
 #include <QSettings>
 #include <QDateTime>
-#include <QGridLayout>
+#include <QScrollBar>
 
 class AfuBerechnung : public QMainWindow
 {
@@ -73,7 +73,6 @@ private:
 
 
     QWidget *myWidget = new QWidget();
-    QGridLayout *GridLayout;
     QTextEdit *TextEdit;
     QTextEdit *TextEditZeilen;
 
@@ -170,6 +169,8 @@ private slots:
     void triggeredCheckBoxChecked();
     void LoadConfig();
     void SaveConfig();
+
+    void ScrollBarChanged(int);
 };
 
 #endif // AFUBERECHNUNG_H

@@ -151,32 +151,21 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     TextEdit->setGeometry(650,75,250,550);
     TextEdit->setFont(QFont("Open Sans",10, QFont::Normal));
     TextEditZeilen = new QTextEdit(this);
-    TextEditZeilen->setGeometry(610,75,35,550);
+    TextEditZeilen->setGeometry(610,75,50,550);
+    TextEditZeilen->setFont(QFont("Open Sans", 10, QFont::Normal));
     TextEditZeilen->setReadOnly(true);
+    TextEditZeilen->verticalScrollBar()->setEnabled(false);
 
-    ///Zu erledigen: Zeilennummerierung muss in TextEditZeilen gesetzt werden
+    ///Zuerledigen: TextEditZeilen muss die ScrollBar abgestellt werden
     //Erstellung der Zeilennummerierung
     int i {0};
+    QString sZeile {""};
 
-    for (i=0; i<999; i++)
+    for (i=1; i<1000; i++)
     {
-
+        sZeile.append(QString("%1\n").arg(i).right(4));
+        TextEditZeilen->setText(sZeile);
     }
-
-//    GridLayout = new QGridLayout(this);
-//    GridLayout-> addWidget(LabelButton1,0,0,0,0);
-//    GridLayout->addWidget(ButtonFrequenz,1,0,0,0);
-//    GridLayout->addWidget(ButtonInduktivitaet,1,1,0,0);
-//    GridLayout->addWidget(ButtonKapazitaet,1,2);
-//    GridLayout->addWidget(LabelButton2,2,0);
-//    GridLayout->addWidget(ButtonSpule,3,0);
-//    GridLayout->addWidget(ButtonLuftspule,3,1);
-//    GridLayout->addWidget(ButtonTrap,3,2);
-//    GridLayout->addWidget(ButtonDrahtlaenge,3,3);
-//    GridLayout->addWidget(ButtonResoTrans,4,0);
-//    GridLayout->addWidget(ButtonWiderstand,4,1);
-//    GridLayout->addWidget(ButtonBeenden,6,0);
-//    GridLayout->addWidget(TextEdit,0,4);
 
     //    QIcon iconBildWiderstand;
     //    iconBildWiderstand.addFile("H:/Github/Bilder/Widerstand.jpg");
@@ -204,6 +193,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     QObject::connect(ButtonResoTrans, SIGNAL(clicked(bool)), this, SLOT(triggeredResoTransBerechnen()));
     QObject::connect(ButtonWiderstand, SIGNAL(clicked(bool)), this, SLOT(triggeredWiderstand()));
     QObject::connect(CheckBoxFenster, SIGNAL(clicked(bool)), this, SLOT(triggeredCheckBoxChecked()));
+    QObject::connect(TextEdit->verticalScrollBar(), SIGNAL(valueChanged(int)), this, SLOT(ScrollBarChanged(int)));
 }
 
 void AfuBerechnung::triggeredBeenden()
@@ -390,6 +380,11 @@ void AfuBerechnung::triggeredSprache()
     WidgetSprache = new AfuBerechnungSprache(this);
     WidgetSprache->setWindowTitle(tr("Sprachumschaltung"));
     WidgetSprache->show();
+}
+
+void AfuBerechnung::ScrollBarChanged(int x)
+{
+    TextEditZeilen->verticalScrollBar()->setValue(x); //Gemeinsames scrollen von Zeilennummer und Textfeld
 }
 
 void AfuBerechnung::triggeredCheckBoxChecked()
