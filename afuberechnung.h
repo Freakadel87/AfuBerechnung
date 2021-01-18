@@ -129,6 +129,7 @@ private:
     QPushButton *ButtonDrahtlaenge;
     QPushButton *ButtonResoTrans;
     QPushButton *ButtonWiderstand;
+    QPushButton *ButtonClear;
 
     QCheckBox *CheckBoxFenster;
 
@@ -167,6 +168,7 @@ private slots:
     void triggeredEinstellungen();
     void triggeredSprache();
     void triggeredCheckBoxChecked();
+    void triggeredClear();
     void LoadConfig();
     void SaveConfig();
 

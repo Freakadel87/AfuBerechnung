@@ -2,7 +2,9 @@
 
 //Variablendeklaration
 QSettings SettingsAfuFenster;
+QString sZeile {""};
 bool bMerkerFenster {false};
+int i {0};
 int G_iMODE {0}; // Globale Variable fuer setzen von Widgets
 
 AfuBerechnung::~AfuBerechnung()
@@ -144,6 +146,10 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     ButtonWiderstand->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonWiderstand->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonWiderstand->setGeometry(150,375,120,120);
+    ButtonClear = new QPushButton(tr("Textfeld \n löschen"), this);
+    ButtonClear->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
+    ButtonClear->setFont(QFont("Arial", 10, QFont::Normal));
+    ButtonClear->setGeometry(400,525,120,60);
     CheckBoxFenster = new QCheckBox(tr("Fenster im Vordergrund"), this);
     CheckBoxFenster->setFont(QFont("Arial", 10, QFont::Normal));
     CheckBoxFenster->setGeometry(25,650,200,85);
@@ -151,16 +157,13 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     TextEdit->setGeometry(650,75,250,550);
     TextEdit->setFont(QFont("Open Sans",10, QFont::Normal));
     TextEditZeilen = new QTextEdit(this);
-    TextEditZeilen->setGeometry(610,75,50,550);
+    TextEditZeilen->setGeometry(600,75,50,550);
     TextEditZeilen->setFont(QFont("Open Sans", 10, QFont::Normal));
     TextEditZeilen->setReadOnly(true);
     TextEditZeilen->verticalScrollBar()->setEnabled(false);
+    TextEditZeilen->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    ///Zuerledigen: TextEditZeilen muss die ScrollBar abgestellt werden
     //Erstellung der Zeilennummerierung
-    int i {0};
-    QString sZeile {""};
-
     for (i=1; i<1000; i++)
     {
         sZeile.append(QString("%1\n").arg(i).right(4));
@@ -192,6 +195,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     QObject::connect(ButtonBeenden, SIGNAL(clicked(bool)), this, SLOT(triggeredBeenden()));
     QObject::connect(ButtonResoTrans, SIGNAL(clicked(bool)), this, SLOT(triggeredResoTransBerechnen()));
     QObject::connect(ButtonWiderstand, SIGNAL(clicked(bool)), this, SLOT(triggeredWiderstand()));
+    QObject::connect(ButtonClear, SIGNAL(clicked(bool)), this, SLOT(triggeredClear()));
     QObject::connect(CheckBoxFenster, SIGNAL(clicked(bool)), this, SLOT(triggeredCheckBoxChecked()));
     QObject::connect(TextEdit->verticalScrollBar(), SIGNAL(valueChanged(int)), this, SLOT(ScrollBarChanged(int)));
 }
@@ -240,6 +244,7 @@ void AfuBerechnung::triggeredFrequenzBerechnen()
     BerechnungFrequenz = new AfuBerechnungFrequenz(this);
     BerechnungFrequenz->setWindowTitle(tr("Berechnung der Frequenz"));
     BerechnungFrequenz->show();
+    TextEdit->insertPlainText("Button Frequenz berechnen betätigt.\n");
 }
 
 void AfuBerechnung::triggeredKapazitaetBerechnen()
@@ -247,6 +252,7 @@ void AfuBerechnung::triggeredKapazitaetBerechnen()
     BerechnungKapazitaet = new AfuBerechnungKapazitaet(this);
     BerechnungKapazitaet->setWindowTitle(tr("Berechnung der Kapazität"));
     BerechnungKapazitaet->show();
+    TextEdit->insertPlainText("Button Kapazität berechnen betätigt.\n");
 }
 
 void AfuBerechnung::triggeredInduktivitaetBerechnen()
@@ -254,6 +260,7 @@ void AfuBerechnung::triggeredInduktivitaetBerechnen()
     BerechnungInduktivitaet = new AfuBerechnungInduktivitaet(this);
     BerechnungInduktivitaet->setWindowTitle(tr("Berechnung der Induktivität"));
     BerechnungInduktivitaet->show();
+    TextEdit->insertPlainText("Button Induktivität berechnen betätigt.\n");
 }
 
 void AfuBerechnung::triggeredVerlaengerungBerechnen()
@@ -261,6 +268,7 @@ void AfuBerechnung::triggeredVerlaengerungBerechnen()
     BerechnungVerlaengerungsSpule = new AfuBerechnungVerlaengerungsSpule(this);
     BerechnungVerlaengerungsSpule->setWindowTitle(tr("Berechnung der Spulenverlängerung"));
     BerechnungVerlaengerungsSpule->show();
+    TextEdit->insertPlainText("Button Berechnung Spulenverlängerung betätigt.\n");
 }
 
 void AfuBerechnung::triggeredDrahtlaengeBerechnen()
@@ -380,6 +388,11 @@ void AfuBerechnung::triggeredSprache()
     WidgetSprache = new AfuBerechnungSprache(this);
     WidgetSprache->setWindowTitle(tr("Sprachumschaltung"));
     WidgetSprache->show();
+}
+
+void AfuBerechnung::triggeredClear()
+{
+    TextEdit->clear();
 }
 
 void AfuBerechnung::ScrollBarChanged(int x)
