@@ -70,7 +70,8 @@ HEADERS += \
     afuberechnungwattdbm.h \
     afuberechnungwiderstand.h
 
-FORMS +=
+FORMS += \
+    RFarbCode.ui
 
 RESOURCES += \
     Bilder.qrc \

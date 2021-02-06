@@ -69,8 +69,7 @@ private:
     AfuBerechnungSprache *WidgetSprache;
     AfuBerechnungEntfernung *WidgetEntfernung;
     AfuBerechnungSwr *WidgetSwr;
-    AfuBerechnungDezibel *WidgetDezibel;
-
+    AfuBerechnungDezibel *WidgetDezibel;   
 
     QWidget *myWidget = new QWidget();
     QTextEdit *TextEdit;
