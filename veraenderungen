@@ -1,0 +1,15 @@
+Veraenderungen
+
+
+
+#002   05.02.2022   [TC] Erstellung ToDo Liste
+            # Hinweis: Die Kommentare, die mit einem "x" gekennzeichnet sind, sind ereldigte Punkten.
+
+            (1)     Icons (QIcon) funktionieren nicht in den Menuezeilen
+            (2)     Klasse "afuberechnu...frequenzen.cpp, Zeile 153 Formel berechnen - Rundungsfehler und Formel pruefen
+            (3)  x   Checkbox auf Hauptseite "Fenster im Vordergrund" sinnfrei?
+
+            - Entfernung der CheckBox fuer "Fenster im Vordergrund"
+
+#001  19.02.2020     [TC] Projekterstellung
+            Beginn des Projektes für Amateurfunkberechnungen

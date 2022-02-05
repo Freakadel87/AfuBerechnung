@@ -130,8 +130,6 @@ private:
     QPushButton *ButtonWiderstand;
     QPushButton *ButtonClear;
 
-    QCheckBox *CheckBoxFenster;
-
 public:
     AfuBerechnung(QWidget *parent = 0);
     ~AfuBerechnung();
@@ -166,7 +164,6 @@ private slots:
     void triggeredPaste();
     void triggeredEinstellungen();
     void triggeredSprache();
-    void triggeredCheckBoxChecked();
     void triggeredClear();
     void LoadConfig();
     void SaveConfig();

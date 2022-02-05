@@ -24,7 +24,6 @@ AfuBerechnungEinstellungen::AfuBerechnungEinstellungen(QWidget *parent) : QDialo
     ButtonOk = new QPushButton(tr("OK"));
     ButtonOk->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonOk->setFont(QFont("Arial", 10, QFont::Thin));
-
     LoadConfig(); // Lade gespeicherte Parameter
 
     // Zusammenstellung der Layouts

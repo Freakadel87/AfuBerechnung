@@ -95,6 +95,7 @@ void AfuBerechnungInduktivitaet::triggeredButtonBerechnenClicked()
     float fFaktorC {0.0};
     float fFaktorF {0.0};
 
+    //Faktor fuer Kapazitaet
     if (sEinhC == "F")
     {
         fFaktorC = 1;
@@ -116,6 +117,7 @@ void AfuBerechnungInduktivitaet::triggeredButtonBerechnenClicked()
         fFaktorC = 0.000000000001;
     }
 
+    //Faktor fuer Frequenz
     if (sEinhF == "MHz")
     {
         fFaktorF = 1000000;

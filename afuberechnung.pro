@@ -79,5 +79,6 @@ RESOURCES += \
     #plotter.qrc
 
 DISTFILES += \
-    Projektnotizen
+    Projektnotizen \
+    veraenderungen
 

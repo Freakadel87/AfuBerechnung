@@ -27,7 +27,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
 {
     /// TODO: Timer wird nicht aktualisiert. Der Code muss wahrscheinlich in das MAIN Programm
 
-    // Auslesen und darstellen des Zeitstempels
+    //Auslesen und darstellen des Zeitstempels
     QDateTime qDateTime = QDateTime::currentDateTime(); //Timer auslesen
     QString sTime = qDateTime.toString(Qt::SystemLocaleLongDate); //Timerwert als String wandeln
     LabelTime = new QLabel(this);
@@ -35,13 +35,13 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     LabelTime->setGeometry(650,650,300,50);
     LabelTime->setFont(QFont("Arial", 10, QFont::Normal));
 
-    // Erstelle Menue --> Datei --> ...
+    //Erstelle Menue --> Datei --> ...
     menuProgramm = menuBar()->addMenu(tr("Programm"));
     menuProgramm->setFont(QFont("Arial", 10, QFont::Normal));
     menuDateiBeenden = menuProgramm->addAction(tr("Beenden"), this, SLOT(triggeredBeenden()));
     menuDateiBeenden->setIcon(QIcon::fromTheme("application-exit"));
 
-    // Erstelle Menue --> Bearbeiten --> ...
+    //Erstelle Menue --> Bearbeiten --> ...
     menuBearbeiten = menuBar()->addMenu(tr("Bearbeiten"));
     menuBearbeiten->setFont(QFont("Arial", 10, QFont::Normal));
     menuBearbeitenRedo = menuBearbeiten->addAction(tr("Wiederherstellen"), this, SLOT(triggeredRedo()));
@@ -57,7 +57,7 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBearbeitenPaste = menuBearbeiten->addAction(tr("Einfügen"), this, SLOT(triggeredPaste()));
     menuBearbeitenPaste->setIcon(QIcon::fromTheme("document-paste"));
 
-    // Erstelle Menue --> Berechnen --> ...
+    //Erstelle Menue --> Berechnen --> ...
     menuBerechnen = menuBar()->addMenu(tr("Berechnen"));
     menuBerechnen->setFont(QFont("Arial", 10, QFont::Normal));
     menuBerechnenFrequenz = menuBerechnen->addAction(tr("Frequenz berechnen..."), this, SLOT(triggeredFrequenzBerechnen()));
@@ -79,13 +79,14 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     menuBerechnen->addSeparator();
     menuBerechnenEntfernung = menuBerechnen->addAction(tr("Entfernung auf der Kugeloberfläche berechnen..."), this, SLOT(triggeredEntfernungBerechnen()));
 
-    // Erstelle Menue --> Optionen --> ...
+    //Erstelle Menue --> Optionen --> ...
     menuOptionen = menuBar()->addMenu(tr("Optionen"));
     menuOptionen->setFont(QFont("Arial", 10, QFont::Normal));
     menuEinstellungen = menuOptionen->addAction(tr("Einstellungen..."), this, SLOT(triggeredEinstellungen()));
+    menuEinstellungen->setIcon(QIcon::fromTheme("icon-settings"));
     menuSprache = menuOptionen->addAction(tr("Sprachumschaltung"), this, SLOT(triggeredSprache()));
 
-    // Erstelle Menue --> Hilfe --> ...
+    //Erstelle Menue --> Hilfe --> ...
     menuHilfe = menuBar()->addMenu(tr("Hilfe/Info"));
     menuHilfe->setFont(QFont("Arial", 10, QFont::Normal));
     menuHilfeInfo = menuHilfe->addAction(tr("Informationen"), this, SLOT(triggeredInfo()));
@@ -150,9 +151,6 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     ButtonClear->setStyleSheet("QPushButton {background-color : rgb(211,211,211); color : black;}");
     ButtonClear->setFont(QFont("Arial", 10, QFont::Normal));
     ButtonClear->setGeometry(400,525,120,60);
-    CheckBoxFenster = new QCheckBox(tr("Fenster im Vordergrund"), this);
-    CheckBoxFenster->setFont(QFont("Arial", 10, QFont::Normal));
-    CheckBoxFenster->setGeometry(25,650,200,85);
     TextEdit = new QTextEdit(this);
     TextEdit->setGeometry(650,75,250,550);
     TextEdit->setFont(QFont("Open Sans",10, QFont::Normal));
@@ -196,7 +194,6 @@ AfuBerechnung::AfuBerechnung(QWidget *parent)
     QObject::connect(ButtonResoTrans, SIGNAL(clicked(bool)), this, SLOT(triggeredResoTransBerechnen()));
     QObject::connect(ButtonWiderstand, SIGNAL(clicked(bool)), this, SLOT(triggeredWiderstand()));
     QObject::connect(ButtonClear, SIGNAL(clicked(bool)), this, SLOT(triggeredClear()));
-    QObject::connect(CheckBoxFenster, SIGNAL(clicked(bool)), this, SLOT(triggeredCheckBoxChecked()));
     QObject::connect(TextEdit->verticalScrollBar(), SIGNAL(valueChanged(int)), this, SLOT(ScrollBarChanged(int)));
 }
 
@@ -400,22 +397,6 @@ void AfuBerechnung::ScrollBarChanged(int x)
     TextEditZeilen->verticalScrollBar()->setValue(x); //Gemeinsames scrollen von Zeilennummer und Textfeld
 }
 
-void AfuBerechnung::triggeredCheckBoxChecked()
-{
-    if (CheckBoxFenster->isChecked())
-    {
-        /// TODO: Fenster bleibt nicht im Vordergrund...welcher Befehl bei QWidget???
-        myWidget->activateWindow();
-        myWidget->raise();
-    }
-    else
-    {
-        /// TODO: Fenster kann in den Hintergrund versetzt werden.
-    }
-
-    SaveConfig(); //Speichere Parameter
-}
-
 void AfuBerechnung::triggeredCut()
 {
 
@@ -443,20 +424,10 @@ void AfuBerechnung::triggeredUndo()
 
 void AfuBerechnung::LoadConfig()
 {
-    SettingsAfuFenster.value("CheckBoxFenster", bMerkerFenster); // Lade gespeicherten Wert
 
-    if (bMerkerFenster == true)
-    {
-        CheckBoxFenster->setChecked(true);
-    }
-    else
-    {
-        CheckBoxFenster->setChecked(false);
-    }
 }
 
 void AfuBerechnung::SaveConfig()
 {
-    ///TODO: Sinnvoll??? Fenster wird nicht erneut geoeffnet.
-    SettingsAfuFenster.setValue("CheckBoxFenster", bMerkerFenster);
+
 }
